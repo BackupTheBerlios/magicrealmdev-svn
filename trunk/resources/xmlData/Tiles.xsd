@@ -33,26 +33,6 @@
             <xs:enumeration value="Secret"/>
         </xs:restriction>
     </xs:simpleType>
-    <!--    
-    <xs:element name="PathNode" type="NonEmptyToken" abstract="true"/>
-    <xs:element name="PathClearing" substitutionGroup="PathNode">
-        <xs:simpleType>
-            <xs:restriction base="Clearing"/>
-        </xs:simpleType>
-    </xs:element>
-    <xs:element name="MapEdge" substitutionGroup="PathNode">
-        <xs:simpleType>
-          <xs:restriction base="xs:token">
-              <xs:enumeration value="N"/>
-              <xs:enumeration value="NE"/>
-              <xs:enumeration value="SE"/>
-              <xs:enumeration value="S"/>
-              <xs:enumeration value="SW"/>
-              <xs:enumeration value="NW"/>
-          </xs:restriction>
-        </xs:simpleType>
-    </xs:element>
--->
     <xs:simpleType name="MapEdge">
         <xs:restriction base="xs:token">
             <xs:enumeration value="N"/>
@@ -63,6 +43,15 @@
             <xs:enumeration value="NW"/>
         </xs:restriction>
     </xs:simpleType>
+<!--    
+    <xs:element name="PathNode" type="NonEmptyToken" abstract="true"/>
+    <xs:element name="PathClearing" substitutionGroup="PathNode">
+        <xs:simpleType>
+            <xs:restriction base="Clearing"/>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="MapEdge" type="MapEdge" substitutionGroup="PathNode"/>
+-->
     <xs:simpleType name="PathNode">
         <xs:union memberTypes="MapEdge Clearing"/>
     </xs:simpleType>
