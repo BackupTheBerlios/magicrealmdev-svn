@@ -1,96 +1,0 @@
-Scenario abstraction?  map tiles  characters  victory-conditions  game season, length  etc    regen table:1 Ghosts, Dragons, Company
-2 Ghosts, Serpents, Demons, Woodfolk
-3 Ghosts, Wolves, Ogres, Goblins, Octopus, Patrol, Soldiers
-4 Ghosts, Giants, Trolls, Lancers
-5 Ghosts, Spiders, Imp, Bashkars, Rogues
-6 Ghosts, Bats, Visitor/Mission chits flip, Guard, Order        have a prowling table, then a separate 'monster starting location' table??  treasure, spell, item (starting) locations    armor return locations (vs destroyed value)  tables: TWT, spells, missile, repositioning, meeting, search, hide,     optional: weather, commerce, stumble, fumble, opt missile,     solitare play optional rules; map setup, do not turn up valley tile chits, start at map edge,       2 rows of denizens prowl/day,   use 'combining realms', multiple-characters rule at the start...        treasure, spell effects (later?)    must 'hardcode' most of these effects...    items: itemtypes.txt  native specials:    bowmen roll 1 die on missile table!    another character  PC design; finishgame data   location for each object        tiles (enchanted,    can clearings, paths etc be determined via ImageMagick color analysis?      edge detection            segmentImage      colorFuzzImage      colorHistogram      boundingBox      colorFuzz      pixelColor      strokeColor              map chits: which chits where (sound + warning chits, lost city/castle?)    more SoundChits ??  sub chits (dwellings, lost city/castle?)      sound:  done:  finish appearance chart (xsd)
-		[selector] specifies a restricted XPath ([bib-xpath]) expression relative to instances of the element being declared. This must identify a node set of subordinate elements (i.e. contained within the declared element) to which the constraint applies.
-
-[fields] specifies XPath expressions relative to each element selected by a [selector]. This must identify a single node (element or attribute) whose content or value, which must be of a simple type, is used in the constraint. It is possible to specify an ordered list of [fields]s, to cater to multi-field keys, keyrefs, and uniqueness constraints.
-
-In order to reduce the burden on implementers, in particular implementers of streaming processors, only restricted subsets of XPath expressions are allowed in [selector] and [fields]. The details are given in [Constraints on Identity-constraint Definition Schema Components].
-
-
-  make the list of natives a substitution group??
-
-  Campaigns:
-    <Partners>
-      <Lancers/>
-      ...
-
-
-CharacterChit
-  sub group? -> chit type
-  
-  Fight, Move, Spell
-    Berzerk  Duck      
-
-
-  move to xml files:
-
-CharacterSpecialAdvantageType
-  include description + effect
-  eg: 
-    Phase / Bonus / Move + 1
-    Phase / Unavailable / Sunlight (Cave, Dwarf)
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-<!-- todo: id must be unique per character
-is this id useful? can just refer to a character's chit by character name and number (1-12);
-there's probably an xpath expression to take the i'th child element
-
--->
-    
-    
-    
-Java:
-JSF
-  Sun Studio Creator
-Spring
-  Spring 1.1.5
-HiveMind
-  http://jakarta.apache.org/hivemind/dependencies.html
-  Spring 1.0
-
-Hibernate O/R mapping
-  3.0 rc
-  Postgresql
-  http://www.hibernate.org/
-  
-
-
-http://lists.w3.org/Archives/Public/xmlschema-dev/2003Aug/0069.html
-
-file:///e:/dev/cities3d/src/MagicRealm/Resources/XmlData/Armor.xml
-
-file:///e:/dev/cities3d/src/MagicRealm/Resources/XmlData/Armor.xsd
-
-file:///e:/dev/cities3d/src/MagicRealm/Resources/XmlData/Campaigns.xsd
-
-
-
-
-
-    <xs:complexType name="AppearanceChartData">
-        <xs:sequence>
-            <xs:element name="AppearanceChartRow" type="AppearanceChartRow" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:element name="AppearanceChartData" type="AppearanceChartData"/>
-

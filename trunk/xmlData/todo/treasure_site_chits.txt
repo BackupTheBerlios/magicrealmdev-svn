@@ -1,8 +1,0 @@
-altar 1
-cairns 5
-hoard 6
-lair 3
-pool 6
-shrine 4
-statue 2
-vault 3
