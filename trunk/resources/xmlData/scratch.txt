@@ -1,3 +1,99 @@
+<xs:element name="PathNode" type="PathNode" minOccurs="2" maxOccurs="2"/>
+
+
+
+                    <PathNode>NW</PathNode>
+                    <PathNode>1</PathNode>
+
+
+	<Tile name="Awful Valley" id="AV" type="V">
+        <NormalSide>
+            <Clearings>
+                <Clearing number="1" type="W"></Clearing>
+                <Clearing number="2" type="W"></Clearing>
+                <Clearing number="4" type="W"></Clearing>
+                <Clearing number="5" type="W"></Clearing>
+            </Clearings>
+            <Paths>
+                <Path type="Road" node1="NW" node2="1"/>
+                <Path type="Road">
+                    <PathClearing>1</PathClearing>
+                    <PathClearing>4</PathClearing>
+                </Path>
+                <Path type="Road">
+                    <PathClearing>4</PathClearing>
+                    <MapEdge>SE</MapEdge>
+                </Path>
+                <Path type="Road">
+                    <PathClearing>1</PathClearing>
+                    <MapEdge>NE</MapEdge>
+                </Path>
+                <Path type="Road">
+                    <MapEdge>SW</MapEdge>
+                    <PathClearing>2</PathClearing>
+                </Path>
+                <Path type="Road">
+                    <PathClearing>2</PathClearing>
+                    <PathClearing>5</PathClearing>
+                </Path>
+                <Path type="Road">
+                    <PathClearing>5</PathClearing>
+                    <MapEdge>N</MapEdge>
+                </Path>
+            </Paths>
+        </NormalSide>
+	</Tile>
+	
+
+
+
+	<Tile name="Awful Valley" id="AV" type="V">
+        <NormalSide>
+            <Clearings>
+                <Clearing number="1" type="W"></Clearing>
+                <Clearing number="2" type="W"></Clearing>
+                <Clearing number="4" type="W"></Clearing>
+                <Clearing number="5" type="W"></Clearing>
+            </Clearings>
+            <Paths>
+                <Path type="Road">
+                    <PathClearing>1</PathClearing>
+                    <MapEdge>NW</MapEdge>
+                </Path>
+            </Paths>
+        </NormalSide>
+
+
+
+
+        <xs:attribute name="enchanted" type="xs:boolean" use="required"/>
+            <xs:element name="TileSide" type="TileSide" minOccurs="2" maxOccurs="2"/>
+
+
+    <xs:simpleType name="PathNode">
+        <xs:restriction base="NonEmptyToken"/>
+    </xs:simpleType>
+
+
+    <xs:complexType name="ClearingData">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="number" type="Clearing" use="required"/>
+                <xs:attribute name="type" type="ClearingType" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+
+    <xs:complexType name="PathData">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="type" type="PathType" use="required"/>
+                <xs:attribute name="node1" type="PathNode" use="required"/>
+                <xs:attribute name="node2" type="PathNode" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
 
 
 <!-- todo -->

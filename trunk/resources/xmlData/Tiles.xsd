@@ -26,15 +26,50 @@
         <xs:restriction base="NonEmptyToken"/>
     </xs:simpleType>
     <xs:simpleType name="PathType">
-        <xs:restriction base="NonEmptyToken"/>
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Road"/>
+            <xs:enumeration value="Tunnel"/>
+            <xs:enumeration value="Hidden"/>
+            <xs:enumeration value="Secret"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!--    
+    <xs:element name="PathNode" type="NonEmptyToken" abstract="true"/>
+    <xs:element name="PathClearing" substitutionGroup="PathNode">
+        <xs:simpleType>
+            <xs:restriction base="Clearing"/>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="MapEdge" substitutionGroup="PathNode">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+              <xs:enumeration value="N"/>
+              <xs:enumeration value="NE"/>
+              <xs:enumeration value="SE"/>
+              <xs:enumeration value="S"/>
+              <xs:enumeration value="SW"/>
+              <xs:enumeration value="NW"/>
+          </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+-->
+    <xs:simpleType name="MapEdge">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="N"/>
+            <xs:enumeration value="NE"/>
+            <xs:enumeration value="SE"/>
+            <xs:enumeration value="S"/>
+            <xs:enumeration value="SW"/>
+            <xs:enumeration value="NW"/>
+        </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="PathNode">
-        <xs:restriction base="NonEmptyToken"/>
+        <xs:union memberTypes="MapEdge Clearing"/>
     </xs:simpleType>
     <xs:complexType name="ClearingData">
         <xs:simpleContent>
             <xs:extension base="xs:string">
-                <xs:attribute name="number" type="xs:int" use="required"/>
+                <xs:attribute name="number" type="Clearing" use="required"/>
                 <xs:attribute name="type" type="ClearingType" use="required"/>
             </xs:extension>
         </xs:simpleContent>
@@ -45,28 +80,29 @@
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="PathData">
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute name="type" type="PathType" use="required"/>
-                <xs:attribute name="node1" type="PathNode" use="required"/>
-                <xs:attribute name="node2" type="PathNode" use="required"/>
-            </xs:extension>
-        </xs:simpleContent>
+        <xs:attribute name="type" type="PathType" use="required"/>
+        <xs:attribute name="node1" type="PathNode" use="required"/>
+        <xs:attribute name="node2" type="PathNode" use="required"/>
     </xs:complexType>
     <xs:complexType name="PathDataList">
         <xs:sequence>
             <xs:element name="Path" type="PathData" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
-    <xs:complexType name="TileData">
+    <xs:complexType name="TileSide">
         <xs:sequence>
             <xs:element name="Clearings" type="ClearingDataList" maxOccurs="unbounded"/>
             <xs:element name="Paths" type="PathDataList" maxOccurs="unbounded"/>
         </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TileData">
+        <xs:sequence>
+            <xs:element name="NormalSide" type="TileSide"/>
+            <xs:element name="EnchantedSide" type="TileSide" minOccurs="0"/>
+        </xs:sequence>
         <xs:attribute name="name" type="TileName" use="required"/>
         <xs:attribute name="id" type="TileId" use="required"/>
         <xs:attribute name="type" type="TileType" use="required"/>
-        <xs:attribute name="enchanted" type="xs:boolean" use="required"/>
     </xs:complexType>
     <xs:element name="TileDataList">
         <xs:complexType>

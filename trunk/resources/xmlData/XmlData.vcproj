@@ -119,6 +119,15 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
 			<File
+				RelativePath=".\AppearanceChart.xsd">
+				<File
+					RelativePath=".\AppearanceChart.h">
+				</File>
+				<File
+					RelativePath=".\AppearanceChart.xsx">
+				</File>
+			</File>
+			<File
 				RelativePath=".\Armor.xsd">
 				<File
 					RelativePath=".\Armor.h">
@@ -149,18 +158,6 @@
 				RelativePath=".\CharacterSpecialAdvantages.xsd">
 				<File
 					RelativePath=".\CharacterSpecialAdvantages.h">
-				</File>
-			</File>
-			<File
-				RelativePath=".\DenizenAppearance.xsd">
-				<File
-					RelativePath=".\DenizenAppearance.h">
-				</File>
-			</File>
-			<File
-				RelativePath=".\DenizenAppearance1.xsd">
-				<File
-					RelativePath=".\DenizenAppearance1.h">
 				</File>
 			</File>
 			<File
@@ -287,12 +284,6 @@
 				</File>
 			</File>
 			<File
-				RelativePath=".\Visitors.xsd">
-				<File
-					RelativePath=".\Visitors.h">
-				</File>
-			</File>
-			<File
 				RelativePath=".\Weapons.xsd">
 				<File
 					RelativePath=".\Weapons.h">
@@ -308,6 +299,9 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}">
 		</Filter>
 		<File
+			RelativePath=".\AppearanceChart.xml">
+		</File>
+		<File
 			RelativePath=".\Armor.xml">
 		</File>
 		<File
@@ -320,13 +314,13 @@
 			RelativePath=".\CharacterSpecialAdvantages.xml">
 		</File>
 		<File
-			RelativePath=".\DenizenAppearance.xml">
-		</File>
-		<File
 			RelativePath=".\Horses.xml">
 		</File>
 		<File
 			RelativePath=".\HorseTypes.xml">
+		</File>
+		<File
+			RelativePath=".\magic_realm.spp">
 		</File>
 		<File
 			RelativePath=".\MagicRealmGame.xml">
@@ -357,6 +351,12 @@
 		</File>
 		<File
 			RelativePath=".\Players.xml">
+		</File>
+		<File
+			RelativePath=".\RuleOptions.txt">
+		</File>
+		<File
+			RelativePath=".\RuleOptions.xml">
 		</File>
 		<File
 			RelativePath=".\scratch.txt">
