@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CampaignDataList
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"                   
+        xsi:noNamespaceSchemaLocation="Campaigns.xsd">
+  <Campaign>
+    <Name>Raid</Name>
+    <FameCost>8</FameCost>
+    <NotorietyCost>0</NotorietyCost>
+    <Partner>Lancers</Partner>
+    <Partner>Woodfolk</Partner>
+    <Foe>Bashkars</Foe>
+    <Foe>Rogues</Foe>
+    <TimeLimit>14</TimeLimit>
+  </Campaign>
+
+  <Campaign>
+    <Name>Revolt</Name>
+    <FameCost>0</FameCost>
+    <NotorietyCost>35</NotorietyCost>
+    <Partner>Lancers</Partner>
+    <Partner>Woodfolk</Partner>
+    <Partner>Bashkars</Partner>
+    <Partner>Rogues</Partner>
+    <Foe>Patrol</Foe>
+    <Foe>Soldiers</Foe>
+    <Foe>Guard</Foe>
+    <Foe>Company</Foe>
+    <TimeLimit>28</TimeLimit>
+  </Campaign>
+
+  <Campaign>
+    <Name>War</Name>
+    <FameCost>10</FameCost>
+    <NotorietyCost>15</NotorietyCost>
+    <Partner>Patrol</Partner>
+    <Partner>Soldiers</Partner>
+    <Partner>Guard</Partner>
+    <Foe>Company</Foe>
+    <Foe>Bashkars</Foe>
+    <Foe>Rogues</Foe>
+    <TimeLimit>28</TimeLimit>
+  </Campaign>
+
+  <Campaign>
+    <Name>Conquer</Name>
+    <FameCost>0</FameCost>
+    <NotorietyCost>40</NotorietyCost>
+    <Partner>Patrol</Partner>
+    <Partner>Soldiers</Partner>
+    <Partner>Guard</Partner>
+    <Partner>Company</Partner>
+    <Foe>Lancers</Foe>
+    <Foe>Woodfolk</Foe>
+    <Foe>Bashkars</Foe>
+    <Foe>Rogues</Foe>
+    <TimeLimit>28</TimeLimit>
+  </Campaign>
+
+  <Campaign>
+    <Name>Quest</Name>
+    <FameCost>0</FameCost>
+    <NotorietyCost>20</NotorietyCost>
+    <Partner>Order</Partner>
+    <Foe>Dragons</Foe>
+    <TimeLimit>28</TimeLimit>
+  </Campaign>
+
+  <Campaign>
+    <Name>Pilliage</Name>
+    <FameCost>0</FameCost>
+    <NotorietyCost>10</NotorietyCost>
+    <Partner>Bashkars</Partner>
+    <Foe>Patrol</Foe>
+    <Foe>Soldiers</Foe>
+    <TimeLimit>14</TimeLimit>
+  </Campaign>
+
+</CampaignDataList>
+

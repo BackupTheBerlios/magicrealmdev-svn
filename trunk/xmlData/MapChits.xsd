@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="Tiles.xsd"/>
+    <xs:include schemaLocation="Missions.xsd"/>
+    <xs:include schemaLocation="Campaigns.xsd"/>
+    <xs:complexType name="SoundChit">
+        <xs:sequence>
+            <xs:element name="Name" type="SoundType"/>
+            <xs:element name="Clearing" type="Clearing"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SoundChits">
+        <xs:sequence>
+            <xs:element name="SoundChit" type="SoundChit" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="WarningChit">
+        <xs:sequence>
+            <xs:element name="Name" type="WarningType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="WarningChits">
+        <xs:sequence>
+            <xs:element name="WarningChit" type="WarningChit" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SoundOrWarningChit">
+        <xs:simpleContent>
+            <xs:extension base="NonEmptyString">
+                <xs:attribute name="type" type="TileType" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    
+    <xs:simpleType name="SubstituteChit">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    
+    <xs:group name="SiteAndSoundChitLocationType">
+        <xs:choice>
+            <xs:element name="TileType" type="TileType"/>
+            <xs:element name="SubstituteChitType" type="SubstituteChit"/>
+        </xs:choice>
+    </xs:group>
+    
+    <xs:complexType name="SiteAndSoundChitLocation">
+        <xs:sequence>
+            <xs:group ref="SiteAndSoundChitLocationType"/>
+            <xs:element name="SiteAndSoundChits" type="xs:int"/>
+            <xs:element name="SubstituteChitRef" type="SubstituteChit" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SiteAndSoundChitLocations">
+        <xs:sequence>
+            <xs:element name="SiteAndSoundChitLocation" type="SiteAndSoundChitLocation" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    
+    <xs:complexType name="TreasureSiteChit">
+        <xs:sequence>
+            <xs:element name="Name" type="TreasureSite"/>
+            <xs:element name="Clearing" type="Clearing"/>
+            <xs:element name="SmallTreasures" type="xs:int"/>
+            <xs:element name="LargeTreasures" type="xs:int"/>
+            <xs:element name="Monster" type="Monster"/>
+            <xs:element name="MonsterRoll" type="MonsterRoll"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TreasureSiteChits">
+        <xs:sequence>
+            <xs:element name="TreasureSiteChit" type="TreasureSiteChit" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="DwellingData">
+        <xs:sequence>
+            <xs:element name="Name" type="Dwelling"/>
+            <xs:element name="MapChit" type="SoundOrWarningChit"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DwellingDataList">
+        <xs:sequence>
+            <xs:element name="DwellingData" type="DwellingData" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:group name="VisitorMissionCampaignChitSide">
+        <xs:choice>
+            <xs:element name="Visitor" type="Visitor"/>
+            <xs:element name="Mission" type="Mission"/>
+            <xs:element name="Campaign" type="Campaign"/>
+        </xs:choice>
+    </xs:group>
+    <xs:complexType name="VisitorMissionCampaignChit">
+        <xs:sequence>
+            <xs:group ref="VisitorMissionCampaignChitSide" minOccurs="2" maxOccurs="2"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="VisitorMissionCampaignChits">
+        <xs:sequence>
+            <xs:element name="VisitorMissionCampaignChit" type="VisitorMissionCampaignChit" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="MapChitData">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="SoundChits" type="SoundChits"/>
+                <xs:element name="WarningChits" type="WarningChits"/>
+                <xs:element name="TreasureSiteChits" type="TreasureSiteChits"/>
+                <xs:element name="SiteAndSoundChitLocations" type="SiteAndSoundChitLocations"/>
+                <xs:element name="DwellingDataList" type="DwellingDataList"/>
+                <xs:element name="VisitorMissionCampaignChits" type="VisitorMissionCampaignChits"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

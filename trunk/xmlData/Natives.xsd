@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="HorseTypes.xsd"/>
+    <xs:simpleType name="NativeColor">
+        <xs:restriction base="NonEmptyToken"/>
+    </xs:simpleType>
+    <xs:simpleType name="NativeId">
+        <xs:restriction base="NonEmptyToken"/>
+    </xs:simpleType>
+    <xs:simpleType name="NativeType">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <xs:simpleType name="NativeAttackValue">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <xs:simpleType name="NativeMoveTime">
+        <xs:restriction base="xs:int"/>
+    </xs:simpleType>
+    <xs:complexType name="NativeCombatStats">
+        <xs:sequence>
+            <xs:element name="Attack" type="NativeAttackValue"/>
+            <xs:element name="MoveTime" type="NativeMoveTime"/>
+            <!-- MoveStrength defined in NativeTypes -->
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NativeHorseData">
+        <xs:sequence>
+            <xs:element name="Type" type="HorseType"/>
+            <xs:element name="Gallop" type="HorseMoveValue"/>
+            <xs:element name="Walk" type="HorseMoveValue"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NativeData">
+        <xs:sequence>
+            <xs:element name="ID" type="NativeId"/>
+            <xs:element name="Type" type="NativeType"/>
+            <xs:element name="Unalerted" type="NativeCombatStats"/>
+            <xs:element name="Alerted" type="NativeCombatStats"/>
+            <xs:element name="Horse" type="NativeHorseData" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NativeGroupData">
+        <xs:sequence>
+            <xs:element name="Name" type="NativeGroup"/>
+            <xs:element name="HireIndividually" type="xs:boolean"/>
+            <xs:element name="Color" type="NativeColor"/>
+            <xs:element name="Garrison" type="Dwelling" minOccurs="0"/>
+            <xs:element name="NativeData" type="NativeData" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="NativeGroupDataList">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="NativeGroupData" type="NativeGroupData" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

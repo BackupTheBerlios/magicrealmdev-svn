@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="Natives.xsd"/>
+    <xs:include schemaLocation="Weapons.xsd"/>
+    <xs:complexType name="NativeTypeData">
+        <xs:sequence>
+            <xs:element name="Name" type="NativeType"/>
+            <xs:element name="Weapon" type="Weapon"/>
+            <xs:element name="Vulnerability" type="Weight"/>
+            <xs:element name="Armored" type="xs:boolean"/>
+            <xs:element name="GoldWage" type="xs:int"/>
+            <xs:element name="NotorietyBounty" type="xs:int"/>
+            <xs:element name="GoldBounty" type="xs:int"/>
+            <xs:element name="MoveStrength" type="Weight"/>
+            <xs:element name="Weight" type="Weight"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="NativeTypeDataList">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="NativeTypeData" type="NativeTypeData" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

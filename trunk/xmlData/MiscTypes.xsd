@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:complexType name="EmptyType"/>
+    <xs:attribute name="active" type="xs:boolean"/>
+    <xs:attribute name="alerted" type="xs:boolean"/>
+    <xs:simpleType name="NonEmptyString">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NonEmptyToken">
+        <xs:restriction base="xs:token">
+            <xs:minLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="GameName">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <xs:simpleType name="GameWeeks">
+        <xs:restriction base="xs:unsignedInt"/>
+    </xs:simpleType>
+    <xs:simpleType name="GameDays">
+        <xs:restriction base="xs:unsignedInt"/>
+    </xs:simpleType>
+    <xs:simpleType name="GameTurns">
+        <xs:restriction base="xs:unsignedInt"/>
+    </xs:simpleType>
+    <xs:simpleType name="GamePhases">
+        <xs:restriction base="xs:unsignedInt"/>
+    </xs:simpleType>
+    <xs:simpleType name="GameRounds">
+        <xs:restriction base="xs:unsignedInt"/>
+    </xs:simpleType>
+    <xs:simpleType name="PlayerName">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <!-- todo: move this to xml? -->
+    <xs:simpleType name="CharacterChitState">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="active"/>
+            <xs:enumeration value="fatigued"/>
+            <xs:enumeration value="wounded"/>
+            <xs:enumeration value="enchanted"/>
+            <xs:enumeration value="dedicated"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ChitType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="move"/>
+            <xs:enumeration value="fight"/>
+            <xs:enumeration value="magic"/>
+            <xs:enumeration value="duck"/>
+            <xs:enumeration value="berserk"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CharacterClass">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <xs:simpleType name="CharacterName">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <!-- todo: also Vulnerability, Move/Attack Strength -->
+    <xs:simpleType name="Weight">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="N"/>
+            <xs:enumeration value="L"/>
+            <xs:enumeration value="M"/>
+            <xs:enumeration value="H"/>
+            <xs:enumeration value="T"/>
+            <xs:enumeration value="T+"/>
+            <!--
+            <xs:enumeration value="T++"/>
+            <xs:enumeration value="T+++"/>
+            -->
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NativeGroup">
+        <xs:restriction base="NonEmptyToken"/>
+    </xs:simpleType>
+    <xs:simpleType name="Monster">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <xs:simpleType name="MonsterId">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <!-- todo: includes Dragons -->
+    <xs:simpleType name="MonsterGroup">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <xs:simpleType name="MonsterRoll">
+        <xs:restriction base="xs:positiveInteger"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DenizenGroup">
+        <xs:union memberTypes="NativeGroup MonsterGroup"/>
+    </xs:simpleType>
+    <xs:simpleType name="Visitor">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <xs:simpleType name="VisitorsAndNativeGroups">
+        <xs:restriction base="NonEmptyToken"/>
+    </xs:simpleType>
+    <!-- todo -->
+    <xs:simpleType name="Clearing">
+        <xs:restriction base="xs:int"/>
+    </xs:simpleType>
+    <!-- todo 
+    NonEmptyToken
+    <xs:simpleType name="ClearingNumber">
+        <xs:restriction base="NonEmptyToken"/>
+    </xs:simpleType>
+    -->
+    <xs:simpleType name="Dwelling">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <xs:simpleType name="Mission">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+
+
+    <!-- todo: GoldType? -->
+    <xs:simpleType name="GoldPrice">
+        <xs:restriction base="xs:int"/>
+    </xs:simpleType>
+    <xs:simpleType name="FameType">
+        <xs:restriction base="xs:float"/>
+    </xs:simpleType>
+    <xs:simpleType name="NotorietyType">
+        <xs:restriction base="xs:float"/>
+    </xs:simpleType>
+    <xs:simpleType name="AttackDirection">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="AnyOne"/>
+            <xs:enumeration value="Thrust"/>
+            <xs:enumeration value="Swing"/>
+            <xs:enumeration value="Smash"/>
+            <!-- any one -->
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="SoundType">
+        <xs:restriction base="NonEmptyToken"/>
+    </xs:simpleType>
+    <xs:simpleType name="WarningType">
+        <xs:restriction base="NonEmptyToken"/>
+    </xs:simpleType>
+    <xs:simpleType name="TreasureSite">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <xs:complexType name="TreasureSites">
+        <xs:sequence>
+            <xs:element name="TreasureSite" type="TreasureSite" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- 
+    TreasureSiteCard  Treasure with type == Site =
+
+    <xs:simpleType name="TreasureSiteCard">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    -->
+    <xs:simpleType name="TreasureSiteCard">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Toadstool Circle"/>
+            <xs:enumeration value="Crypt of the Knight"/>
+            <xs:enumeration value="Enchanted Meadow"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="TreasureSiteCards">
+        <xs:sequence>
+            <xs:element name="TreasureSiteCard" type="TreasureSiteCard" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- todo - tile-ID + cache-number ?? just a number?  -->
+    <xs:simpleType name="CacheId">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <!-- todo: union of TreasureLocation and NativeGroup -->
+    <xs:simpleType name="ItemStartingLocation">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <xs:simpleType name="ItemReturnLocation">
+        <xs:restriction base="VisitorsAndNativeGroups"/>
+    </xs:simpleType>
+    <xs:complexType name="ItemCollectionStartingLocation">
+        <xs:simpleContent>
+            <xs:extension base="ItemStartingLocation">
+                <xs:attribute name="count" type="xs:int" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="MiscTypes.xsd"/>
+    <xs:complexType name="MissionData">
+        <xs:sequence>
+            <xs:element name="Name" type="Mission"/>
+            <xs:element name="NotorietyCost" type="NotorietyType"/>
+            <xs:element name="GoldRewardPerClearing" type="GoldPrice"/>
+            <xs:element name="PrimaryDestination" type="Dwelling"/>
+            <xs:element name="SecondaryDestination" type="Dwelling"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="MissionDataList">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Mission" type="MissionData" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

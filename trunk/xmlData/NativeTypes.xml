@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NativeTypeDataList xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="NativeTypes.xsd">
+    <NativeTypeData>
+        <Name>Raider</Name>
+        <Weapon>Short Sword</Weapon>
+        <Vulnerability>L</Vulnerability>
+        <Armored>0</Armored>
+        <GoldWage>2</GoldWage>
+        <NotorietyBounty>4</NotorietyBounty>
+        <GoldBounty>2</GoldBounty>
+        <MoveStrength>L</MoveStrength>
+        <Weight>L</Weight>
+    </NativeTypeData>
+    <NativeTypeData>
+        <Name>Knight</Name>
+        <Weapon>Broadsword</Weapon>
+        <Vulnerability>T</Vulnerability>
+        <Armored>1</Armored>
+        <GoldWage>8</GoldWage>
+        <NotorietyBounty>12</NotorietyBounty>
+        <GoldBounty>8</GoldBounty>
+        <MoveStrength>T</MoveStrength>
+        <Weight>H</Weight>
+    </NativeTypeData>
+    <NativeTypeData>
+        <Name>Great Swordsman</Name>
+        <Weapon>Great Sword</Weapon>
+        <Vulnerability>H</Vulnerability>
+        <Armored>1</Armored>
+        <GoldWage>4</GoldWage>
+        <NotorietyBounty>6</NotorietyBounty>
+        <GoldBounty>4</GoldBounty>
+        <MoveStrength>H</MoveStrength>
+        <Weight>H</Weight>
+    </NativeTypeData>
+    <NativeTypeData>
+        <Name>Great Axeman</Name>
+        <Weapon>Great Axe</Weapon>
+        <Vulnerability>H</Vulnerability>
+        <Armored>0</Armored>
+        <GoldWage>4</GoldWage>
+        <NotorietyBounty>6</NotorietyBounty>
+        <GoldBounty>4</GoldBounty>
+        <MoveStrength>H</MoveStrength>
+        <Weight>H</Weight>
+    </NativeTypeData>
+    <NativeTypeData>
+        <Name>Pikeman</Name>
+        <Weapon>Spear</Weapon>
+        <Vulnerability>M</Vulnerability>
+        <Armored>1</Armored>
+        <GoldWage>2</GoldWage>
+        <NotorietyBounty>3</NotorietyBounty>
+        <GoldBounty>2</GoldBounty>
+        <MoveStrength>M</MoveStrength>
+        <Weight>M</Weight>
+    </NativeTypeData>
+    <NativeTypeData>
+        <Name>Short Swordsman</Name>
+        <Weapon>Short Sword</Weapon>
+        <Vulnerability>M</Vulnerability>
+        <Armored>1</Armored>
+        <GoldWage>2</GoldWage>
+        <NotorietyBounty>3</NotorietyBounty>
+        <GoldBounty>2</GoldBounty>
+        <MoveStrength>M</MoveStrength>
+        <Weight>M</Weight>
+    </NativeTypeData>
+    <NativeTypeData>
+        <Name>Crossbowman</Name>
+        <Weapon>Crossbow</Weapon>
+        <Vulnerability>M</Vulnerability>
+        <Armored>1</Armored>
+        <GoldWage>2</GoldWage>
+        <NotorietyBounty>4</NotorietyBounty>
+        <GoldBounty>2</GoldBounty>
+        <MoveStrength>M</MoveStrength>
+        <Weight>M</Weight>
+    </NativeTypeData>
+    <NativeTypeData>
+        <Name>Lancer</Name>
+        <Weapon>Spear</Weapon>
+        <Vulnerability>L</Vulnerability>
+        <Armored>0</Armored>
+        <GoldWage>2</GoldWage>
+        <NotorietyBounty>4</NotorietyBounty>
+        <GoldBounty>2</GoldBounty>
+        <MoveStrength>L</MoveStrength>
+        <Weight>L</Weight>
+    </NativeTypeData>
+    <!-- bowmen roll 1 die on missile table! -->
+    <NativeTypeData>
+        <Name>Archer</Name>
+        <Weapon>Light Bow</Weapon>
+        <Vulnerability>M</Vulnerability>
+        <Armored>0</Armored>
+        <GoldWage>2</GoldWage>
+        <NotorietyBounty>4</NotorietyBounty>
+        <GoldBounty>2</GoldBounty>
+        <MoveStrength>M</MoveStrength>
+        <Weight>M</Weight>
+    </NativeTypeData>
+    <NativeTypeData>
+        <Name>Medium Archer</Name>
+        <Weapon>Medium Bow</Weapon>
+        <Vulnerability>M</Vulnerability>
+        <Armored>0</Armored>
+        <GoldWage>2</GoldWage>
+        <NotorietyBounty>4</NotorietyBounty>
+        <GoldBounty>2</GoldBounty>
+        <MoveStrength>M</MoveStrength>
+        <Weight>M</Weight>
+    </NativeTypeData>
+    <NativeTypeData>
+        <Name>Swordsman</Name>
+        <Weapon>Thrusting Sword</Weapon>
+        <Vulnerability>M</Vulnerability>
+        <Armored>0</Armored>
+        <GoldWage>1</GoldWage>
+        <NotorietyBounty>2</NotorietyBounty>
+        <GoldBounty>1</GoldBounty>
+        <MoveStrength>M</MoveStrength>
+        <Weight>M</Weight>
+    </NativeTypeData>
+    <NativeTypeData>
+        <Name>Assasin</Name>
+        <Weapon>Short Sword</Weapon>
+        <Vulnerability>M</Vulnerability>
+        <Armored>0</Armored>
+        <GoldWage>1</GoldWage>
+        <NotorietyBounty>2</NotorietyBounty>
+        <GoldBounty>1</GoldBounty>
+        <MoveStrength>M</MoveStrength>
+        <Weight>M</Weight>
+    </NativeTypeData>
+</NativeTypeDataList>

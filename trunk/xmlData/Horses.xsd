@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="HorseTypes.xsd"/>
+    <!-- 
+        refer to horse by type and id; eg: <Pony>1</Pony>  
+    -->
+    <xs:simpleType name="HorseId">
+        <xs:restriction base="xs:int"/>
+    </xs:simpleType>
+    <xs:element name="Horse" type="HorseId" abstract="true"/>
+    <xs:element name="Pony" substitutionGroup="Horse">
+        <xs:simpleType>
+            <xs:restriction base="HorseId"/>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="Warhorse" substitutionGroup="Horse">
+        <xs:simpleType>
+            <xs:restriction base="HorseId"/>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="Workhorse" substitutionGroup="Horse">
+        <xs:simpleType>
+            <xs:restriction base="HorseId"/>
+        </xs:simpleType>
+    </xs:element>
+    <!--
+         todo - is there a better way to inherit this data?
+        want to refer to horses via <Pony>1</Pony> ?
+     -->
+    <xs:complexType name="HorseData">
+        <xs:sequence>
+            <xs:element name="ID" type="HorseId"/>
+            <xs:element name="Gallop" type="HorseMoveValue"/>
+            <xs:element name="Walk" type="HorseMoveValue"/>
+            <xs:element name="Price" type="GoldPrice"/>
+            <xs:element name="StartingLocation" type="ItemStartingLocation"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="HorseDataBase" type="HorseData" abstract="true"/>
+    <xs:element name="PonyData" substitutionGroup="HorseDataBase">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="HorseData"/>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="WorkhorseData" substitutionGroup="HorseDataBase">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="HorseData"/>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="WarhorseData" substitutionGroup="HorseDataBase">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="HorseData"/>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Horses">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="HorseDataBase" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

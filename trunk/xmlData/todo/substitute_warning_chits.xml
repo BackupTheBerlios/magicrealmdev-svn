@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+#map chit 'dwelling' native
+bones V ghosts
+dank V chapel order
+ruins V guard guard
+smoke V house soldiers
+stink V inn rogues

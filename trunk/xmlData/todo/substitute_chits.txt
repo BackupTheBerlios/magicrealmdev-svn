@@ -1,0 +1,3 @@
+#name, location, number of substitute chits
+lost_city cave 5
+lost_castle mountain 5

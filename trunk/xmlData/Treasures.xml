@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- completely refactor this into small, large, and TWT ? having a single alphabetical list is nice... pretty minor convenience really -->
+<TreasureDataList xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Treasures.xsd">
+    <TreasureData>
+        <Name>7 League Boots</Name>
+        <Type>Boots</Type>
+        <Weight>N</Weight>
+        <GoldPrice>5</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>2</Notoriety>
+        <Description>Tremendous strength, time number of 5. This card can be used to open the VAULT and CRYPT.&lt;p&gt;This card allows its owner to record an extra phase to do the MOVE activity, even if he is riding a horse.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Alchemist's Mixture</Name>
+        <Type>Weapon</Type>
+        <Weight>N</Weight>
+        <GoldPrice>4</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <ReturnTo>Warlock</ReturnTo>
+        <Description>This &lt;i&gt;Potion&lt;/i&gt; represents pinches of deadly powder that are thrown at a target. It is a missile weapon, length 11, weight Negligible, impact Medium, with 3 sharpness stars. Once activated, it can attack one target per round of combat until &lt;i&gt;Midnight&lt;/i&gt;, when it expires. It is not limited to the character who activates it - it can be transferred while active.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Amulet</Name>
+        <Type>One-use</Type>
+        <Weight>N</Weight>
+        <GoldPrice>5</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <ReturnTo>Shaman</ReturnTo>
+        <Description>This card can cure one character in its clearing of one Curse, or, starting in the FOURTH ENCOUNTER, it can break (or partially break) one spell whose spellcaster or target is in his clearing. The card's owner chooses exactly which Curse (or spell) is cancelled. At &lt;i&gt;Midnight&lt;/i&gt; it returns to the SHAMAN's box.&lt;p&gt;&lt;b&gt;1.&lt;/b&gt; The AMULET can break one curse on one character. Other characters and other Curses are not affected.&lt;p&gt;&lt;b&gt;2.&lt;/b&gt; When used against a spell, the AMULET functions like a spellbreaking spell (see rule 44.5). It releases some or all of the spell's targets from the spell. It can be used against a spell only if the spell already exists at the moment the AMULET is activated - it cannot affect a spellthat is in the process of being cast. The AMULET affects only one spell - duplicates of the spell are not affected.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Ancient Telescope</Name>
+        <Type>Birdsong</Type>
+        <Weight>N</Weight>
+        <GoldPrice>5</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <Description>This card gives its owner an extra phase that he can use to PEER from one mountain clearing to any other mountain clearing. It gives him one extra phase that he can use to do the enhanced PEER activity. When he records the activity he must record the mountain clearing he will search. When he does the activity he must be in a mountain clearing or the activity is cancelled.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Battle Bracelets</Name>
+        <Type>Combat effect</Type>
+        <Large/>
+        <Weight>N</Weight>
+        <GoldPrice>12</GoldPrice>
+        <Fame>2</Fame>
+        <Notoriety>4</Notoriety>
+        <Description>If he is attacking a target whose maneuver time is 5 or more, he can shift his attack to any &lt;i&gt;Attack&lt;/&gt; circle he chooses. If his target's maneuver is 4 or less, he cannot shift his attack. &lt;i&gt;Note:&lt;/i&gt; If he is attacking multiple targets, he can shift his attack only if every target has a maneuver time of 5 or more.&lt;p&gt;&lt;b&gt;*&lt;/b&gt; If the BATTLE BRACELETS and ELUSIVE CLOAK are used in the same melee step, the attack is shifted first, then the maneuver.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Beast Pipes</Name>
+        <Type>Artifact</Type>
+        <Weight>N</Weight>
+        <GoldPrice>8</GoldPrice>
+        <VisitorPrice goldPrice="20">Scholar</VisitorPrice>
+        <VisitorPrice goldPrice="20">Crone</VisitorPrice>
+        <Fame>-5</Fame>
+        <Notoriety>5</Notoriety>
+        <SpellType>VIII</SpellType>
+        <Description>This card contains one type VIII Spell card. It can be used as a MAGIC-VIII-0 chit to cast this spell.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Bejeweled Dwarf Vest</Name>
+        <Type>Armor</Type>
+        <Great/>
+        <Large/>
+        <Weight>M</Weight>
+        <GoldPrice>27</GoldPrice>
+        <GoldPriceDestroyed>22</GoldPriceDestroyed>
+        <Fame>0</Fame>
+        <Notoriety>5</Notoriety>
+        <FamePrice famePrice="10">Soldiers</FamePrice>
+        <Description>When active, this card intercepts &lt;i&gt;Thrust&lt;/i&gt; attacks. It is destroyed when Heavy (or greater) harm is inflicted on it. When it is destroyed, the owner gets 23 GOLD points to represent the value of its jewels.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Belt of Strength</Name>
+        <Type>Altering action chits</Type>
+        <Large/>
+        <Weight>N</Weight>
+        <GoldPrice>16</GoldPrice>
+        <Fame>3</Fame>
+        <Notoriety>6</Notoriety>
+        <Description>This card alters the strength of its owner's MOVE, FIGHT, DUCK and BERSERK chits (his MAGIC chits are not affected). The asterisks on each chit define its strength: each chit with two asterisks has Tremendous strength, each chit with one asterisk has Heavy strength, and each chit with no asterisks has Medium strength.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Black Book</Name>
+        <Type>Spell Book</Type>
+        <Great/>
+        <Weight>L</Weight>
+        <GoldPrice>10</GoldPrice>
+        <VisitorPrice goldPrice="50">Scholar</VisitorPrice>
+        <VisitorPrice goldPrice="50">Crone</VisitorPrice>
+        <Fame>-15</Fame>
+        <Notoriety>15</Notoriety>
+        <SpellType>V</SpellType>
+        <Description>This card contains two type V Spell cards and two type VIII Spell cards. Once per day it can be used as a MAGIC-V-0 chit to cast one of the type V spells. It cannot cast the type VIII spells.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Blasted Jewel</Name>
+        <Type>Artifact</Type>
+        <Great/>
+        <Large/>
+        <Weight>H</Weight>
+        <GoldPrice>30</GoldPrice>
+        <VisitorPrice goldPrice="20">Scholar</VisitorPrice>
+        <Fame>-15</Fame>
+        <Notoriety>15</Notoriety>
+        <SpellType>V</SpellType>
+        <Description>This card contains one type V Spell card. Once per day it can be used as a MAGIC-V-0 chit to cast this spell.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Book of Lore</Name>
+        <Type>Spell Book</Type>
+        <Weight>L</Weight>
+        <GoldPrice>10</GoldPrice>
+        <VisitorPrice goldPrice="50">Scholar</VisitorPrice>
+        <Fame>-5</Fame>
+        <Notoriety>10</Notoriety>
+        <SpellType>IV</SpellType>
+        <Description>This card contains four type IV Spells. Once per day it can be used as a MAGIC-IV-0 chit to cast one of them.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Chest</Name>
+        <Type>Substitute</Type>
+        <Weight>T</Weight>
+        <GoldPrice>0</GoldPrice>
+        <GoldPriceDestroyed>0</GoldPriceDestroyed>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <Description>The only way to exchange the chest is with the LOST KEYS; it stays in play like any other item until it is exchanged. A character can activate the CHEST only if he has the LOST KEYS active. When he activates the CHEST, he immediately exchanges for its treasures. He keeps the treasures and adds 50 points to his recorded GOLD. &lt;i&gt;Note:&lt;/i&gt; The CHEST cannot be reused once it is exchanged.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Cloak of Mist</Name>
+        <Type>Birdsong</Type>
+        <Weight>N</Weight>
+        <GoldPrice>4</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>2</Notoriety>
+        <Description>This card allows its owner to record an extra phase to do the HIDE activity.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Cloven Hoof</Name>
+        <Type>Enchanted</Type>
+        <Great/>
+        <Weight>N</Weight>
+        <GoldPrice>4</GoldPrice>
+        <Fame>-20</Fame>
+        <Notoriety>40</Notoriety>
+        <ColorMagic>BLACK</ColorMagic>
+        <Description>This card affects all tables, and it is an Enchanted card that affects every character in its clearing.Whenever a character rolls on any table while he is in the same clearing with the CLOVEN HOOF, he adds one to his result. Starting in the FOURTH ENCOUNTER, this card is also a sourceof &lt;i&gt;BLACK color&lt;/i&gt; magic to everyone in its clearing.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Crypt of the Knight</Name>
+        <Type>Site</Type>
+        <Weight>T+</Weight>
+        <GoldPrice>0</GoldPrice>
+        <GoldPriceDestroyed>0</GoldPriceDestroyed>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <Description>Roll on site table.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Crystal Ball</Name>
+        <Type>Birdsong</Type>
+        <Large/>
+        <Weight>M</Weight>
+        <GoldPrice>20</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>5</Notoriety>
+        <Description>This card allows its ownder to use his regular phases to record the enhanced PEER activity. When he records the enhanced PEER activity he can record any clearing on the map. When he does the activity he searches that clearing. Starting in the FOURTH ENCOUNTER, he can record the remote SPELL activity and specify any clearing on the map (see rule 39.6).</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Deft Gloves</Name>
+        <Type>Gloves</Type>
+        <Weight>N</Weight>
+        <GoldPrice>10</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>6</Notoriety>
+        <FamePrice famePrice="5">Order</FamePrice>
+        <Description>Light strength, time number of 2. This card affects the LOOT table and the three special tables used to loot the Site cards.If a character has this card active when he uses one of these tables, he rolls one die to find his result.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Dragon Essence</Name>
+        <Type>Enchanted</Type>
+        <Great/>
+        <Weight>N</Weight>
+        <GoldPrice>3</GoldPrice>
+        <Fame>-10</Fame>
+        <Notoriety>20</Notoriety>
+        <ColorMagic>PURPLE</ColorMagic>
+        <Description>This Enchanted card affects everyone in its clearing. It summons monsters just like a SMOKE Warning chit whenever a character ends his turn in the clearing. It affects only its own clearing - it does not summon monsters when someone ends his turn in another clearing. In a tile with a cave clearing it counts as a SMOKE C chit; otherwise it counts as a SMOKE M chit. Starting in the FOURTH ENCOUNTER, it also supplies &lt;i&gt;PURPLE color&lt;/i&gt; magic to everyone in its clearing.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Dragonfang Necklace</Name>
+        <Type>TreasureData with a Spell</Type>
+        <Great/>
+        <Weight>N</Weight>
+        <GoldPrice>8</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>12</Notoriety>
+        <FamePrice famePrice="12">Lancers</FamePrice>
+        <Description>This item can be played like an Artifact to cast &lt;a href=spells.php?spell=47&gt;its spell&lt;/a&gt;. It can be played only once per day.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Draught of Speed</Name>
+        <Type>Altering action chits</Type>
+        <Weight>N</Weight>
+        <GoldPrice>6</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <ReturnTo>Warlock</ReturnTo>
+        <Description>This card alters the time numbers on all of its owners action chits (including his MAGIC chits). The asterisks on each chit define the time number: each chit with two asterisks has a time of 2, each chit with one asterisk has a time of 3, and each chit with no asterisks has a time of 4. This Potion is used up by the character who activates it. It cannot be transferred while active.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Elusive Cloak</Name>
+        <Type>Combat effect</Type>
+        <Weight>N</Weight>
+        <GoldPrice>10</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>2</Notoriety>
+        <Description>If all of the attacks aimed at him have an attack time of 5 or more, he can move his maneuver to any &lt;i&gt;Maneuver&lt;/i&gt; square he chooses. If an attack with a time of 4 or less is aimed at him, he cannot shift his maneuver. &lt;i&gt;Note:&lt;/i&gt; The Dwarf can never shift his DUCK chit - it can be played only in the &lt;i&gt;Duck Maneuver&lt;/i&gt; square.&lt;p&gt;&lt;b&gt;*&lt;/b&gt; If the BATTLE BRACELETS and ELUSIVE CLOAK are used in the same melee step, the attack is shifted first, then the maneuver.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Elven Slippers</Name>
+        <Type>Boots</Type>
+        <Weight>N</Weight>
+        <GoldPrice>5</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>2</Notoriety>
+        <Description>Light strength, time number of 2.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Enchanted Meadow</Name>
+        <Type>Site</Type>
+        <Weight>T+</Weight>
+        <GoldPrice>0</GoldPrice>
+        <GoldPriceDestroyed>0</GoldPriceDestroyed>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <Description>Roll on site table.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Enchanter's Skull</Name>
+        <Type>Artifact</Type>
+        <Great/>
+        <Large/>
+        <Weight>L</Weight>
+        <GoldPrice>17</GoldPrice>
+        <VisitorPrice goldPrice="20">Scholar</VisitorPrice>
+        <VisitorPrice goldPrice="20">Warlock</VisitorPrice>
+        <Fame>-10</Fame>
+        <Notoriety>10</Notoriety>
+        <SpellType>IV</SpellType>
+        <Description>This card contains one type IV Spell card. It can be used as a MAGIC-IV-0 chit to cast this spell.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Eye of the Idol</Name>
+        <Type>Artifact</Type>
+        <Large/>
+        <Weight>M</Weight>
+        <GoldPrice>34</GoldPrice>
+        <VisitorPrice goldPrice="20">Scholar</VisitorPrice>
+        <Fame>-5</Fame>
+        <Notoriety>10</Notoriety>
+        <SpellType>II</SpellType>
+        <Description>This card contains one type II Spell card. It can be used as a MAGIC-II-0 chit to cast this spell.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Eye of the Moon</Name>
+        <Type>TreasureData with a Spell</Type>
+        <Large/>
+        <Weight>M</Weight>
+        <GoldPrice>13</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>13</Notoriety>
+        <Description>This item can be played like an Artifact to cast &lt;a href=spells.php?spell=48&gt;its spell&lt;/a&gt;. It can be played only once per day.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Flowers of Rest</Name>
+        <Type>Enchanted</Type>
+        <Weight>N</Weight>
+        <GoldPrice>2</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <ColorMagic>GOLD</ColorMagic>
+        <Description>During &lt;i&gt;Daylight&lt;/i&gt;, this card instantly activates all fatigued chits in its clearing, but when it activates a chit it causes the chit's owner to fall asleep until &lt;i&gt;Sunset&lt;/i&gt;. The card only activates fatigued chits, not wounds, and it works only during &lt;i&gt;Daylight&lt;/i&gt;. A sleeping character loses his turn and cannot block or be blocked. Starting in the FOURTH ENCOUNTER, this card is also a source of &lt;i&gt;GOLD color&lt;/i&gt; magic to everyone in its clearing.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Flying Carpet</Name>
+        <Type>TreasureData with a Spell</Type>
+        <Large/>
+        <Weight>M</Weight>
+        <GoldPrice>17</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>12</Notoriety>
+        <Description>This item already has &lt;a href=spells.php?spell=49&gt;a &lt;i&gt;Permanent&lt;/i&gt; spell&lt;/a&gt; cast on it, which can be energized like any other &lt;i&gt;Permanent&lt;/i&gt; spell.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Garb of Speed</Name>
+        <Type>Altering action chits</Type>
+        <Large/>
+        <Weight>N</Weight>
+        <GoldPrice>16</GoldPrice>
+        <Fame>2</Fame>
+        <Notoriety>6</Notoriety>
+        <Description>This card alters the time numbers on all of its owner's action chits (including his MAGIC chits). The asterisks on each chit define its time number: each chit with two asterisks has a time of 3, each chit with one asterisk has a time of 4, and each chit with no asterisks has a time of 5. &lt;i&gt;Note:&lt;/i&gt; If a character has both the GARB OF SPEED and DRAUGHT OF SPEED, the DRAUGHT OF SPEED defines the time numbers on his actions chits and the GARB OF SPEED has no effect.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Girtle of Energy</Name>
+        <Type>Combat effect</Type>
+        <Large/>
+        <Weight>N</Weight>
+        <GoldPrice>13</GoldPrice>
+        <Fame>2</Fame>
+        <Notoriety>4</Notoriety>
+        <Description>This card allows its owner to play up to three effort asterisks (instead of two) during each round of combat.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Glimmering Ring</Name>
+        <Type>Artifact</Type>
+        <Large/>
+        <Weight>N</Weight>
+        <GoldPrice>15</GoldPrice>
+        <VisitorPrice goldPrice="20">Scholar</VisitorPrice>
+        <VisitorPrice goldPrice="20">Shaman</VisitorPrice>
+        <Fame>0</Fame>
+        <Notoriety>10</Notoriety>
+        <SpellType>III</SpellType>
+        <Description>This card contains one type III Spell card. It can be used as a MAGIC-III-0 chit to cast this spell.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Gloves of Strength</Name>
+        <Type>Gloves</Type>
+        <Weight>N</Weight>
+        <GoldPrice>8</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>6</Notoriety>
+        <FamePrice famePrice="5">Order</FamePrice>
+        <Description>Tremendous strength, time number of 5. This card can be used to open the VAULT and the CRYPT.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Glowing Gem</Name>
+        <Type>Artifact</Type>
+        <Large/>
+        <Weight>N</Weight>
+        <GoldPrice>17</GoldPrice>
+        <VisitorPrice goldPrice="20">Scholar</VisitorPrice>
+        <Fame>0</Fame>
+        <Notoriety>5</Notoriety>
+        <FamePrice famePrice="5">Soldiers</FamePrice>
+        <SpellType>VII</SpellType>
+        <Description>This card contains one type VII Spell card. It can be used as a MAGIC-VII-0 chit to cast this spell.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Golden Arm Band</Name>
+        <Type>Armor</Type>
+        <Large/>
+        <Weight>L</Weight>
+        <GoldPrice>15</GoldPrice>
+        <GoldPriceDestroyed>11</GoldPriceDestroyed>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <FamePrice famePrice="3">Lancers</FamePrice>
+        <Description>When active, this card intercepts &lt;i&gt;Swing&lt;/i&gt; attacks. It is destroyed when Medium (or greater) harm is inflicted on it. When it is destroyed, its owner gets 11 GOLD points to represent the value of the gold.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Golden Crown</Name>
+        <Type>Armor</Type>
+        <Great/>
+        <Large/>
+        <Weight>H</Weight>
+        <GoldPrice>50</GoldPrice>
+        <GoldPriceDestroyed>46</GoldPriceDestroyed>
+        <Fame>0</Fame>
+        <Notoriety>-15</Notoriety>
+        <FamePrice famePrice="20">Guard</FamePrice>
+        <Description>When active, this card intercepts &lt;i&gt;Smash&lt;/i&gt; attacks. It is destroyed when Medium (or greater) harm is inflicted on it. When it is destroyed, its owner gets 46 GOLD points to represent the value of its gold and jewels.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Golden Icon</Name>
+        <Type>Enchanted</Type>
+        <Great/>
+        <Large/>
+        <Weight>T</Weight>
+        <GoldPrice>100</GoldPrice>
+        <Fame>-10</Fame>
+        <Notoriety>20</Notoriety>
+        <ColorMagic>GREY</ColorMagic>
+        <Description>Starting in the FOURTH ENCOUNTER, this card is a source of &lt;i&gt;GREY color&lt;/i&gt; magic to everyone in its clearing.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Good Book</Name>
+        <Type>Spell Book</Type>
+        <Weight>L</Weight>
+        <GoldPrice>10</GoldPrice>
+        <VisitorPrice goldPrice="50">Scholar</VisitorPrice>
+        <Fame>5</Fame>
+        <Notoriety>5</Notoriety>
+        <SpellType>I</SpellType>
+        <Description>This card contains two type I Spell cards and two type VII Spell cards. Once per day it can be used as a MAGIC-I-0 chit to cast one of the type I spells. It cannot cast the type VII spells.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Gripping Dust</Name>
+        <Type>Alters a weapon</Type>
+        <Weight>N</Weight>
+        <GoldPrice>3</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <ReturnTo>Warlock</ReturnTo>
+        <Description>This card keeps the weapon alerted side up at all times, even when it hits.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Handy Gloves</Name>
+        <Type>Gloves</Type>
+        <Weight>N</Weight>
+        <GoldPrice>6</GoldPrice>
+        <Fame>1</Fame>
+        <Notoriety>2</Notoriety>
+        <Description>Medium strength, time number of 3.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Hidden Ring</Name>
+        <Type>Artifact</Type>
+        <Great/>
+        <Large/>
+        <Weight>N</Weight>
+        <GoldPrice>20</GoldPrice>
+        <VisitorPrice goldPrice="20">Scholar</VisitorPrice>
+        <Fame>-10</Fame>
+        <Notoriety>10</Notoriety>
+        <SpellType>VI</SpellType>
+        <Description>This card contains one type VI Spell card. It can be used as a MAGIC-VI-0 chit to cast this spell.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Imperial Tabard</Name>
+        <Type>Inert</Type>
+        <Great/>
+        <Large/>
+        <Weight>M</Weight>
+        <GoldPrice>17</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>-10</Notoriety>
+        <FamePrice famePrice="20">Guard</FamePrice>
+        <Description>Inert item. It has no special effect.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Lost Keys</Name>
+        <Type>Using tables</Type>
+        <Weight>N</Weight>
+        <GoldPrice>5</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <Description>When a character has this card active, he does not have to play a piece with Tremendous strength to loot the VAULT or CRYPT OF THE KNIGHT.&lt;p&gt;&lt;i&gt;Note:&lt;/i&gt; This card is also used to open the CHEST.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Lucky Charm</Name>
+        <Type>Using tables</Type>
+        <Large/>
+        <Weight>N</Weight>
+        <GoldPrice>14</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <Description>This card affects all tables. If a character has this card active when he uses a table, he rolls only one die.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Magic Spectacles</Name>
+        <Type>Birdsong</Type>
+        <Weight>N</Weight>
+        <GoldPrice>6</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>2</Notoriety>
+        <Description>This card allows its owner to record an extra phase to do the SEARCH activity.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Magic Wand</Name>
+        <Type>Using tables</Type>
+        <Great/>
+        <Large/>
+        <Weight>N</Weight>
+        <GoldPrice>17</GoldPrice>
+        <Fame>-10</Fame>
+        <Notoriety>10</Notoriety>
+        <Description>This card affects only the SPELL tables (WISH, CURSE, POWER OF THE PIT, TRANSFORM, LOST AND VIOLENT STORM). It also affects the MISSILE TABLE when it is used to resolve an &lt;i&gt;Attack&lt;/i&gt; spell. If a character has this card active when he uses one of these tables, he chooses what the red die rolls instead of rolling it. If he must roll two dice he must still roll the white die, after choosing what the red die rolls, and the higher number is his result. If he must roll only one die (as a result of the LUCKY CHARM, for example), he can use the red die and choose his result.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Map of Lost Castle</Name>
+        <Type>Using tables</Type>
+        <Weight>N</Weight>
+        <GoldPrice>3</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <Description>This card affects all LOCATE rolls made in the tile that contains the LOST CASTLE chit. If a character has this card active when he is in this tile, then when he uses the LOCATE table he subtracts one from his result.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Map of Lost City</Name>
+        <Type>Using tables</Type>
+        <Weight>N</Weight>
+        <GoldPrice>3</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <Description>This card affects all LOCATE rolls made in the tile that contains the LOST CITY chit. If a character has this card active when he is in this tile, then when he uses the LOCATE table he subtracts one from his result.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Map of Ruins</Name>
+        <Type>Using tables</Type>
+        <Weight>N</Weight>
+        <GoldPrice>3</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <Description>This card affects all LOCATE rolls made in the RUINS tile or in any tile that contains a yellow RUINS Warning chit. If a character has this card active in any one of these tiles, then when he rolls on the LOCATE table he subtracts one from his result. &lt;i&gt;Note:&lt;/i&gt; If the RUINS tile contains a RUINS chit, the subtraction is still one - not two.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Mouldy Skeleton</Name>
+        <Type>Substitute</Type>
+        <Weight>T+</Weight>
+        <GoldPrice>0</GoldPrice>
+        <GoldPriceDestroyed>0</GoldPriceDestroyed>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <Description>When a character draws this card, he must immediately reveal it and roll for a CURSE. Then he exchanges the card, but he does not keep its treasures - he must put them in the box he was searching when he drew the MOULDY SKELETON, and the only way to obtain them is by further looting of that box. He puts the treasures on top of any other treasures in that box, with the GOLD helmet on top, the SILVER breastplate next and the JADE shield third from the top.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Oil of Poison</Name>
+        <Type>Alters a weapon</Type>
+        <Weight>N</Weight>
+        <GoldPrice>3</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <ReturnTo>Crone</ReturnTo>
+        <Description>This card adds one sharpness starto the damage the weapon inflicts when it hits.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Ointment of Bite</Name>
+        <Type>Alters a weapon</Type>
+        <Weight>N</Weight>
+        <GoldPrice>5</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <ReturnTo>Crone</ReturnTo>
+        <Description>This card causes the weapon to hit whenever its attack time undercuts &lt;i&gt;or ties&lt;/i&gt; its target's maneuver time.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Ointment of Steel</Name>
+        <Type>Armor</Type>
+        <Weight>N</Weight>
+        <GoldPrice>4</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <ReturnTo>Shaman</ReturnTo>
+        <Description>When active, this card intercepts all attacks. It is destroyed when Tremendous (or greater) harm is inflicted on it.When it is destroyed, its owner gets nothing. When a character activates this card, he uses all of the &lt;i&gt;Potion&lt;/i&gt; on himself.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Penetrating Grease</Name>
+        <Type>Alters a weapon</Type>
+        <Weight>N</Weight>
+        <GoldPrice>4</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <ReturnTo>Crone</ReturnTo>
+        <Description>This card causes the weapon to ignore armor. It inflicts damage on all monsters and natives as if they were unarmored. Starting in the THIRD ENCOUNTER, when it hits a character it inflicts damage directly on himas if he were not wearing any armor. The weapon does not damage or destroy armor - it just ignores all armor.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Phantom Glass</Name>
+        <Type>Using tables</Type>
+        <Weight>L</Weight>
+        <GoldPrice>8</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>2</Notoriety>
+        <Description>Starting in the FOURTH ENCOUNTER, this card causes its owner to use MAGIC SIGHT (see rule 43.6).</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Potion of Energy</Name>
+        <Type>Combat effect</Type>
+        <Weight>N</Weight>
+        <GoldPrice>5</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <ReturnTo>Warlock</ReturnTo>
+        <Description>This card allows its owner to play any number of asterisks in a round of combat. This Potion is used up by the character who activates it - it cannot be transferred while active. &lt;i&gt;Note:&lt;/i&gt; If the same character hsa both the GIRTLE OF ENERGY and the POTION OF ENERGY active, the POTION takes precedence. There is no limit to the asterisks he can play.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Poultice of Health</Name>
+        <Type>Daylight</Type>
+        <Weight>N</Weight>
+        <GoldPrice>2</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <ReturnTo>Shaman</ReturnTo>
+        <Description>When a character has this card active, each time he does the REST activity, he rests &lt;i&gt;two&lt;/i&gt; effort asterisks instead of one. &lt;i&gt;Note:&lt;/i&gt; When a character activates this card he uses all of the Potion on himself. The card cannot be transferred while active.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Power Boots</Name>
+        <Type>Boots</Type>
+        <Weight>N</Weight>
+        <GoldPrice>8</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>3</Notoriety>
+        <Description>Heavy strength, time number of 4.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Power Gauntlets</Name>
+        <Type>Gloves</Type>
+        <Weight>N</Weight>
+        <GoldPrice>7</GoldPrice>
+        <Fame>3</Fame>
+        <Notoriety>4</Notoriety>
+        <Description>Heavy strength, time number of 4.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Quick Boots</Name>
+        <Type>Boots</Type>
+        <Weight>N</Weight>
+        <GoldPrice>8</GoldPrice>
+        <Fame>1</Fame>
+        <Notoriety>2</Notoriety>
+        <Description>Medium strength, time number of 3.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Reflecting Grease</Name>
+        <Type>Combat effect</Type>
+        <Weight>N</Weight>
+        <GoldPrice>3</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <ReturnTo>Crone</ReturnTo>
+        <Description>When a character has this card active he cannot be wounded by any attack that strikes armor. If an attack hits him and strikes armor, he does not wound any action chits. His armor can still be damaged and destroyed normally, and attacks that hit him without striking armor can still wound and kill him. This &lt;i&gt;Potion&lt;/i&gt; isused up by the character who activates it - it cannot be transferred while active.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Regent of Jewels</Name>
+        <Type>Birdsong</Type>
+        <Great/>
+        <Large/>
+        <Weight>L</Weight>
+        <GoldPrice>67</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>10</Notoriety>
+        <FamePrice famePrice="10">Soldiers</FamePrice>
+        <Description>This card allows its owner to record an extra phase to do the TRADE activity.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Remains of the Thief</Name>
+        <Type>Substitute</Type>
+        <Weight>T+</Weight>
+        <GoldPrice>0</GoldPrice>
+        <GoldPriceDestroyed>0</GoldPriceDestroyed>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <Description>When a character draws this card, he must immediately reveal it and roll for a CURSE. Then he exchanges the card and keeps its treasures; he also adds 20 points to his recorded GOLD.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Royal Sceptre</Name>
+        <Type>Birdsong</Type>
+        <Great/>
+        <Weight>L</Weight>
+        <GoldPrice>8</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>-15</Notoriety>
+        <FamePrice famePrice="20">Guard</FamePrice>
+        <Description>Starting in the THIRD ENCOUNTER, this card allows its owner to record an extra phase to do the HIRE activity.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Sacred Grail</Name>
+        <Type>Enchanted</Type>
+        <Great/>
+        <Large/>
+        <Weight>M</Weight>
+        <GoldPrice>12</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>-25</Notoriety>
+        <FamePrice famePrice="50">Order</FamePrice>
+        <ColorMagic>WHITE</ColorMagic>
+        <Description>Starting in the FOURTH ENCOUNTER, this card is a source of &lt;i&gt;WHITE color&lt;/i&gt; magic to everyone in its clearing.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Sacred Statue</Name>
+        <Type>Artifact</Type>
+        <Great/>
+        <Weight>L</Weight>
+        <GoldPrice>10</GoldPrice>
+        <VisitorPrice goldPrice="20">Scholar</VisitorPrice>
+        <Fame>0</Fame>
+        <Notoriety>-5</Notoriety>
+        <FamePrice famePrice="10">Order</FamePrice>
+        <SpellType>I</SpellType>
+        <Description>This card contains one type I Spell card. It can be used as a MAGIC-I-0 chit to cast this spell.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Scroll of Alchemy</Name>
+        <Type>Spell Book</Type>
+        <Great/>
+        <Weight>L</Weight>
+        <GoldPrice>10</GoldPrice>
+        <VisitorPrice goldPrice="50">Scholar</VisitorPrice>
+        <Fame>-10</Fame>
+        <Notoriety>15</Notoriety>
+        <SpellType>VI</SpellType>
+        <Description>This card contains four type VI Spell cards. Once per day it can be used as a MAGIC-VI-0 chit to cast one of them.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Scroll of Nature</Name>
+        <Type>Spell Book</Type>
+        <Weight>L</Weight>
+        <GoldPrice>10</GoldPrice>
+        <VisitorPrice goldPrice="50">Scholar</VisitorPrice>
+        <VisitorPrice goldPrice="50">Shaman</VisitorPrice>
+        <VisitorPrice goldPrice="20">Warlock</VisitorPrice>
+        <Fame>0</Fame>
+        <Notoriety>5</Notoriety>
+        <SpellType>II</SpellType>
+        <Description>This card contains two type II Spell cards and two type II Spell cards. Once per day it can be used as a MAGIC-II-0 chit to cast one of the type II spells. It cannot cas tthe type III spells.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Shielded Lantern</Name>
+        <Type>Birdsong</Type>
+        <Weight>L</Weight>
+        <GoldPrice>8</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <Description>This card allows its owner to record an extra phase that he can use to record any normal activity. He must be in a cave clearing when he starts the phase or the activity is cancelled.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Shoes of Stealth</Name>
+        <Type>Boots</Type>
+        <Weight>N</Weight>
+        <GoldPrice>7</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>2</Notoriety>
+        <Description>Light strength, time number of 3. When a character has this card active, he rolls only one die each time he uses the HIDE table.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Timeless Jewel</Name>
+        <Type>Daylight</Type>
+        <Large/>
+        <Weight>L</Weight>
+        <GoldPrice>34</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>7</Notoriety>
+        <FamePrice famePrice="5">Soldiers</FamePrice>
+        <Description>The owner of this card ignores his recorded turn and chooses what to do on each phase of his turn as he does the phase. He gets the same number of phases and types of activities he is normally allowed, except that he can use an extra or enhanced activity caused by a belonging as soon as he activates that belonging, whether it was active during &lt;i&gt;Birdsong&lt;/i&gt; or not.&lt;p&gt;&lt;i&gt;Exception:&lt;/i&gt; Only one horse per day can give him extra phases.Once he uses an extra phase caused by one horse, for the rest of that day he cannot use extra phases caused by other horses.&lt;p&gt;&lt;b&gt;1.&lt;/b&gt; If he activates the TIMELESS JEWEL during his turn, he can choose how to do the remaining phases of his turn as he does them.&lt;p&gt;&lt;b&gt;2.&lt;/b&gt;If he inactivates the TIMELESS JEWEL during his turn he is instantly blocked.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Toadstool Circle</Name>
+        <Type>Site</Type>
+        <Weight>T+</Weight>
+        <GoldPrice>0</GoldPrice>
+        <GoldPriceDestroyed>0</GoldPriceDestroyed>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <ColorMagic>BLACK</ColorMagic>
+        <Description>This Enchanted card is also a Site card. Starting in the FOURTH ENCOUNTER, it supplies &lt;i&gt;BLACK color&lt;/i&gt; magic to everyone in its clearing, and it also allows each character in its clearing to record an extra phase to do the SPELL activity, if he is in that clearing both when he records the phase and when he does it.&lt;p&gt;&lt;font face=Verdana size=2&gt;&lt;table align=center width=350 border=0 cellspacing=2 cellpadding=2&gt;&lt;tr bgcolor=#000000&gt; &lt;td width=60 align=center&gt;&lt;b&gt;&lt;font color=#FFFFFF&gt;Die Roll&lt;/font&gt;&lt;/b&gt;&lt;/td&gt;&lt;td width=290&gt;&lt;b&gt;&lt;font color=#FFFFFF&gt;Effect&lt;/font&gt;&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt; &lt;td width=60 align=center&gt;1&lt;/td&gt;&lt;td width=290&gt;He takes the DEVIL sword. If it is gone, he gets nothing.&lt;/td&gt;&lt;/tr&gt;&lt;tr bgcolor=#FFFFFF&gt;&lt;td width=60 align=center&gt;2&lt;/td&gt;&lt;td width=290&gt;He takes the treasure card. If it is gone, he gets nothing.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width=60 align=center&gt;3&lt;/td&gt;&lt;td width=290&gt;He instantly teleports to any cave clearing he chooses, remaining hidden if he was hidden, and he continues his turn from there. If he is already in a cave, he can choose to stay there.&lt;/td&gt;&lt;/tr&gt;&lt;tr bgcolor=#FFFFFF&gt;&lt;td width=60 align=center&gt;4&lt;/td&gt;&lt;td width=290&gt;For the rest of the day each time he uses the PEER table he can search any clearing (including caves). Similarly, each time he does a SPELL activity he can do it in any clearing, as if he were in that clearing.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width=60 align=center&gt;5&lt;/td&gt;&lt;td width=290&gt;He must roll on the POWER OF THE PIT table with himself as the target.&lt;/td&gt;&lt;/tr&gt;&lt;tr bgcolor=#FFFFFF&gt;&lt;td width=60 align=center&gt;6&lt;/td&gt;&lt;td width=290&gt;He must roll for a CURSE.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/font&gt;</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Toadstool Ring</Name>
+        <Type>Birdsong</Type>
+        <Weight>N</Weight>
+        <GoldPrice>9</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>3</Notoriety>
+        <Description>Starting in the FOURTH ENCOUNTER, this card allows its owner to record an extra phase to do the SPELL activity.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Vial of Healing</Name>
+        <Type>Instant Rest</Type>
+        <Weight>N</Weight>
+        <GoldPrice>2</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <ReturnTo>Chapel</ReturnTo>
+        <Description>This card converts its owner's wounds into fatigue instantaneously, at no cost. When a character has this card active, all of his wounded action chits are instantly converted into fatigued chits. This card does not affect fatigued chits. This &lt;i&gt;Potion&lt;/i&gt; is reuseable and can be transferred while active, but it expires at &lt;i&gt;Midnight&lt;/i&gt;.</Description>
+    </TreasureData>
+    <TreasureData>
+        <Name>Withered Claw</Name>
+        <Type>One-use</Type>
+        <Weight>N</Weight>
+        <GoldPrice>3</GoldPrice>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <ReturnTo>Shaman</ReturnTo>
+        <Description>When a character activates this card, he immediately rolls for a WISH and CURSE. He uses the same die roll to find his result on both tables (so if his result is 4 he gets the 'I wish for peace' WISH and the 'ILL HEALTH' Curse). At &lt;i&gt;Midnight&lt;/i&gt; it returns to the SHAMAN's box.</Description>
+    </TreasureData>
+</TreasureDataList>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="MagicTypes.xsd"/>
+    <xs:complexType name="SpellData">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="Type" type="RitualMagic"/>
+            <xs:element name="Color" type="ColorMagic"/>
+            <xs:element name="Target" type="SpellTarget"/>
+            <xs:element name="Duration" type="SpellDuration"/>
+            <!-- todo: wtf is Source?? -->
+            <xs:element name="Source" type="xs:string"/>
+            <xs:element name="Description" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="SpellList">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Spell" type="SpellData" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

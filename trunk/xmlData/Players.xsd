@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="MiscTypes.xsd"/>
+    <xs:simpleType name="UserRoles">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <xs:simpleType name="EmailAddress">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <xs:complexType name="Player">
+        <xs:sequence>
+            <xs:element name="Name" type="PlayerName"/>
+            <xs:element name="Email" type="EmailAddress" maxOccurs="unbounded"/>
+            <xs:element name="Bio" type="xs:string"/>
+            <xs:element name="UserRoles" type="UserRoles"/>
+            <!-- todo: admin, guest, etc -->
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Players">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Player" type="Player" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
