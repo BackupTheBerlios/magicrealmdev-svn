@@ -1,0 +1,126 @@
+
+TODO:
+
+project web page; upload files to ftp site
+svn mailing list does not work (opened support ticket #101312 on 3/26)
+strip out XMLSpy line in svn config
+add enchanted side to tiles
+multi-realm support in xml files (setup, scenario, game files)
+GUI: 
+
+
+Done:
+
+refactor tile xml files
+remove CVS dirs from resources/...
+remove old trunk/xmlData dir
+
+
+
+
+cities3d has been inactive for ~3 months now
+
+(a 'PBEM player' game tracks an exiting PBEM game from a player's
+perspective, not DM; a DM would probably just use the 'single-player' game
+option)
+
+
+GUI rev 0.1
+  save/load game
+    single-player (hotseat?)
+    'PBEM player' game
+  setup/configuration (multiple realms)
+    single-player
+    'PBEM player': use placeholders (items will be set as they are found in the PDEM game)
+  (no map support yet)
+  select characters (spells, VC's, starting equipment, etc)
+  place visitor/mission/campaign chits
+  
+  query/edit character info
+    update belongings, etc
+  victory condition calculator
+    
+  query, edit game info (similar to stooge, but tracks game state)
+    * loot/peek/read-runes treasures/spells (sites, natives, visitors, spell books, artifacts)
+    * option to automagically roll dice, or input die roll
+    * 'PBEM player' mode: set/define placeholder items as they are found in the PBEM game
+ 
+
+
+
+    
+Dependencies:
+
+  graphics
+    OpenGL
+    ImageMagick
+
+  unit test harness
+    Boost Test Lib http://boost.org/libs/test/doc/index.html
+
+  Gen utility libraries
+    Boost: smart pointers, etc
+    
+  logging
+    Boost log libs (non-official)
+      (this looks the most complete/well-documented) http://www.torjo.com/
+      http://www.eng.buffalo.edu/~johneddy
+      
+    log4cplus (log4cplus 1.0.2, 2004-02-10)
+    log4cxx (last 0.9.7; from there website: "out-of-date and buggy"; new release ??)
+    log4cpp (last release 3.4b on 10/27/2002)
+        
+  GUI
+    wxWidgets 2.5.4
+      use xrc?
+    
+    boost gui pages  
+      http://www.crystalclearsoftware.com/cgi-bin/boost_wiki/wiki.pl?BoostGUI
+          
+    GUI Generics lib
+      only win32 for now... may be ported to gtk later (sent email to author on 3/27)
+      http://www.torjo.com/win32gui/index.html
+      http://sourceforge.net/projects/win32gui/
+  
+  xml serialization:
+    Altova code generation
+    gSOAP or Axis code gen?
+    write custom library (eg: wrapper over Altova/SOAP generated code?)
+      boost serialization library (maybe with xslt)
+      berkely dbxml (xquery support)
+    
+  database code (transaction support)
+    berkely dbxml (GPL)
+    postgresql
+      DTL (Database Template Library ODBC)
+    
+    
+possible utilities/dependencies:
+  parsing: 
+    Boost Spirit http://boost.org/libs/spirit/index.html
+
+  constraints library?
+
+
+
+
+PBEM Player mode: 0.2+
+  Setup:
+    use placeholders
+    these will be set/configured in the program as they are found in the PBEM game
+    * 'PBEM player' mode: have treasure/spell placeholders, set/place items when they are found
+
+
+
+
+Map (0.2?):
+  build/gen map (save/load map)
+  flip, rotate tiles
+  optionally validate connections
+  export as png (set size?)
+  
+  
+  
+http://www.boardgamegeek.com/game/22
+https://developer.berlios.de/projects/magicrealmdev/
+scp shell.berlios.de:/home/groups/ftp/pub/magicrealmdev

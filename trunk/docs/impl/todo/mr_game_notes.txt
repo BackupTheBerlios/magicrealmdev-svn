@@ -1,0 +1,57 @@
+http://www.redridgegames.com/MR/
+
+Repositioning natives (in attack circles): roll once, or roll for each box? (Day 2)
+ambushing: hidden natives attack spider; do they get free attack?? (day 3, magician)
+
+
+Serpent is armored (or should be)
+
+
+can sell info if blocked? can't trade, IIRC.
+
+
+when do characters become unhidden (start of day or start of turn)?
+
+absorbed monster killed if spellcaster killed?
+
+remedy can't cure wither curse??
+
+---
+
+In an enchanted tile, each character or denizen is supplied with the color
+of magic that is pictured around the clearing where he is located. GREY
+magic is supplied in the five VALLEY tiles and the RUINS tile, GOLD
+magic is supplied in the six WOODS tiles, and PURPLE magic is supplied
+in the MOUNTAIN, LEDGES, CLIFF, HIGH PASS, CAVES and
+CAVERN tiles. GREY, GOLD and PURPLE magic are supplied in every
+clearing on the CRAG tile. In the BORDERLAND tile, GREY magic is
+supplied in clearing “1”, GOLD magic is supplied in clearings “2” and “3”,
+PURPLE magic is supplied in clearings “4” and “5”, and both GREY and
+PURPLE magic are supplied in clearing “6”.
+b. When a tile supplies color magic to a clearing, it also supplies color
+magic to every roadway that runs into that clearing. When a character is on
+a roadway between two clearings, both clearings supply him with color
+magic. EXAMPLE: When a character is on a roadway between an
+enchanted VALLEY tile and an enchanted WOODS tile, he is supplied with
+both GREY and GOLD magic.
+
+
+
+
+http://www.thewinternet.com/bimr/history/day3.html
+
+
+Shouldn't Valdemort, the Witch King (at Mountain 4) be blocked when moving to M-2 (and shouldn't that move take 2 phases)?
+mtn moves in general seem to only take 1 phase
+
+
+Day 4:
+Witch casts absorb essence on T flying dragon: matches move times (4), so can cast spell, but doesn't spell take effect after dragon attacks (2 M3 attacks)?
+*** spells take effect before attacks and moves!! 8.4.3
+
+Day 9:
+Deployment of natives. S1 lures Demon, but then Demon is assigned to attack S3??
+
+
+
+I'm leaning towards TCP/HTTP, but really, it should be independent of the underlying network protocol. OTOH, HTTP might be somewhat limiting, given its pull request/response nature (we may want to support asyncronous/push notifications). I've always hated 'pull' architectures in which clients have to continuously poll for updates... it winds up being so inefficient (in many cases, at least). That's just the nature of the web, I suppose.

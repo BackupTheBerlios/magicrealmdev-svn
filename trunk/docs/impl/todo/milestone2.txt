@@ -1,0 +1,26 @@
+
+Second Encounter:
+
+Characters:
+  TODO
+
+
+
+Activites:
+  Alert (TODO: must be recorded? must use up full activity?)
+
+
+Combat:
+
+  encounter:
+    may play a move chit to run away or a fight chit to activate a weapon 
+    (only if movement time < all monsters' times)
+	if chit was not played, may activate/inactivate one belonging or abandon any 
+	belongings.
+
+  melee:
+    when weapon hits, turn unalerted side up
+    when weapon misses, turn alerted side up
+    
+
+

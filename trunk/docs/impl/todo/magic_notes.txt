@@ -1,0 +1,49 @@
+In an enchanted tile, each character or denizen is supplied with the color
+of magic that is pictured around the clearing where he is located. GREY
+magic is supplied in the five VALLEY tiles and the RUINS tile, GOLD
+magic is supplied in the six WOODS tiles, and PURPLE magic is supplied
+in the MOUNTAIN, LEDGES, CLIFF, HIGH PASS, CAVES and
+CAVERN tiles. GREY, GOLD and PURPLE magic are supplied in every
+clearing on the CRAG tile. In the BORDERLAND tile, GREY magic is
+supplied in clearing “1”, GOLD magic is supplied in clearings “2” and “3”,
+PURPLE magic is supplied in clearings “4” and “5”, and both GREY and
+PURPLE magic are supplied in clearing “6”.
+
+b. When a tile supplies color magic to a clearing, it also supplies color
+magic to every roadway that runs into that clearing. When a character is on
+a roadway between two clearings, both clearings supply him with color
+magic. EXAMPLE: When a character is on a roadway between an
+enchanted VALLEY tile and an enchanted WOODS tile, he is supplied with
+both GREY and GOLD magic.
+
+
+
+---
+
+2) When using the phantasm spell, IIUC the phantasm and caster can use each other's color magic sources (eg: they are on different enchanted tiles) to allow the phantasm to enchant the tile (7.10.5 3ed). If the phantasm does the RE activity, I assume it needs to do an EM phase first (even if the caster doesn't need to), then the caster must supply the appropriate ritual magic. The caster can also do the RE during his own turn, using color magic from the phantasm's clearing. In both cases, can each one only 
+
+--> phantasm expires after daylight anyway
+
+
+
+
+Hi Dan -
+
+I'd appreciate it if you could clarify 3 questions. I apologize for the length; if it's any consolation, if you answer them I'll post them to the wiki board! 
+
+1) If the Woods Girl is using her optional ability to extend her tracking skills to all woods clearings (except for Ruins and Valley tiles), what is considered a 'mountain' in cases like, for instance, Cliff clearings 2, 3, and 5? Are they mountain or woods? Based on the definition:
+
+There are three types of clearings: black underground clearings are cave clearings or "caves"; light brown clearings surrounded by grey mountain ridges are "mountain" clearings; and all other clearings are “woods” clearings.
+
+I would guess 'woods' since they aren't surrounded.
+
+2) When using enhanced magic + artifacts and spell books (which IIUC we are), does that mean magic-users can have an unlimited number of, say, broomstick chits? If multiple absorb-essence spells have been cast, what order are they energized in, first -> last or last -> first (I think the former)? I understand that if they are all energized simultaneously (eg: toadstool circle)the caster can choose what he transmorphizes into. 
+
+For a contrived scenario, say the Witch has three spells active, affecting monsters A, B, C (oldest -> most recent spell cast). She activates an enchanted  black-magic chit, so she transforms into A (?). Then someone stumbles into her clearing and discovers the toadstool circle. Can she choose to transform into any of the three, or only B and C now?
+
+3) If multiple enchant-artifact spells are in effect on a spellbook, does it need to be energized once for each spell to be made available (or will a single color chit activate them all?), and if so, can the caster choose which spell (or is it ordered similar to absorb-essence)? 
+
+With the enhanced rules, if, say, a type II spellbook is enchanted (per Enchant Artifact) with type III spells, and it is currently enchanted to grey magic, are the type III spells available, or is the book unavailable while enchanted? Does activating the book to use as a source of grey color magic count towards it being used, so it's type II spells are unavailable that Evening? Can the user activate the grey magic from the book to activate a type III spell on the enchanted book itself (making the type III spell immediately available)?
+
+
+

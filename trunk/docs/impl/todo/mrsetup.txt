@@ -1,0 +1,225 @@
+Magic Realm Setup:
+
+
+Visitor/Mission Chits:
+
+1-2 encounter: crone, warlock, shaman, scholar
+3+ encounter: 2 others (TBD)
+
+
+Map Chits:
+
+8 gold-colored site chits
+10 red sound chits
+20 yellow warning chits: 5 each of V, W, C, M
+
+Lost City, Lost Castle: 5 random site/sound chits each
+
+.
+
+
+Newbie's Guide to Magic Realm:
+
+This is a distilled summary of the Magic Realm rules for new players.
+It is primarily designed to get new players up to speed quickly (hopefully 
+along with with more experienced players who know how to setup the board).
+
+The game rules are divided into four sections, called Encounters. There are
+also Advanced and Optional rules.
+
+
+Encounter 1:
+
+Rolling Dice: 
+
+Roll two dice, pick the highest result.
+
+
+Picking a Character:
+
+Choose one of the following (the rest are at a disadvantage in this encounter):
+
+Amazon
+	starts in Inn.
+Dward
+	starts at Guard House or Inn.
+Swordsman
+	starts at Inn.
+White Knight
+	Starts at Inn or Chapel.
+Wizard
+	starts at Inn, House, or Guard House.
+Woods Girl
+	starts at Inn or House.
+
+Get character card, counter (large round counter), all 12 action chits, and weapon
+and armor counters listed in fourth (final) development stage (only those).
+
+Get a Personal History Pad (PHP), write down your character's special advantages.
+Choose dwelling where character will start and victory conditions (secretly).
+
+
+Victory Requirements:
+
+Choose 5 points total and distribute them among the four categories.
+They represent what is most important to the character.
+Characters get a bonus for exceeding these requirements, and are penalized for 
+failing to meet them.
+
+TODO: computing victory points, winning
+
+
+Ending the Game:
+
+Characters may leave the may or suicide.
+If character leaves the map, compute score immediately. 
+
+At the end of the game, characters discard all items they cannot carry.
+Count up the score in each category and subtract requirement recorded. If < 0, 
+multiply by 3 as a penalty.
+
+Basic score: divide each category by its factor (round down).
+Bonus score: multiply basic score in each category by victory points assigned.
+Total score: sum of all basic and bonus scores.
+
+Each character who has a total score of 0 has fulfilled victory requirements
+and can be said to have won the game. 
+
+Victor is character with most points. There may be a victor without a winner!
+
+
+Activities:
+
+Each character gets one turn per day to do activities.
+Characters can perform one action per phase.
+If character spends whole day outside of caves, he gets four phases. 
+Otherwise, he only gets two.
+
+The day is divided into these phases:
+  TODO: Daily Sequence of Play
+
+
+You may pick one activity per phase. 
+The following activities must be recorded in advance in the activity section of the PHP
+during Birdsong:
+
+Move, Search, Hide, Rest, Trade (with natives/visitors), 
+Enhanced Peer (must have special item).
+
+The following can be done in the Evening:
+Trade (between characters), Arrange Belongings, Block.
+
+
+Move:
+  Must move from clearing to clearing, one clearing at a time.
+
+  To record, write "M <tile> <clearing>", where tile can be an abbreviation
+  and clearing is the number. Example: M NW-2 to move to second clearing of Nut Woods.
+  To avoid ambiguity, use 'CG' for Crag, 'CL' for Cliff, 'CS' for Caves, 'CN' for 
+  Cavern.
+
+  May play a move chit whenever leaving a clearing (this is not fatigued), 
+  or active horse or Boots card. Any of these can be played each move.
+    The strength of this chit must meet or exceed the heaviest item the character has,
+	else the character must drop the heavy item(s) (he cannot choose not to move 
+	if the move was plotted in advance).
+  
+  Mountain:
+    Costs two movements (consecutive, during same day) to enter mountain clearing.
+
+  Cave:
+    Cannot enter cave during day in which character used sunlight activity.
+
+  Horses:
+    Horses which are active are being ridden, else they are pack horses and follow 
+	character. Horses cannot enter caves (immediately become inactive).
+
+    To get move bonus, must have horse active during Birdsong and active when he
+	executes the phase during Daylight.
+
+    Warhorse: not extra movement
+	Pack horse: one extra move phase
+	Pony: double move phases
+
+
+
+
+Search:
+  May pick which table to use (Peer, Locate, Loot).
+
+Hide:
+  Characters are hidden at start of game.
+  Characters are unhidden at start of each turn.
+  To record, write 'H'.
+  To hide, roll dice and check the Hide table. If successful, turn counter green side up.
+  Hidden characters are green side up (tan means unhidden).
+  Hidden characters can do activities. If they block, they are immediately unhidden.
+  Monsters cannot block hidden characters.
+  Natives and visitors can block charater if he rolls on Meeting Table (even if hidden).
+	
+Rest:
+  To record, write 'R'.
+  May activate one fatigued asterisk or convert one wounded asterisk to a
+  fatigued asterisk after each rest activity. May exchange chits to 'make change'.
+
+  TODO: fatigue, wounds
+
+
+Trade:
+  To record, write 'T'.
+  May buy one item or sell any number of items during each trade activity.
+  May buy natives drinks to (hopefully) improve success during trading. This costs 
+  one gold per member of the group.
+
+  Characters must reveal all treasure items they obtain as a result of a trade.
+  TODO: repairing items, fame price, 
+
+Arrange Items:
+
+
+Blocking:
+  Monsters, natives, and characters may block each other.
+  Only time a character can block or be blocked is during his turn.
+  When a character blocks or is blocked, his turn ends instantly and he is unhidden.
+  Monsters cannot block hidden characters.
+  Natives and visitors can block charater if he rolls on Meeting Table (even if hidden).
+
+
+Discoveries:
+  Discoveries are transferable (may be sold or discovered by spying).
+  
+  Spying: TODO
+
+
+Trade Between Characters:
+
+Sharing Information:
+
+
+
+
+Second Encounter:
+
+Characters:
+  TODO
+
+
+
+Activites:
+  Alert (TODO: must be recorded? must use up full activity?)
+
+
+Combat:
+
+  encounter:
+    may play a move chit to run away or a fight chit to activate a weapon 
+    (only if movement time < all monsters' times)
+	if chit was not played, may activate/inactivate one belonging or abandon any 
+	belongings.
+
+  melee:
+    when weapon hits, turn unalerted side up
+    when weapon misses, turn alerted side up
+    
+
+

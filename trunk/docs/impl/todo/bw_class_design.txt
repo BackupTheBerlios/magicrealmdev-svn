@@ -1,0 +1,368 @@
+Magic Realm Class Properties
+GAME SETTINGS
+
+TOGGLE WHICH ADVANCED AND OPTIONAL RULES ARE BEING USED:
+advAlertMonsters as Boolean
+advAlertPeerWhileFlying as boolean
+advAmbush as boolean
+advCache as boolean
+advDragonHeadsBreathe as boolean
+advDroppingItems as boolean
+advPackHorses as boolean
+advPowPitMelee as boolean
+advSeriousWounds as boolean
+
+optCharCaptain as boolean
+optCharDruid as boolean
+optCharElfType as string
+optCharElves as boolean
+optCharMagician as boolean
+optCharWizard as boolean
+optCharWoodsGirl as boolean
+
+optCombatMissleFumble as boolean
+optCombatPenetratingArmor as boolean
+optCombatRidingHorses as boolean
+optCombatStumble as boolean
+
+optCommerceGrudges as boolean
+optCommercePricing as boolean
+optCommerceSellTable as boolean
+
+optMagicAutoEnchant as boolean
+optMagicEnhancedArtifacts as boolean
+optMagicEnhancedMagic as boolean
+
+optQuietMonsters as boolean
+
+optSeason as clsSeason
+optSeasonWeatherChit as integer
+optSeasonWeatherNextWeek as string
+optSeasonWeatherThisWeek as string
+
+GENERAL SETTINGS:
+familiarPlaying as boolean
+gameDay as integer
+gameMonth as integer
+numberOfMonths as integer
+numberOfPlayers as integer
+
+
+TILE CLASS (clsTile)
+affectedByFog as boolean
+affectedByLost as boolean
+affectedByViolentStorm as boolean
+chitsAlreadyViewed as boolean
+chitsSummonedMonstersToday as boolean
+clearing(6) as clsClearing
+edgeIsRoad(6) as boolean
+enchanted as boolean
+imageRootName as string
+lostCastle as boolean
+lostCity as boolean
+name as string
+orientation as integer
+placedOnMap as Boolean
+siteSoundChit(5) as clsMapChit
+viewChits as boolean
+warningChit as clsMapChit
+warningXcoordinate as integer
+warningYcoordinate as integer
+XLocationOnMap as integer
+YLocationOnMap as integer
+
+CLEARING CLASS (clsClearing)
+abondonedPile(100) as clsBelonging
+affectedByBlazingLight as boolean
+colorMagicPresent(8) as boolean
+connectsToBorderLand as boolean
+cryptOfTheKnightHere as boolean
+enchantedMeadowHere as boolean
+exists as boolean
+isCave as boolean
+isMountain as boolean
+monstersHere(50) as clsDenizen
+nativesHere(50) as clsDenizen
+numberPlayersHere as integer
+pathTo(12,2) as boolean
+siteSoundOrDwellingHere(3) as clsMapChit
+toadstoolCircleHere as boolean
+xCoordinate as integer
+yCoordinate as integer
+
+MAP CHIT CLASS (clsMapChit)
+clearing as integer
+name as string
+type as string
+
+ACTION CHIT CLASS (clsActionChit)
+active as boolean
+asterisks as integer
+chitType as string
+enchanted as boolean
+fatigued as boolean
+magicType as integer
+prepared as boolean
+strengthLetter as integer
+timeNumber as integer
+wounded as boolean
+
+BELONGING CLASS (clsBelonging)
+active as boolean
+basicGoldPrice as integer
+name as string
+owned as boolean
+ownedBy as string
+weight as integer
+
+WEAPON CLASS (extends clsBelonging)
+alerted as boolean
+alertedSideAttackTime as integer
+alertedSideHarmLetter as integer
+alertedSideSharpnessStars as integer
+fameValue as integer
+length as integer
+missileWeapon as boolean
+notorietyValue as integer
+unalertedSideAttackTime as integer
+unalertedSideHarmLetter as integer
+unalertedSideSharpnessStars as integer
+
+ARMOR CLASS (extends clsBelonging)
+armorType as string
+damaged as boolean
+damagedGoldPrice as integer
+destroyed as boolean
+destroyedGoldPrice as integer
+fameValue as integer
+notorietyValue as integer
+
+HORSE CLASS (extends clsBelonging)
+armored as boolean
+dead as boolean
+DSmoveTime as integer
+DSstrengthLetter as integer
+galloping as boolean
+horseType as string
+IDcodeLetter as string
+IDcodeNumber as integer
+LSmoveTime as integer
+LSstrengthLetter as integer
+size as integer
+vulnerability as integer
+
+TREASURE CLASS (extends clsBelonging)
+artifact as boolean
+artifactSpell as clsSpell
+colorMagicProvided as integer
+effect as string
+famePrice as integer
+famePriceGroup as string
+fameValue as integer
+greatTreasure as boolean
+largeTreasure as boolean
+magicType as integer
+notorietyValue as integer
+potion as boolean
+potionDiscardTo as string
+siteCard as boolean
+spellBook as boolean
+spellBookSpell(4) as clsSpell
+substituteCard as boolean
+treasWithinTreasNum as integer
+
+SPELL CLASS (extends clsBelonging)
+duration as string
+effect as string
+longDescription as string
+magicColorRequired as integer
+magicType as integer
+target as string
+
+HISTORY PAD CLASS (clsHistoryPad)
+orders(13,28,15,2) as string (13 months by 28 days by 15 actions by 3 action details) 
+
+TREASURE CARD SETUP BOX CLASS (clsTreasureCardSetupBox)
+name as string
+occupants(10) as clsDenizen
+occupied as boolean
+stashArmor(25) as clsArmor
+stashGold as integer
+stashHorses(25) as clsHorse
+stashSpell(25) as clsSpell
+stashTreasures(25) as clsTreasure
+stashWeapons(25) as clsWeapon
+visitorMissionChitName as string
+
+SEASON CLASS (clsSeason)
+clearBasicPhases as integer
+clearDaysPerWeek as integer
+clearName as string
+clearShelteredPhases as integer
+clearSunlightPhases as integer
+description as string
+escortTo1 as string
+escortTo2 as string
+fatigueIfEndPhaseInMountain as boolean
+fatigueIfEndPhaseOutsideCaveOrDwelling as boolean
+fatigueIfNotInCaveOrDwellingAtBirdsong as boolean
+fatigueIfNotInCaveOrMountainAtBirdsong as boolean
+foodTo1 as string
+foodTo2 as string
+magicOn7thDay as integer
+name as string
+noHideAllowed as boolean
+noPeerAllowed as boolean
+phasesIntoMountain as integer
+reward as integer
+seasonNum as integer
+showersBasicPhases as integer
+showersDaysPerWeek as integer
+showersName as string
+showersShelteredPhases as integer
+showersSunlightPhases as integer
+specialBasicPhases as integer
+specialDaysPerWeek as integer
+specialName as string
+specialShelteredPhases as integer
+specialSunlightPhases as integer
+stormBasicPhases as integer
+stormDaysPerWeek as integer
+stormName as string
+stormShelteredPhases as integer
+stormSunlightPhases as integer
+VPs as integer
+
+DENIZEN CLASS (clsDenizen)
+affectedByBlendIntoBackground as boolean
+affectedByLost as boolean
+armored as boolean
+basicGoldWage as integer
+bountyFame as integer
+bountyGold as integer
+bountyNotoriety as integer
+currentLocationClearingNum as integer
+currentLocationTileNum as integer
+darkSideUp as boolean
+dead as boolean
+DSattackTime as integer
+DSharmLetter as integer
+DSmoveTime as integer
+DSsharpnessStars as integer
+flies as boolean
+hired as boolean
+hiredBy as string
+IDcodeLetter as string
+IDcodeNumber as integer
+inventoryArmor(5) as clsArmor
+inventoryBreastplates(5) as clsArmor
+inventoryHelmets(5) as clsArmor
+inventoryHorses(20) as clsHorse
+inventoryShields(5) as clsArmor
+inventoryTreasures(50) as clsTreasure
+inventoryWeapons(20) as clsWeapon
+LSattackTime as integer
+LSharmLetter as integer
+LSmoveTime as integer
+LSsharpnessStars as integer
+moveStrength as integer
+name as string
+ownsHorse as boolean
+size as integer
+usesMissileWeapon as boolean
+vulnerability as integer
+weapon as string
+weaponLength as integer
+weight as integer
+
+CHARACTER CLASS (clsCharacter)
+actionChits(12) as clsActionChit
+activity(10) as string
+advantage1 as string
+advantage1description as string
+advantage2 as string
+advantage2description as string
+affectedByBlendIntoBackground as boolean
+affectedByCurseSqueak as boolean
+affectedByLost as boolean
+affectedBySeeHiddenSigns as boolean
+affectedBySenseDanger as boolean
+class as string
+combatTarget as clsDenizen
+combatTargetPlayer as clsCharacter
+currentLocationClearingNum as integer
+currentLocationTileNum as integer
+foundAltar as boolean
+foundCairns as boolean
+foundCryptOfTheKnight as boolean
+foundEnchantedMeadow as boolean
+foundEnemies as boolean
+foundHoard as boolean
+foundLair as boolean
+foundPaths(40,12,2) as boolean
+foundPool as boolean
+foundShrine as boolean
+foundStatue as boolean
+foundToadstoolCircle as boolean
+foundVault as boolean
+hidden as boolean
+hiddenCounter as picture
+hirelings(20) as clsDenizen
+historyPad as clsHistoryPad
+inventoryArmor(5) as clsArmor
+inventoryBreastplates(5) as clsArmor
+inventoryHelmets(5) as clsArmor
+inventoryHorses(20) as clsHorse
+inventoryShields(5) as clsArmor
+inventoryTreasures(50) as clsTreasure
+inventoryWeapons(20) as clsWeapon
+name as string
+notes as string
+playerPic as picture
+relationshipBashkars as integer
+relationshipCompany as integer
+relationshipCrone as integer
+relationshipGuard as integer
+relationshipLancers as integer
+relationshipOrder as integer
+relationshipPatrol as integer
+relationshipRogues as integer
+relationshipScholar as integer
+relationshipShaman as integer
+relationshipSoldiers as integer
+relationshipWarlock as integer
+relationshipWoodfolk as integer
+spellsKnown(40) as clsSpell
+startChapel as boolean
+startGhosts as boolean
+startGuard as boolean
+startHouse as boolean
+startInn as boolean
+symbol as picture
+totalFame as integer
+totalGold as integer
+totalGreatTreasures as integer
+totalNotoriety as integer
+totalSpells as integer
+unhiddenCounter as picture
+vpsFame as integer
+vpsGold as integer
+vpsGreatTreasures as integer
+vpsNotoriety as integer
+vpsSpells as integer
+vulnerability as integer
+weight as integer
+
+ALL TOGETHER YOU GET THE “PIECES” ARRAYS
+armor(19) as clsArmor
+monsters(64) as clsDenizen
+nativehorses(17) as clsHorse
+natives(42) as clsDenizen
+player(17) as clsCharacter
+playerHorses(17) as clsHorse
+season(13) as clsSeason
+setupCard(55) as clsTreasureSetupCardBox
+spellList(47) as clsSpell
+treasureList(74) as clsTreasure
+weapons(28) as clsWeapon 
+

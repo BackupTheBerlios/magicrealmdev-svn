@@ -1,0 +1,365 @@
+Magic Realm Setup:
+
+
+Visitor/Mission Chits:
+
+1-2 encounter: crone, warlock, shaman, scholar
+3+ encounter: 2 others (TBD)
+
+
+Map Chits:
+
+8 gold-colored site chits
+10 red sound chits
+20 yellow warning chits: 5 each of V, W, C, M
+
+Lost City, Lost Castle: 5 random site/sound chits each
+
+
+
+Phase/Encounter 1:
+
+
+-----------------
+
+    Task1:
+game: single-player, hotseat, PBEM/manual/god mode (user has full control, no automation)?
+  history? undo/redo?
+  load/save game
+  preferences
+  about
+  help?
+
+
+Setup 
+  add players 
+  choose characters 
+  set game preferences
+  
+    toolbar: available characters
+      gray out unavailable characters; show stats
+
+players:
+  preferences 
+    some per-character? eg: sounds
+  manage characters (within game context):
+    new/load/save pc
+      -> separate menu than file?
+      why? shouldn't this just be saved with rest of game data?
+      
+    choose character (class)
+    manage belongings, state
+      curses, vc's, death
+
+victory-point calculator
+
+
+
+    Task:
+load/save/build/generate map
+  toolbar: tiles
+
+
+    Task:
+main game loop
+  save history (game history, individual character history, )
+  undo/redo
+  popup
+  
+  
+Birdsong:
+  log orders: Move, Search, Hide, Rest, Trade, Enhanced Peer (must have special item).
+
+Daylight:
+  follow orders block, arrange belongings
+  monster/native appearance
+
+Evening: 
+  Arrange Belongings, Block (natives??).
+  Trade (between characters --> not this phase), 
+
+
+-----------------
+
+IMPL:
+
+GUI: 
+  wxWindows native
+  use xrc
+
+  listbook -> 'toolbar'
+
+adapt Cities3D
+  ideally would use xrc
+  use xrc and derive from UICore controls?
+  Cities3D works up till final placement
+  
+  keep:
+    DatabaseCore
+      replace with XML-Schema based solution
+      maybe dbxml
+
+    UICore
+    RulesCore
+    NetworkRules
+      later phase
+      
+      
+  hack:
+    Cities3D
+      top-level UI/View
+      add player, player tree, etc
+      
+    CoreRules
+      initial setup (just rewrite from scratch?)
+      
+    GLCore
+      mostly generic
+
+    ModelCore
+      map, 
+      
+    StandardRules
+      mostly parallel; don't adapt
+  
+
+  don't use:
+    CitiesRules ?
+        
+
+-----------------
+
+Cities3D
+
+
+
+
+
+-----------------
+
+cvs -d :pserver:anoncvs@cvs.wxwidgets.org:/pack/cvsroots/wxwidgets checkout wxWidgets
+
+XrcEd http://xrced.sourceforge.net/#download
+
+  --> primarily edit by hand (xml-spy); use XrcEd to help visualize/create skeleton
+
+eventually make re-usable objects & use xml-schema to merge them dynamically?
+
+new hotseat game
+  dialog with options
+  
+
+
+
+
+
+calendar control: FEB 2009
+  wxCalendarCtrl
+    wxControl *GetMonthControl() const;
+    wxControl *GetYearControl() const;
+
+    //cdp: try updating calendar ctrl
+    wxCalendarCtrl* calendar = XRCCTRL(dlg, "controls_calendarctrl", wxCalendarCtrl);
+    wxControl* month = calendar->GetMonthControl();
+    wxControl* year = calendar->GetYearControl();
+    
+    wxString ml = month->GetLabel();
+    wxString yl = year->GetLabel();
+
+    //day, month, year
+    wxDateTime date(1, wxDateTime::Feb, 2009);
+    calendar->SetDate(date);
+    //  SetYear
+    //  SetMonth(wxDateTime::Feb
+    month->SetLabel("Freitag");
+    //year->SetLabel();
+
+-----------------
+
+
+
+
+Picking a Character:
+
+Choose one of the following (the rest are at a disadvantage in this encounter):
+
+Amazon
+	starts in Inn.
+Dward
+	starts at Guard House or Inn.
+Swordsman
+	starts at Inn.
+White Knight
+	Starts at Inn or Chapel.
+Wizard
+	starts at Inn, House, or Guard House.
+Woods Girl
+	starts at Inn or House.
+
+Get character card, counter (large round counter), all 12 action chits, and weapon
+and armor counters listed in fourth (final) development stage (only those).
+
+Get a Personal History Pad (PHP), write down your character's special advantages.
+Choose dwelling where character will start and victory conditions (secretly).
+
+
+Victory Requirements:
+
+Choose 5 points total and distribute them among the four categories.
+They represent what is most important to the character.
+Characters get a bonus for exceeding these requirements, and are penalized for 
+failing to meet them.
+
+TODO: computing victory points, winning
+
+
+Ending the Game:
+
+Characters may leave the may or suicide.
+If character leaves the map, compute score immediately. 
+
+At the end of the game, characters discard all items they cannot carry.
+Count up the score in each category and subtract requirement recorded. If < 0, 
+multiply by 3 as a penalty.
+
+Basic score: divide each category by its factor (round down).
+Bonus score: multiply basic score in each category by victory points assigned.
+Total score: sum of all basic and bonus scores.
+
+Each character who has a total score of 0 has fulfilled victory requirements
+and can be said to have won the game. 
+
+Victor is character with most points. There may be a victor without a winner!
+
+
+Activities:
+
+Each character gets one turn per day to do activities.
+Characters can perform one action per phase.
+If character spends whole day outside of caves, he gets four phases. 
+Otherwise, he only gets two.
+
+The day is divided into these phases:
+  TODO: Daily Sequence of Play
+
+
+You may pick one activity per phase. 
+The following activities must be recorded in advance in the activity section of the PHP
+during Birdsong:
+
+Move, Search, Hide, Rest, Trade (with natives/visitors), 
+Enhanced Peer (must have special item).
+
+The following can be done in the Evening:
+Trade (between characters), Arrange Belongings, Block.
+
+
+Move:
+  Must move from clearing to clearing, one clearing at a time.
+
+  To record, write "M <tile> <clearing>", where tile can be an abbreviation
+  and clearing is the number. Example: M NW-2 to move to second clearing of Nut Woods.
+  To avoid ambiguity, use 'CG' for Crag, 'CL' for Cliff, 'CS' for Caves, 'CN' for 
+  Cavern.
+
+  May play a move chit whenever leaving a clearing (this is not fatigued), 
+  or active horse or Boots card. Any of these can be played each move.
+    The strength of this chit must meet or exceed the heaviest item the character has,
+	else the character must drop the heavy item(s) (he cannot choose not to move 
+	if the move was plotted in advance).
+  
+  Mountain:
+    Costs two movements (consecutive, during same day) to enter mountain clearing.
+
+  Cave:
+    Cannot enter cave during day in which character used sunlight activity.
+
+  Horses:
+    Horses which are active are being ridden, else they are pack horses and follow 
+	character. Horses cannot enter caves (immediately become inactive).
+
+    To get move bonus, must have horse active during Birdsong and active when he
+	executes the phase during Daylight.
+
+    Warhorse: not extra movement
+	Pack horse: one extra move phase
+	Pony: double move phases
+
+
+
+
+Search:
+  May pick which table to use (Peer, Locate, Loot).
+
+Hide:
+  Characters are hidden at start of game.
+  Characters are unhidden at start of each turn.
+  To record, write 'H'.
+  To hide, roll dice and check the Hide table. If successful, turn counter green side up.
+  Hidden characters are green side up (tan means unhidden).
+  Hidden characters can do activities. If they block, they are immediately unhidden.
+  Monsters cannot block hidden characters.
+  Natives and visitors can block charater if he rolls on Meeting Table (even if hidden).
+	
+Rest:
+  To record, write 'R'.
+  May activate one fatigued asterisk or convert one wounded asterisk to a
+  fatigued asterisk after each rest activity. May exchange chits to 'make change'.
+
+  TODO: fatigue, wounds
+
+
+Trade:
+  To record, write 'T'.
+  May buy one item or sell any number of items during each trade activity.
+  May buy natives drinks to (hopefully) improve success during trading. This costs 
+  one gold per member of the group.
+
+  Characters must reveal all treasure items they obtain as a result of a trade.
+  TODO: repairing items, fame price, 
+
+Arrange Items:
+
+
+Blocking:
+  Monsters, natives, and characters may block each other.
+  Only time a character can block or be blocked is during his turn.
+  When a character blocks or is blocked, his turn ends instantly and he is unhidden.
+  Monsters cannot block hidden characters.
+  Natives and visitors can block charater if he rolls on Meeting Table (even if hidden).
+
+
+Discoveries:
+  Discoveries are transferable (may be sold or discovered by spying).
+  
+  Spying: TODO
+
+
+Trade Between Characters:
+
+Sharing Information:
+
+
+
+
+
+wxALL
+
+
+wxmsw25d_adv.lib wxmsw25d_core.lib wxbase25d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib DatabaseCoreD.lib RulesCoreD.lib
+                 wxbase25d.lib wxmsw25d_core.lib wxmsw25d_adv.lib 
+                 
+                 
+layout:
+  wxmsw25d_core.lib wxbase25d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib 
+    winmm.lib comctl32.lib rpcrt4.lib wsock32.lib oleacc.lib odbc32.lib                 
+    
+xrcdemo:
+  wxmsw25d_xrc.lib wxmsw25d_html.lib wxmsw25d_adv.lib wxmsw25d_core.lib wxbase25d_xml.lib wxbase25d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib 
+    winmm.lib comctl32.lib rpcrt4.lib wsock32.lib oleacc.lib odbc32.lib    
+    
+uicore:
+  wxmsw25d_adv.lib wxmsw25d_core.lib wxbase25d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib 
+    DatabaseCoreD.lib RulesCoreD.lib    
+    
+wxmsw25d_xrc.lib wxmsw25d_html.lib wxmsw25d_adv.lib wxmsw25d_core.lib wxbase25d_xml.lib wxbase25d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib DatabaseCoreD.lib RulesCoreD.lib

@@ -1,0 +1,135 @@
+Email Bryan Winter: bryan@thewinternet.com
+
+clearing coordinates
+
+
+Program source (stooge)
+Current games
+all transparent tiles in one download?
+  http://www.thewinternet.com/magicrealm/tiles/index.html
+
+stooge: http://www.thewinternet.com/magicrealm/stooge.html
+http://www.thewinternet.com/mr_board_code.html
+http://www.magicrealm.net/cgi-bin/ikonboard/ikonboard.cgi?s=3f847fc363f5ffff;act=ST;f=7;t=11
+
+
+---
+
+D-Arch: mapmaker.pl
+http://www.passwd.net/~darch/magic_realm/src/
+
+
+http://www.tumbolia.org/magicrealm/code/chit_placer.html
+http://www.tumbolia.org/magicrealm/code/treasure_placer.html
+
+---
+
+
+
+MR MUD and web engine:
+
+http://www.magicrealm.net/cgi-bin/ikonboard/ikonboard.cgi?s=3f847fc363f5ffff;act=ST;f=7;t=15
+
+
+
+----
+
+Works great!  Anyone who bashes your code has to answer to me.  
+
+I hit refresh quite often to build a new map (sorry I couldn't resist).  Thank heavens for my cable modem!  The maps are perfect - nice and random and quite legal.
+
+The only real note is that sometimes a map will generate that is too "wide" and it extends beyond the right edge of the image, and is cut off.  I'm not sure if you are doing it this way, but in my drawing routine I create a "blank" image that is the correct size (based on the final mapGrid dimensions) and then plop the tiles into it.  I found that the perfect (x,y) coordinates for the final image size are:
+
+width: (endingX * (tile.width * .75)) + tile.width
+height: (endingY * tile.height) + tile.height + (tile.height/2)
+
+Also, in my program I have a "minimap" view for navigation. But it is restricted to a specific size. So when I have to resize my big image down and make sure it fits in the bounds of its "container" I also have to make sure a "wide" map and a "tall" map will both fit.  So here is some pseudo-code that does this:
+
+if bigMapPic.width > bigMapPic.height then
+    smallMapPic.width = smallPicContainer.width
+    smallMapPic.height = bigMapPic.height*(smallPicContainer.width/bigMapPic.width)
+else
+    smallMapPic.width = bigMapPic.width*(smallPicContainer.height/bigMapPic.height)
+    smallMapPic.height = smallPicContainer.height
+end if
+
+Hope that helps!
+
+
+----
+
+Code Sample:
+#!/usr/bin/perl
+#
+# Builds a static map dynamically from individual pieces.
+
+use GD;
+
+my $tilewidth = 374;
+my $tileheight = 324;
+
+my $tilepath = "/home/darch/beach/experiments/bigtiles";
+
+my @map =(
+       ["", "", "badvalley4", "awfulvalley1"],
+       ["", "cliff4", "lindenwoods6", "crag5", "deepwoods2", "ruins6"],
+       ["ledges3", "pinewoods4", "borderland1", "nutwoods4", "curstvalley3", "oakwoods2",],
+       ["evilvalley2", "cavern1", "darkvalley6", "mountain1", "caves2"],
+       ["", "", "maplewoods3", "", "highpass6"]
+);
+
+# Find width of the map.  Should even deal gracefully with holes
+
+my ($leftmargin, $rightmargin) = (30, 0);
+
+for my $row (@map) {
+       my ($i, $foundtiles) = (0, 0);
+       for my $col (@$row) {
+               if ($col && !$foundtiles && ($i < $leftmargin)) {
+                       $leftmargin = $i;
+                       $foundtiles = 1;
+               }
+               if ($col && ($i > $rightmargin)) {
+                       $rightmargin = $i + 2;
+               }
+               $i++;
+       }
+}
+
+my $width = (($rightmargin - $leftmargin) * $tilewidth * .75) + 50;
+my $height = ($#map + 1 + .5) * $tileheight + 40;
+
+$im = new GD::Image($width, $height);
+
+$im->colorAllocate(128,128,128); # background color grey
+
+my $j = 0;
+for my $row (@map) {
+       my $i = 0;
+       for my $tile (@$row) {
+               next unless $tile;
+               last if $i >= $rightmargin;
+               my $src = newFromPng GD::Image("${tilepath}/${tile}-01.png");
+
+               # offset odd-numbered rows
+               if (($i - $leftmargin) % 2) {
+                       $x = (($i - $leftmargin) * .75 * $tilewidth) + 25;
+                       $y = ($j * $tileheight) + (.5 * $tileheight) + 20;
+               } else {
+                       $x = (($i - $leftmargin) * .75 * $tilewidth) + 25;
+                       $y = ($j * $tileheight) + 20;
+               }
+               $im->copy($src, $x, $y, 0, 0, $tilewidth, $tileheight);
+       } continue {
+               $i++;
+       }
+       $j++;
+}
+
+$output = $im->jpeg;
+
+print "Content-type: image/jpeg\n\n";
+
+binmode STDOUT;
+
+print $output;

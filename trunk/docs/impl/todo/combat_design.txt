@@ -1,0 +1,39 @@
+list of participants:
+
+characters
+natives
+denizens
+
+'teams' ?
+
+----
+
+order (by character/controlled denizen)
+
+----
+
+
+Evening Start:
+
+Denizens light-side up (optional alerted rule)
+T monsters red-side down
+set hidden hirelings/characters
+
+
+for each clearing (in order):
+
+  Battling Natives
+
+  N rounds of combat (2 consecutive rounds without 'results')
+
+  maintain hidden status ?
+
+  trading/rearranging
+
+loop clearing
+
+----
+
+
+allow undo??
+

@@ -1,0 +1,29 @@
+
+    Phase1:
+Hotseat/Single-Player
+limited chars
+no combat, no hiring, no magic, trading,
+Generate/build map, setup card. 
+  Don't record clearing coords; all chits/counters placed manually (popup-menu? toolbar? drag'n'drop)
+  visual representation completely separated from game data; 
+  players can view properties to check consistency
+
+
+    Phase2:
+Network game    
+character/class editor (P1??)
+  add all characters
+
+    Phase3:
+hiring natives
+combat manager
+
+    Phase5:
+tile editor.
+  record tile coordinates; use them to display chits/counters on map
+
+    Phase6:
+Magic
+
+
+

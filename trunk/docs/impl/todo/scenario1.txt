@@ -1,0 +1,45 @@
+Characters:
+(can override attributes, starting locations, equipment, etc)
+
+Treasures:
+
+AMULET: One-use card. This Potion expires when it is activated.
+ANCIENT TELESCOPE: Birdsong card that entitles its owner to an
+extra enhanced PEER phase. Limited to mountain clearings.
+BELT OF STRENGTH: Altering action chits.
+CHEST: TREASURES WITHIN TREASURES substitute card. One-use card.
+CLOAK OF MIST: Birdsong card that entitles its owner to an extra HIDE phase.
+CLOVEN HOOF: Enchanted card that affects Using tables. In the FOURTH ENCOUNTER, it also supplies BLACK magic.
+CRYPT OF THE KNIGHT: TREASURES WITHIN TREASURES Site card.
+CRYSTAL BALL: Birdsong card that entitles its owner to record the enhanced PEER activity (and the remote SPELL activity).
+DEFT GLOVES: Gloves card that also affects Using tables.
+DRAGON ESSENCE: Enchanted card and Daylight card. In the FOURTH ENCOUNTER, it also supplies PURPLE magic.
+ELVEN SLIPPERS: Boots card.
+ENCHANTED MEADOW: TREASURES WITHIN TREASURES Site card.
+FLOWERS OF REST: Enchanted card and Daylight card that causes Instant rest. In the FOURTH ENCOUNTER, it also supplies GOLD magic.
+GLOVES OF STRENGTH: Gloves card.
+GOLDEN ICON: Enchanted card that has no effect. In the FOURTH ENCOUNTER, it supplies GREY magic.
+HANDY GLOVES: Gloves card.
+IMPERIAL TABARD: Inert item. It has no special effect.
+LOST KEYS: Affects Using tables. Also used with the CHEST.
+LUCKY CHARM: Affects Using tables.
+MAGIC WAND: Affects Using tables.
+MAGIC SPECTACLES: Birdsong card that entitles its owner to an extra SEARCH phase.
+MAP OF LOST CASTLE: Affects Using tables.
+MAP OF LOST CITY: Affects Using tables.
+MAP OF RUINS: Affects Using tables.
+MOULDY SKELETON: TREASURES WITHIN TREASURES substitute card.
+POULTICE OF HEALTH: Daylight card that modifies the REST activity. This Potion is consumed by activation.
+POWER BOOTS: Boots card.
+POWER GAUNTLETS: Gloves card.
+QUICK BOOTS: Boots card.
+REGENT OF JEWELS: Birdsong card that entitles its owner to an extra TRADE phase.
+REMAINS OF THIEF: TREASURES WITHIN TREASURES substitute card.
+SACRED GRAIL: Enchanted card that has no effect. In the FOURTH ENCOUNTER, it supplies WHITE color magic.
+7 LEAGUE BOOTS: Boots card and Birdsong card that entitles its owner to an extra MOVE phase.
+SHIELDED LANTERN: Birdsong card that entitles its owner to an extra phase for any normal activity. Limited to cave clearings.
+SHOES OF STEALTH: Boots card that affects Using tables.
+TIMELESS JEWEL: Daylight card that alters how its owner takes his turn.
+TOADSTOOL CIRCLE: Enchanted card and TREASURES WITHIN TREASURES Site card. In the FOURTH ENCOUNTER, it supplies BLACK color magic and it is a Birdsong card that entitles everyone in its clearing to an extra SPELL phase.
+VIAL OF HEALING: Provides Instant rest. This Potion is reusable until Midnight.
+WITHERED CLAW: One-use card. This Potion expires when it is activated.
