@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+	<Folder FolderName="XML Files" ExtStr="xml;cml;math;mtx;rdf;smil;svg;wml">
+		<File FilePath=".\Armor.xml" HomeFolder="Yes"/>
+		<File FilePath=".\Campaigns.xml" HomeFolder="Yes"/>
+		<File FilePath=".\CharacterClasses.xml" HomeFolder="Yes"/>
+		<File FilePath=".\CharacterSpecialAdvantages.xml" HomeFolder="Yes"/>
+		<File FilePath=".\Horses.xml" HomeFolder="Yes"/>
+		<File FilePath=".\HorseTypes.xml" HomeFolder="Yes"/>
+		<File FilePath=".\MagicRealmGame.xml" HomeFolder="Yes"/>
+		<File FilePath=".\MagicTypes.xml" HomeFolder="Yes"/>
+		<File FilePath=".\MapChits.xml" HomeFolder="Yes"/>
+		<File FilePath=".\Missions.xml" HomeFolder="Yes"/>
+		<File FilePath=".\MonsterGroups.xml" HomeFolder="Yes"/>
+		<File FilePath=".\Monsters.xml" HomeFolder="Yes"/>
+		<File FilePath=".\Natives.xml" HomeFolder="Yes"/>
+		<File FilePath=".\NativeTypes.xml" HomeFolder="Yes"/>
+		<File FilePath=".\PlayerCharacters.xml" HomeFolder="Yes"/>
+		<File FilePath=".\Players.xml" HomeFolder="Yes"/>
+		<File FilePath=".\Spells.xml" HomeFolder="Yes"/>
+		<File FilePath=".\Tiles.xml" HomeFolder="Yes"/>
+		<File FilePath=".\Treasures.xml" HomeFolder="Yes"/>
+		<File FilePath=".\TreasureSiteChits.xml" HomeFolder="Yes"/>
+		<File FilePath=".\Weapons.xml" HomeFolder="Yes"/>
+	</Folder>
+	<Folder FolderName="XSL Files" ExtStr="xsl;xslt">
+		<File FilePath=".\genfo.xsl" HomeFolder="Yes"/>
+		<File FilePath=".\genhtml.xslt" HomeFolder="Yes"/>
+	</Folder>
+	<Folder FolderName="HTML Files" ExtStr="html;htm;xhtml;asp">
+		<File FilePath=".\gen.html" HomeFolder="Yes"/>
+	</Folder>
+	<Folder FolderName="DTD/Schemas" ExtStr="dtd;dcd;xdr;biz;xsd">
+		<File FilePath=".\Armor.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\Campaigns.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\CharacterClasses.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\CharacterSpecialAdvantages.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\Horses.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\HorseTypes.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\MagicRealmGame.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\MagicTypes.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\MapChits.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\MiscTypes.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\Missions.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\MonsterGroups.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\Monsters.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\Natives.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\NativeTypes.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\PlayerCharacters.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\Players.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\Spells.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\Tiles.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\Treasures.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\Visitors.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\Weapons.xsd" HomeFolder="Yes"/>
+	</Folder>
+	<Folder FolderName="Entities" ExtStr="ent"/>
+	<File FilePath=".\scratch.txt" HomeFolder="Yes"/>
+	<File FilePath=".\todo.txt" HomeFolder="Yes"/>
+</Project>

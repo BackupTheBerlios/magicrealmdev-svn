@@ -1,0 +1,107 @@
+Chest
+  substitute card, keep treasure once opened
+  Requires: Lost Keys active
+  2 lg
+  50 gp
+
+Remains of the Thief
+  substitute card
+  Roll curse
+  keeps treasures
+    1 lg
+    Living Sword
+    20 gp
+
+Mouldy Skeleton
+  substitute card
+  Roll Curse
+  Items are put on top of treasures in setup-card    
+    Gold Helmet
+    Silver Breastplate
+    Jade Shield  
+  
+Toadstool Circle
+  site card
+  1 lg
+  Devil Sword
+    
+Crypt of the Knight
+  site card
+  1 lg
+  Bane Sword
+  T Armor
+  Warhorse 1
+
+Enchanted Meadow
+  site card
+  Truesteel Sword
+  Pony 1
+  
+  Loot Table  
+    1 Pony
+    2 Truesteel
+    3 Wish (spellcaster and target)
+    4 Special.Heal (rest all fatigued/wounded chits). Breaks Wither curse.
+    5 Curse
+    6 Nothing
+    
+    
+    
+-------
+
+map chits
+
+valley, woods
+  5 warning chits
+    
+caves
+  5 warning
+  4 site/sound chits + lost city
+
+mountains
+  5 warning
+  4 site/sound chits + lost castle
+
+
+dwelling exchanges
+  ...
+
+lost city
+  5 site/sound chits  
+
+lost castle
+  5 site/sound chits  
+
+
+
+-----
+
+Denizen Appearance
+
+1 Dragons, Company
+2 Serpents, Demons, Woodfolk
+3 Wolves, Ogres, Goblins, Octopi, Patrol
+4 Giants, Trolls, Lancers
+5 Spiders, Imp, Bashkars
+6 Bats, Visitors, Missions, Campaigns
+
+
+Mountains:
+2 H Dragons
+2 Vipers
+6 Wolves, 2 Ogres
+Bones, Roar, Stink: Giant, Giant
+Stink, Dank, Patter: Spider, Spider, Spider
+Ruins, Bones, Flutter, Howl: Bat, 2 Bats, 3 Bats
+
+
+
+Bones Ghosts 
+
+
+            <xs:element name="MonsterRoll" type="xs:int"/>
+            <xs:element name="Monster" type="Monster"/>
+
+
+            <MonsterRoll></MonsterRoll>
+            <Monster></Monster>

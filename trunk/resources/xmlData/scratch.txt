@@ -1,0 +1,1422 @@
+
+
+<!-- todo -->
+
+        <CharacterClass>Amazon</CharacterClass>
+
+             
+    <xs:simpleType name="Weapon">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+
+
+    <xs:simpleType name="Armor">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:group name="StartingEquipment">
+        <xs:choice>
+            <xs:element name="Armor" type="Armor"/>
+            <xs:element name="Weapon" type="Weapon"/>
+            <xs:element name="Spell" type="Spell"/>
+        </xs:choice>
+    </xs:group>
+
+
+
+      <xs:element name="roles" minOccurs="0" maxOccurs="2">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="user admin"/>
+							<xs:enumeration value="service admin"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+
+
+	<xs:unique name="RolesUniqueCreate">
+			<xs:selector xpath="."/>
+			<xs:field xpath="cpm:roles"/>
+	
+
+f I've understood you correctly, you want
+
+		<xs:unique name="RolesUniqueCreate">
+			<xs:selector xpath="cpm:roles"/>
+			<xs:field xpath="."/>
+		</xs:unique>
+		
+		
+		
+		[selector] specifies a restricted XPath ([bib-xpath]) expression relative to instances of the element being declared. This must identify a node set of subordinate elements (i.e. contained within the declared element) to which the constraint applies.
+
+[fields] specifies XPath expressions relative to each element selected by a [selector]. This must identify a single node (element or attribute) whose content or value, which must be of a simple type, is used in the constraint. It is possible to specify an ordered list of [fields]s, to cater to multi-field keys, keyrefs, and uniqueness constraints.
+
+In order to reduce the burden on implementers, in particular implementers of streaming processors, only restricted subsets of XPath expressions are allowed in [selector] and [fields]. The details are given in [Constraints on Identity-constraint Definition Schema Components].
+
+    NOTE: 
+    
+    
+            <xs:unique name="ArmorKey">
+            <xs:selector xpath="Armor"></xs:selector>
+            <xs:field xpath="Name"></xs:field>
+        </xs:unique>
+
+        <xs:keyref name="ArmorRef" refer="ArmorKey">
+            <xs:selector xpath="CharacterClass/ClassLevels/ClassLevel/StartingEquipmentList/Armor"></xs:selector>
+            <xs:field xpath="Name"></xs:field>
+        </xs:keyref>
+
+
+
+If I read you correctly, this should never have worked.
+
+You've asserted in your schema that <name> has _a_ unique value for
+each <obj> under <object_space>, but this is manifestly untrue.
+
+If what you meant was that its value is unique for each <name> under <obj>,
+then you need a different declaration, namely:
+
+	<xsd:unique name="unique_obj_name">
+		<xsd:selector xpath="name"/>
+		<xsd:field xpath="."/>
+	</xsd:unique>
+
+which would be contained within the element decl for <obj>.
+
+If you want to say that its value is unique each <name> under <object_space>,
+then you need
+
+	<xsd:unique name="unique_obj_name">
+		<xsd:selector xpath=".//obj/name"/>
+		<xsd:field xpath="."/>
+	</xsd:unique>
+
+which would be contained within the element decl for <object_space>.
+
+---
+
+    <xs:element name="StartingLocations">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="StartingLocation" type="Dwelling" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+
+---
+
+The schema processor goes through the instance document and for each
+element it constructs an "identity constraint table". The identity
+constraint table holds one entry per key/unique identity constraint
+that has been defined on the element declaration for the element.
+
+Within the identity constraint table, each identity constraint has an
+associated "node table". The node table is basically a dictionary or a
+hash table which links a particular element with the
+elements/attributes that are used to identity that element.
+
+Now, the entries in the identity constraint tables bubble up the
+document, so if an element has an entry for a particular identity
+constraint in its identity constraint table, then its parent element
+has an entry in its identity constraint table as well. If there are
+clashes within a node table for a particular identity constraint (i.e.
+two elements have the same ID, but the document is still valid because
+the two elements occur in different contexts) then the entries that
+clash are both removed from the table.
+
+So there's a tree of elements in the instance document, each with its
+own set of node tables, and the node tables for the ones higher up the
+document are formed by merging the ones from its children.
+
+When you have a keyref identity constraint for an element, that
+element looks at its identity constraint table and finds the node
+table related to the referenced key or unique identity constraint. The
+schema validator checks that the values of the fields from the keyref
+match the values of the fields from the key/unique identity constraint
+for some element in the node table.
+
+Now the only entries that the node table can have are those that
+either come from key/unique identity constraints on that particular
+element (the same element as the keyref is on) or from one of its
+descendants.
+
+Thus, the keyref identity constraint has to be placed on the same
+element as the key/unique identity constraint *or* on one of its
+ancestors within the instance document.
+
+The other thing you need to watch out for is that stuff about node
+tables not having entries for keys that clash with each other. Imagine
+a document like:
+
+  A
+  +- B
+  |  +- C id=1
+  |  +- C id=2
+  +- B
+  |  +- C id=1
+  |  +- C id=2
+  +- D
+     +- E ref=1
+     +- E ref=2
+
+You define a key on the element declaration for the B elements, saying
+that within each B element, every C element can be identified by its
+id attribute. You define a keyref on the element declaration for the
+*A* element, saying that each D/E ref attribute points to an entry in
+that key.
+
+Now in the node table for a B element, there's an entry for each of
+its child C elements with the relevant id; all well and good. In the
+node table for the A element, however, these node tables get merged.
+Because there are two C elements that have the same id, both entries
+get removed. So the node table on the A element doesn't actually
+contain any entries. The keyref looks at the node table on the A
+element, because that's where it's defined, and of course it doesn't
+find the relevant key value, so it fails.
+
+Cheers,
+
+---
+
+The whole key/keyref/unique identity constraint thing is complex 
+and inflexible and some tools (e.g. XML Spy) still have bugs in 
+their implementation of it and some (MSXML4 beta2) allow 
+greater flexibility than legal in the xpath expressions.
+
+Schematron 
+
+
+Actually RELAX NG is pretty good at the co-occurrence stuff - this
+attribute or another attribute, this attribute or this element, 3
+occurrences of this element but mixed in any order. Schematron really
+comes into its own, I think, when it's comparing values.
+
+
+
+
+
+
+    <xs:element name="StartingEquipmentList">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="Weapon" type="xs:string" maxOccurs="unbounded"/>
+                <xs:element name="Armor" type="xs:string" maxOccurs="unbounded"/>
+                <xs:element name="Spell" type="xs:string" maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:complexType>
+
+
+<xs:attribute name="location">
+  <xs:simpleType>
+    <xs:union memberTypes="addr:locationType xs:NMTOKEN"/>
+  </xs:simpleType>
+</xs:attribute>
+
+ maxOccurs="unbounded"
+ 
+ 
+     <xs:element name="StartingEquipmentList">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:choice>
+                    <xs:element name="Armor" type="xs:string"/>
+                    <xs:element name="Weapon" type="xs:string"/>
+                    <xs:element name="Spell" type="xs:string"/>
+                </xs:choice>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="StartingEquipmentList">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="SpecialAdvantage" type="CharacterSpecialAdvantageType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="StartingEquipmentList" type="StartingEquipmentItem" maxOccurs="unbounded"/>
+
+  <xs:simpleType name="StartingEquipmentItem">
+    <xs:union memberTypes="Armor Weapon Spell"/>
+  </xs:simpleType>
+
+                <xs:element name="StartingEquipmentList" minOccurs="0" maxOccurs="unbounded"/>
+
+
+                <xs:element name="StartingEquipment" type="StartingEquipment" minOccurs="0" maxOccurs="unbounded"/>
+
+
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="Dwellings.xsd"/>
+    <xs:include schemaLocation="ArmorTypes.xsd"/>
+    <xs:include schemaLocation="WeaponTypes.xsd"/>
+
+    <xs:simpleType name="Spell">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="TradingRelationStatus">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="ally"/>
+            <xs:enumeration value="friendly"/>
+            <xs:enumeration value="neutral"/>
+            <xs:enumeration value="unfriendly"/>
+            <xs:enumeration value="enemy"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NativeGroupId">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <!-- todo - special chits; use inheritance? -->
+    <xs:simpleType name="ChitType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="move"/>
+            <xs:enumeration value="fight"/>
+            <xs:enumeration value="magic"/>
+            <xs:enumeration value="duck"/>
+            <xs:enumeration value="berserk"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CharacterSpecialAdvantageType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="aim"/>
+            <xs:enumeration value="stamina"/>
+            <xs:enumeration value="robust"/>
+            <xs:enumeration value="berserk"/>
+            <xs:enumeration value="reputation"/>
+            <xs:enumeration value="concealment"/>
+            <xs:enumeration value="peace with nature"/>
+            <xs:enumeration value="short legs"/>
+            <xs:enumeration value="cave knowledge"/>
+            <xs:enumeration value="elusiveness"/>
+            <xs:enumeration value="archer"/>
+            <xs:enumeration value="magical paraphernalia"/>
+            <xs:enumeration value="knowledge"/>
+            <xs:enumeration value="heavenly protection"/>
+            <xs:enumeration value="learning"/>
+            <xs:enumeration value="lore"/>
+            <xs:enumeration value="aura of power"/>
+            <xs:enumeration value="barter"/>
+            <xs:enumeration value="clever"/>
+            <xs:enumeration value="health"/>
+            <xs:enumeration value="honor"/>
+            <xs:enumeration value="familiar"/>
+            <xs:enumeration value="disembodied"/>
+            <xs:enumeration value="experience"/>
+            <xs:enumeration value="tracking skills"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:group name="StartingEquipment">
+        <xs:choice>
+            <xs:element name="Armor" type="xs:string"/>
+            <xs:element name="Weapon" type="xs:string"/>
+            <xs:element name="Spell" type="xs:string"/>
+        </xs:choice>
+    </xs:group>
+
+    <!-- todo: inheritance? -->
+    <xs:element name="CharacterChit">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:token">
+                    <xs:attribute name="type" type="ChitType" use="required"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ClassLevel">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:group ref="StartingEquipment" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="CharacterChit" minOccurs="3" maxOccurs="3"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ClassLevels">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ClassLevel" minOccurs="4" maxOccurs="4"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="TradingRelation">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="NativeGroupId">
+                    <xs:attribute name="status" type="TradingRelationStatus" use="required"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="TradingRelations">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="TradingRelation" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SpecialAdvantages">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="SpecialAdvantage" type="CharacterSpecialAdvantageType" minOccurs="2" maxOccurs="2"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="CharacterClass">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Name" type="xs:string"/>
+                <xs:element name="Weight" type="Weight"/>
+                <xs:element name="Symbol" type="xs:string"/>
+                <xs:element name="Description" type="xs:string"/>
+                <xs:element ref="SpecialAdvantages"/>
+                <xs:element ref="StartingLocations"/>
+                <xs:element ref="TradingRelations"/>
+                <xs:element ref="ClassLevels"/>
+            </xs:sequence>
+            <!--
+      <xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+      <xs:attribute name="weight" type="Weight" use="required"></xs:attribute>
+    -->
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="CharacterClasses">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="CharacterClass" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+
+
+
+<!ENTITY MagicRealmEnt SYSTEM "MagicRealm.xml">
+    &MagicRealmEnt;
+
+
+    <MagicRealm xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="MagicRealm.xsd">
+
+
+    <xs:include schemaLocation="CharacterClasses.xsd"/>
+
+    <xs:element name="MagicRealm">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="CharacterClasses"/>
+                <xs:element ref="ArmorTypes"/>
+                <xs:element ref="WeaponTypes"/>
+            </xs:sequence>
+        </xs:complexType>
+
+        <xs:unique name="ArmorKey">
+            <xs:selector xpath="./ArmorTypes/ArmorType/Name"></xs:selector>
+            <xs:field xpath="."></xs:field>
+        </xs:unique>
+    
+        <xs:keyref name="Armor" refer="ArmorKey">
+            <xs:selector xpath="./CharacterClasses/CharacterClass/ClassLevels/ClassLevel/Armor"></xs:selector>
+            <xs:field xpath="."></xs:field>
+        </xs:keyref>
+    
+
+        <xs:unique name="WeaponKey">
+            <xs:selector xpath="./WeaponTypes/WeaponType/Name"></xs:selector>
+            <xs:field xpath="."></xs:field>
+        </xs:unique>
+    
+        <xs:keyref name="Weapon" refer="WeaponKey">
+            <xs:selector xpath="./CharacterClasses/CharacterClass/ClassLevels/ClassLevel/Weapon"></xs:selector>
+            <xs:field xpath="."></xs:field>
+        </xs:keyref>
+
+
+    <xs:include schemaLocation="MagicRealm.xsd"/>
+
+
+                <xs:element name="Belongings" type="Belonging"/>
+
+
+    <xs:element name="Belongings">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:group ref="Belonging" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<Tiles xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="mr">
+	<Tile name="Awful Valley" id="AV" type="Normal" terrain="V">
+		<Clearings>
+			<Clearing number="1" type="Woods"></Clearing>
+			<Clearing number="2" type="Woods"></Clearing>
+			<Clearing number="4" type="Woods"></Clearing>
+			<Clearing number="5" type="Woods"></Clearing>
+		</Clearings>
+		<Paths>
+			<Path type="Road" node1="1" node2="NW"></Path>
+			<Path type="Road" node1="1" node2="4"></Path>
+			<Path type="Road" node1="2" node2="SW"></Path>
+			<Path type="Road" node1="2" node2="5"></Path>
+			<Path type="Road" node1="4" node2="NE"></Path>
+			<Path type="Road" node1="4" node2="SE"></Path>
+			<Path type="Road" node1="5" node2="N"></Path>
+		</Paths>
+	</Tile>
+
+
+    <xs:element name="CharacterChit">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:token">
+                    <xs:attribute name="type" type="ChitType" use="required"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="Clearing">
+        <xs:complexType>
+            <xs:sequence>
+            <xs:element name="Tile" type="xs:string"/>
+            <xs:element name="Number" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Path">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Clearing" minOccurs="2" maxOccurs="2"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="CharacterClasses.xsd"/>
+    <xs:group name="BelongingType">
+        <xs:choice>
+            <xs:element name="Armor" type="xs:string"/>
+            <xs:element name="Weapon" type="xs:string"/>
+            <xs:element name="Horse" type="xs:string"/>
+            <xs:element name="Treasure" type="xs:string"/>
+        </xs:choice>
+    </xs:group>
+    <xs:element name="Belonging">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:group ref="BelongingType"/>
+                <xs:element name="IsActive" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Belongings">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Belonging" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+
+    <xs:group name="Belonging">
+        <xs:choice>
+            <xs:element name="Armor" type="xs:string">
+                <xs:attribute name="isActive" type="xs:boolean" use="required"/>        
+            </xs:element>
+            <xs:element name="Weapon" type="xs:string"/>
+            <xs:element name="Horse" type="xs:string"/>
+            <xs:element name="Treasure" type="xs:string"/>
+        </xs:choice>
+    </xs:group>
+
+    <xs:group name="Belonging">
+        <xs:choice>
+            <xs:element name="Armor" type="xs:string"/>
+            <xs:element name="Weapon" type="xs:string"/>
+            <xs:element name="Horse" type="xs:string"/>
+            <xs:element name="Treasure" type="xs:string"/>
+        </xs:choice>
+    </xs:group>
+    <xs:element name="Belongings">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:group ref="Belonging" minOccurs="0" maxOccurs="unbounded">
+                </xs:group>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="ActiveWeapon">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="Weapon">
+                    <xs:attribute name="alerted" type="xs:booleas" use="required"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:group name="ActiveBelonging">
+        <xs:choice>
+            <!-- todo Armor types must be unique! -->
+            <xs:element name="Armor" type="xs:string"/>
+            <xs:element name="Treasure" type="xs:string"/>
+        </xs:choice>
+    </xs:group>
+    <xs:element name="ActiveBelongings">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Weapon" type="xs:string"/>
+                <xs:element name="Horse" type="xs:string"/>
+                <xs:group ref="ActiveBelonging" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ActiveWeapon">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="Weapon">
+                    <xs:attribute name="alerted" type="xs:booleas" use="required"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:group name="InactiveBelonging">
+        <xs:choice>
+            <xs:element name="Armor" type="xs:string"/>
+            <xs:element name="Weapon" type="xs:string"/>
+            <xs:element name="Horse" type="xs:string"/>
+            <xs:element name="Treasure" type="xs:string"/>
+        </xs:choice>
+    </xs:group>
+    <xs:element name="InactiveBelongings">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:group ref="InactiveBelonging" minOccurs="0" maxOccurs="unbounded">
+                </xs:group>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="VictoryRequirement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Category" type="xs:string"/>
+                <xs:element name="Points" type="xs:int"/>
+                <!-- todo - here ?? -->
+                <xs:element name="Factor" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="VictoryRequirements">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="VictoryRequirement" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+                <xs:element ref="Spells"/> 
+
+
+<xs:attribute name="alerted" type="xs:boolean" use="required"/>
+
+    <xs:element name="ArmorType">
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="Weight.xsd"/>
+
+    <xs:simpleType name="Armor">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    
+    <xs:complexType name="ArmorType">
+        <xs:sequence>
+            <xs:element name="Name" type="Armor"/>
+            <xs:element name="Weight" type="Weight"/>
+            <!-- todo -->
+            <xs:element name="Protects" type="xs:string"/>
+            <xs:element name="PriceIntact" type="xs:int"/>
+            <xs:element name="PriceDamaged" type="xs:int"/>
+            <xs:element name="PriceDestroyed" type="xs:int" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="ArmorTypes">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ArmorType" type="ArmorType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+
+
+<?xml version="1.0" encoding="utf-8" ?>
+<Natives>
+  <Group>
+    <Name>Bashkars</Name>
+    <HireIndividually>0</HireIndividually>
+    <Color></Color>
+    <Native>
+      <ID>BHQ</ID>
+      <Type>Raider</Type>
+      <Unalerted>
+        <Attack>L4*</Attack>
+        <Move>2</Move>
+      </Unalerted>
+      <Alerted>
+        <Attack>M4*</Attack>
+        <Move>3</Move>
+      </Alerted>
+      <Horse>
+        <Type>Pony</Type>
+        <Weight>M</Weight>
+        <Armored>0</Armored>
+        <Gallop>M3</Gallop>
+        <Walk>M4</Walk>
+      </Horse>
+    </Native>
+
+
+    <xs:element name="NativeGroups">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="NativeGroup" type="NativeGroup" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+            <xs:element name="Name" type="xs:string"/>
+
+
+    <xs:simpleType name="HorseType">
+        <xs:restriction base="xs:token"/>
+    </xs:simpleType>
+
+
+            <xs:element name="Gallop" type="MoveValue"/>
+            <xs:element name="Walk" type="MoveValue"/>
+    <xs:include schemaLocation="Combat.xsd"/>
+    <xs:include schemaLocation="HorseTypes.xsd"/>
+
+
+    <xs:element name="StartingLocation" type="Dwelling"/>
+
+
+                <xs:element ref="StartingLocations"/>
+
+
+    <xs:element name="StartingLocations">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="StartingLocation" type="Dwelling" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="TradingRelation">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="NativeGroupId">
+                    <xs:attribute name="status" type="TradingRelationStatus" use="required"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:complexType  name="ItemStartingLocation">
+        <xs:simpleContent>
+            <xs:union memberTypes="TreasureLocation NativeGroupName">
+                <xs:attribute name="count" type="xs:int" use="required"/>
+            </xs:union>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType  name="ItemStartingLocation">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="count" type="xs:int" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="ItemStartingLocation">
+        <xs:union memberTypes="TreasureLocation NativeGroupName"/>
+    </xs:simpleType>
+
+            <!--
+            <xs:element name="StartingLocation" type="ItemStartingLocation"/>
+            attribute count
+            -->
+
+
+
+            <xs:element name="Armor" type="xs:string"/>
+            <xs:element name="Weapon" type="xs:string"/>
+            <xs:element name="Horse" type="xs:string"/>
+            <xs:element name="Treasure" type="xs:string"/>
+
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="Dwellings.xsd"/>
+    <xs:include schemaLocation="Combat.xsd"/>
+    <xs:include schemaLocation="HorseTypes.xsd"/>
+
+    <xs:element name="Horse" abstract="true"/>
+
+
+    <xs:element name="Pony" substitutionGroup="Horse">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute ref="alerted"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Weapon" substitutionGroup="Belonging">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute ref="alerted"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Horse" substitutionGroup="Belonging">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute ref="alerted"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:simpleType name="HorseId">
+        <xs:restriction base="xs:int"/>
+    </xs:simpleType>
+
+    <xs:element name="StartingLocation" type="Dwelling"/>
+
+    <xs:complexType name="Horse">
+        <xs:sequence>
+            <xs:element name="Type" type="HorseTypeName"/>
+            <xs:element name="ID" type="HorseId"/>
+            <xs:element name="Gallop" type="MoveValue"/>
+            <xs:element name="Walk" type="MoveValue"/>
+            <xs:element name="Price" type="xs:int"/>
+            <xs:element name="StartingLocation" type="ItemStartingLocation"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Horses">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Horse" type="Horse" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+
+
+    <xs:complexType name="Horse" abstract="true">
+        <xs:sequence>
+            <xs:element name="ID" type="HorseId"/>
+            <xs:element name="Gallop" type="MoveValue"/>
+            <xs:element name="Walk" type="MoveValue"/>
+            <xs:element name="Price" type="xs:int"/>
+            <xs:element name="StartingLocation" type="ItemStartingLocation"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:element name="PlayerCharacter">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="PlayerName" type="xs:string"/>
+                <xs:element name="CharacterName" type="xs:string"/>
+                <xs:element name="CharacterClass" type="xs:string"/>
+                <xs:element name="Bio" type="xs:string"/>
+                <xs:element name="Notes" type="xs:string"/>
+
+                <xs:element ref="Activities"/>
+                <xs:element name="Hidden" type="xs:boolean"/>
+
+                <xs:element ref="Curses"/>
+                <xs:element ref="Bewitchments"/>
+                <xs:element ref="Discoveries"/>
+                <xs:element ref="Hirelings"/>
+                <xs:element ref="ControlledMonsters"/>
+
+               <!-- Gold, Spells aren't 'normal belonging' -->
+               <!-- Spells: don't include starting spells; Learned Spells? -->
+                <xs:element name="LearnedSpells" type="xs:string"/> 
+                <xs:element name="Gold" type="xs:int"/>
+                <xs:element name="Fame" type="xs:int"/>
+                <xs:element name="Notoriety" type="xs:int"/>
+                <xs:element ref="ActiveBelongings"/>
+                <xs:element ref="InactiveBelongings"/>
+
+                <xs:element ref="VictoryRequirements"/>
+                <xs:element ref="PC_History"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PlayerCharacters">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="PlayerCharacter" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+
+
+            <xs:element ref="Visitor" type="xs:int" minOccurs=""="0"/>
+
+
+    <xs:element name="VisitorPrice">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Visitor" type="VisitorName"/>
+                <xs:element name="GoldPrice" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="FamePrice">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="NativeGroup" type="NativeGroupName"/>
+                <xs:element name="Fame" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="CharacterChit">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:token">
+                    <xs:attribute name="type" type="ChitType" use="required"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+            <!-- todo make FamePrice* a composite element ? -->
+            <xs:element name="FamePrice" type="xs:int"/>
+            <!-- todo keyrefs -->
+            <xs:element name="FamePriceGroup" type="xs:string" minOccurs="0"/>
+
+
+            <xs:element name="AttackType" type="AttackType"/>
+            <xs:element name="Length" type="xs:int"/>
+            <xs:element name="Unalerted" type="AttackValue"/>
+            <xs:element name="Alerted" type="AttackValue"/>
+
+    <xs:simpleType name="Monster">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:complexType name="MonsterAttack">
+        <xs:sequence>
+            <xs:element name="Type" type="xs:string"/>
+            <xs:element name="AttackStats" type="AttackStats"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="MonsterSecondaryAttack">
+        <xs:complexContent>
+            <xs:extension base="MonsterAttack">
+                <xs:element name="Description" type="MonsterAttackDescription"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+            <xs:element name="Description" type="MonsterAttackDescription"/>
+
+    <xs:simpleType name="MonsterAttackDescription">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+
+
+    <xs:simpleType name="Spell">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+
+    <xs:complexType name="Denizens">
+        <xs:sequence>
+            <xs:element name="Name" type="DenizenGroupName"/>
+            <xs:element name="FameCost" type="xs:int"/>
+            <xs:element name="NotorietyCost" type="xs:int"/>
+            <xs:element name="Partners" type="DenizenGroupName"/>
+            <xs:element name="Foes" type="DenizenGroupName"/>
+            <xs:element name="TimeLimit" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="HiddenPath">
+        <xs:restriction base="xs:token"/>
+    </xs:simpleType>
+    <xs:simpleType name="SecretPassage">
+        <xs:restriction base="xs:token"/>
+    </xs:simpleType>
+
+
+
+file:///e:/dev/cities3d/src/MagicRealm/Resources/XmlData/Campaigns.xsd
+
+
+
+            <xs:element name="SpecialAdvantages" type="SpecialAdvantages"/>
+            <xs:element name="StartingLocations" type="StartingLocations"/>
+            <xs:element name="TradingRelations" type="TradingRelations"/>
+            <xs:element name="ClassLevels" type="ClassLevels"/>
+
+
+        <StartingLocations>
+            <StartingLocation>Inn</StartingLocation>
+        </StartingLocations>
+        <TradingRelations>
+            <TradingRelation status="friendly">Lancers</TradingRelation>
+            <TradingRelation status="friendly">Patrol</TradingRelation>
+            <TradingRelation status="friendly">Shaman</TradingRelation>
+            <TradingRelation status="unfriendly">Company</TradingRelation>
+            <TradingRelation status="unfriendly">Bashkars</TradingRelation>
+        </TradingRelations>
+        <ClassLevels>
+            <ClassLevel>
+                <name>Scout</name>
+                <Weapon>Light Bow</Weapon>
+                <CharacterChit type="move">M4</CharacterChit>
+                <CharacterChit type="move">M3*</CharacterChit>
+                <CharacterChit type="fight">L4</CharacterChit>
+            </ClassLevel>
+            <ClassLevel>
+                <name>Warrior</name>
+                <Weapon>Spear</Weapon>
+                <Armor>Helmet</Armor>
+                <Armor>Breastplate</Armor>
+                <Armor>Shield</Armor>
+                <CharacterChit type="move">M4</CharacterChit>
+                <CharacterChit type="fight">M5</CharacterChit>
+                <CharacterChit type="fight">M4*</CharacterChit>
+            </ClassLevel>
+            <ClassLevel>
+                <name>Champion</name>
+                <Weapon>Spear</Weapon>
+                <Armor>Helmet</Armor>
+                <Armor>Breastplate</Armor>
+                <Armor>Shield</Armor>
+                <CharacterChit type="move">M3*</CharacterChit>
+                <CharacterChit type="fight">M3**</CharacterChit>
+                <CharacterChit type="fight">H4**</CharacterChit>
+            </ClassLevel>
+            <ClassLevel>
+                <name>Amazon</name>
+                <Weapon>Short Sword</Weapon>
+                <Armor>Helmet</Armor>
+                <Armor>Breastplate</Armor>
+                <Armor>Shield</Armor>
+                <CharacterChit type="fight">M4*</CharacterChit>
+                <CharacterChit type="fight">M3**</CharacterChit>
+                <CharacterChit type="move">M3*</CharacterChit>
+            </ClassLevel>
+        </ClassLevels>
+
+
+            <TradingRelation status="friendly">Lancers</TradingRelation>
+            <TradingRelation status="friendly">Patrol</TradingRelation>
+            <TradingRelation status="friendly">Shaman</TradingRelation>
+            <TradingRelation status="unfriendly">Company</TradingRelation>
+
+<!ENTITY Ent SYSTEM ".xml">
+
+
+
+<MagicRealmData>
+        &ArmorEnt;
+        &CampaignsEnt;
+        &CharactersEnt;
+        &HorsesEnt;
+        &HorseTypesEnt;
+        &MagicTypesEnt;
+        &MissionsEnt;
+        &MonstersEnt;
+        &NativesEnt;
+        &NativeTypesEnt;
+        &SpellsEnt;
+        &TilesEnt;
+        &TreasuresEnt;
+        &WeaponEnt;
+        
+    </MagicRealmData>
+    
+    
+    <xs:simpleType name="ArmorProtectionType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="All"/>
+            <xs:enumeration value="Any One"/>
+            <xs:enumeration value="Thrust and Swing"/>
+            <xs:enumeration value="Smash"/>
+        </xs:restriction>
+    </xs:simpleType>
+        <xs:element name="PriceIntact" type=""/>
+
+
+
+
+    <xs:simpleType name="SpellTarget">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <xs:simpleType name="SpellDuration">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+
+
+
+
+
+    <xs:simpleType name="Visitor">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Crone"/>
+            <xs:enumeration value="Scholar"/>
+            <xs:enumeration value="Shaman"/>
+            <xs:enumeration value="Warlock"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="VisitorsAndNativeGroups">
+        <xs:union memberTypes="Visitor NativeGroup"/>
+    </xs:simpleType>
+
+        <xs:unique name="VisitorsAndNativeGroupKey">
+            <xs:selector xpath="./NativeGroupDataList/NativeGroupData/Name|./VisitorMissionCampaignChits/VisitorMissionCampaignChit/Visitor"/>
+            <xs:field xpath="."/>
+        </xs:unique>
+
+
+        <TradingRelations>
+            <TradingRelation status="friendly">Lancers</TradingRelation>
+            <TradingRelation status="friendly">Patrol</TradingRelation>
+            <TradingRelation status="friendly">Shaman</TradingRelation>
+            <TradingRelation status="unfriendly">Company</TradingRelation>
+            <TradingRelation status="unfriendly">Bashkars</TradingRelation>
+          <!--
+            <TradingRelation status="friendly">Shaman</TradingRelation>
+    -->            
+        </TradingRelations>
+
+
+    <xs:simpleType name="CharacterSpecialAdvantageType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="aim"/>
+            <xs:enumeration value="stamina"/>
+            <xs:enumeration value="robust"/>
+            <xs:enumeration value="berserk"/>
+            <xs:enumeration value="reputation"/>
+            <xs:enumeration value="concealment"/>
+            <xs:enumeration value="peace with nature"/>
+            <xs:enumeration value="short legs"/>
+            <xs:enumeration value="cave knowledge"/>
+            <xs:enumeration value="elusiveness"/>
+            <xs:enumeration value="archer"/>
+            <xs:enumeration value="magical paraphernalia"/>
+            <xs:enumeration value="knowledge"/>
+            <xs:enumeration value="heavenly protection"/>
+            <xs:enumeration value="learning"/>
+            <xs:enumeration value="lore"/>
+            <xs:enumeration value="aura of power"/>
+            <xs:enumeration value="barter"/>
+            <xs:enumeration value="clever"/>
+            <xs:enumeration value="health"/>
+            <xs:enumeration value="honor"/>
+            <xs:enumeration value="familiar"/>
+            <xs:enumeration value="disembodied"/>
+            <xs:enumeration value="experience"/>
+            <xs:enumeration value="tracking skills"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+
+
+----
+
+CharacterClasses/CharacterClassData/
+  Name
+  SpecialAdvantages/SpecialAdvantage
+  StartingLocations/StartingLocation
+  TradingRelations/
+  ClassLevels/ClassLevel/
+    Weapon
+    Armor
+    Spell
+
+CharacterSpecialAdvantages/CharacterSpecialAdvantage/Name
+
+
+    <xs:complexType name="TreasureSites">
+        <xs:sequence>
+            <xs:element name="TreasureSite" type="TreasureSite" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+
+
+DWellings:
+    <xs:simpleType name="CharacterStartingLocation">
+        <xs:restriction base="Dwelling"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="StartingLocation">
+        <xs:restriction base="Dwelling"/>
+    </xs:simpleType>
+    <xs:element name="StartingLocations">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="StartingLocation" type="StartingLocation" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:simpleType name="ItemStartingLocation">
+        <xs:restriction base="TreasureLocation"/>
+    </xs:simpleType>
+
+            <xs:element name="StartingLocation">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="ItemStartingLocation">
+                            <xs:attribute name="type" type="ChitType" use="required"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+    
+    
+
+
+    
+    
+    
+    
+    <!-- assume a pc -->
+    <xs:simpleType name="CasterId">
+        <xs:restriction base="CharacterName"/>
+    </xs:simpleType>
+    <!-- pc, native, tile, clearing, spell, etc -->
+    <xs:simpleType name="SpellTarget">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <!-- todo: day, round -->
+    <xs:complexType name="SpellStartTime">
+        <xs:sequence>
+            <xs:element name="Day" type="GameDays"/>
+            <xs:element name="Round" type="GameRounds"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- todo: -->
+    <xs:simpleType name="SpellDuration">
+        <xs:restriction base="NonEmptyToken"/>
+    </xs:simpleType>
+    <xs:complexType name="SpellTargets">
+        <xs:sequence>
+            <xs:element name="Target" type="SpellTarget" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- todo: source = chit-id, tile, treasure, etc -->
+    <xs:complexType name="SpellColorMagicSource">
+        <xs:sequence>
+            <xs:element name="Color" type="ColorMagic"/>
+            <xs:element name="source" type="NonEmptyString"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- for permanent spells -->
+    <xs:complexType name="SpellActivationStatus">
+        <xs:sequence>
+            <xs:element name="Activated" type="xs:boolean"/>
+            <xs:element name="ColorSource" type="SpellColorMagicSource"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="BewitchmentId">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <xs:complexType name="Bewitchment">
+        <xs:sequence>
+            <xs:element name="ID" type="BewitchmentId"/>
+            <xs:element name="Spell" type="Spell"/>
+            <xs:element name="Caster" type="CasterId"/>
+            <xs:element name="Targets" type="SpellTargets"/>
+            <xs:element name="StartTime" type="SpellStartTime"/>
+            <xs:element name="Duration" type="SpellDuration"/>
+            <xs:element name="Activated" type="SpellActivationStatus" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Bewitchments">
+        <xs:sequence>
+            <xs:element name="Bewitchment" type="Bewitchment" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="CurseType">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <xs:complexType name="CurseData">
+        <xs:sequence>
+            <xs:element name="Name" type="CurseType"/>
+            <xs:element name="Description" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Curse">
+        <xs:sequence>
+            <xs:element name="Curse" type="CurseType"/>
+            <xs:element name="DayAfflicted" type="GameDays"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Curses">
+        <xs:sequence>
+            <xs:element name="Curse" type="Curse" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    
+    
+    
+            <xs:element name="GroupName" type="MonsterGroup"/>
+    
+  
+  
+  
+  <NativeAppearanceRow>    <MonsterRoll>2</MonsterRoll>    <NativeAppearance>      <Dwelling>House</Dwelling>      <Dwelling>Small Campfire</Dwelling>      <NativeGroup>Woodfolk</NativeGroup>    </NativeAppearance>  </NativeAppearanceRow>  <NativeAppearanceRow>    <MonsterRoll>3</MonsterRoll>    <NativeAppearance>      <Dwelling>Inn</Dwelling>      <Dwelling>Chapel</Dwelling>      <Dwelling>House</Dwelling>      <Dwelling>Guardhouse</Dwelling>      <NativeGroup>Patrol</NativeGroup>    </NativeAppearance>  </NativeAppearanceRow>  6 --> visitors, missions, campaigns  rename NativeAppearanceRow?  this all depends on where chits are placed during setup...  <OtherAppearanceRow>    <MonsterRoll>6</MonsterRoll>    <NativeAppearance>      <NativeGroup>Visitors</NativeGroup>      <NativeGroup>Missions</NativeGroup>      <NativeGroup>Campaigns</NativeGroup>    </NativeAppearance>  </OtherAppearanceRow>      Appearances at Treasure Locations: see TreasureSiteChits  <AppearanceEntry>    <MonsterRoll>1</MonsterRoll>    <Location type="M">      <MapChit>Flutter</MapChit>      <MapChit>Smoke</MapChit>    </Location>          <Denizens>      <Monster number="2">H Dragon</Monster>    </Denizens>  </AppearanceEntry>  <AppearanceEntry>    <MonsterRoll>4</MonsterRoll>    <Location type="M">      <MapChit>Bones</MapChit>      <MapChit>Roar</MapChit>      <MapChit>Stink</MapChit>    </Location>          <Denizens>      <Monster number="1">Giant</Monster>      <Monster number="1">Giant</Monster>    </Denizens>  </AppearanceEntry>  <AppearanceEntry>    <MonsterRoll>5</MonsterRoll>    <Location type="M">      <MapChit>Stink</MapChit>      <MapChit>Dank</MapChit>      <MapChit>Patter</MapChit>    </Location>          <Denizens>      <Monster number="1">H Spider</Monster>      <Monster number="1">H Spider</Monster>      <Monster number="1">H Spider</Monster>    </Denizens>  </AppearanceEntry>  <AppearanceEntry>    <MonsterRoll>6</MonsterRoll>    <Location>      <MapChit>Ruins M</MapChit>      <MapChit>Bones M</MapChit>      <MapChit>Flutter M</MapChit>      <MapChit>Howl M</MapChit>    </Location>          <Denizens>      <Monster number="1">Bat</Monster>      <Monster number="2">Bat</Monster>      <Monster number="3">Bat</Monster>    </Denizens>  </AppearanceEntry>Mountains:
+1 Flutter, Smoke 2 H Dragons
+4 Bones, Roar, Stink: Giant, Giant
+5 Stink, Dank, Patter: Spider, Spider, Spider
+6 Ruins, Bones, Flutter, Howl: Bat, 2 Bats, 3 Bats
+
+Woods: 
+2 Dank 2 Vipers
+3 Ruins 6 Wolves, 
+  Bones 2 Ogres
+
+Substititute Chits
+
+
+--> add to native group data? 
+  need garrison or appearance data
+  starting equipment
+
+Dwellings
+1 Inn, L Campfire Company
+2 House, S Campfire Woodfolk
+3 Inn, Chapel, House, Guardhouse Patrol
+4 Chapel, L Campfire, S Campfire Lancers
+5 L Campfire, S Campfire Bashkars
+
+
+    <SoundChits>        <SoundChit>            <Name>Howl</Name>            <Clearing>4</Clearing>        </SoundChit>    </SoundChits>    <SoundChits>        <SoundChit>            <Name>Flutter</Name>            <Clearing>1</Clearing>        </SoundChit>    </SoundChits>    <SoundChits>        <SoundChit>            <Name>Roar</Name>            <Clearing>6</Clearing>        </SoundChit>    </SoundChits>    <SoundChits>        <SoundChit>            <Name>Patter</Name>            <Clearing>2</Clearing>        </SoundChit>    </SoundChits>    <SoundChits>        <SoundChit>            <Name>Slither</Name>            <Clearing>3</Clearing>        </SoundChit>    </SoundChits>    <WarningChits>        <WarningChit>            <Name>Bones</Name>        </WarningChit>    </WarningChits>    <WarningChits>        <WarningChit>            <Name>Dank</Name>        </WarningChit>    </WarningChits>    <WarningChits>        <WarningChit>            <Name>Ruins</Name>        </WarningChit>    </WarningChits>    <WarningChits>        <WarningChit>            <Name>Smoke</Name>        </WarningChit>    </WarningChits>    <VisitorMissionCampaignChits>        <VisitorMissionCampaignChit>                <Visitor>Shaman</Visitor>                <Mission>Escort Party</Mission>        </VisitorMissionCampaignChit>            <VisitorMissionCampaignChit>                <Visitor>Warlock</Visitor>                <Mission>Food/Ale</Mission>        </VisitorMissionCampaignChit>        <VisitorMissionCampaignChit>                <Visitor>Crone</Visitor>                <Campaign>Raid</Campaign>        </VisitorMissionCampaignChit>        <VisitorMissionCampaignChit>                <Visitor>Scholar</Visitor>                <Campaign>Pilliage</Campaign>        </VisitorMissionCampaignChit>        <VisitorMissionCampaignChit>                <Campaign>Conquer</Campaign>                <Campaign>War</Campaign>        </VisitorMissionCampaignChit>        <VisitorMissionCampaignChit>                <Campaign>Revolt</Campaign>                <Campaign>Quest</Campaign>        </VisitorMissionCampaignChit>    </VisitorMissionCampaignChits>        <TreasureSiteChits>        <TreasureSiteChit>            <Name>Altar</Name>            <Clearing>1</Clearing>            <SmallTreasures>0</SmallTreasures>            <LargeTreasures>4</LargeTreasures>            <MonsterRoll>2</MonsterRoll>            <Monster>Demon</Monster>        </TreasureSiteChit>        <TreasureSiteChit>            <Name>Cairns</Name>            <Clearing>5</Clearing>            <SmallTreasures>6</SmallTreasures>            <LargeTreasures>1</LargeTreasures>            <Monster>T Spider</Monster>        </TreasureSiteChit>        <TreasureSiteChit>            <Name>Hoard</Name>            <Clearing>6</Clearing>            <SmallTreasures>4</SmallTreasures>            <LargeTreasures>5</LargeTreasures>            <Monster>T Flying Dragon</Monster>        </TreasureSiteChit>        <TreasureSiteChit>            <Name>Lair</Name>            <Clearing>3</Clearing>            <SmallTreasures>4</SmallTreasures>            <LargeTreasures>3</LargeTreasures>            <Monster>Dragon</Monster>        </TreasureSiteChit>        <TreasureSiteChit>            <Name>Pool</Name>            <Clearing>6</Clearing>            <SmallTreasures>6</SmallTreasures>            <LargeTreasures>3</LargeTreasures>            <Monster>Octopus</Monster>        </TreasureSiteChit>        <TreasureSiteChit>            <Name>Shrine</Name>            <Clearing>4</Clearing>            <SmallTreasures>2</SmallTreasures>            <LargeTreasures>2</LargeTreasures>            <Monster>Winged Demon</Monster>        </TreasureSiteChit>        <TreasureSiteChit>            <Name>Statue</Name>            <Clearing>2</Clearing>            <SmallTreasures>2</SmallTreasures>            <LargeTreasures>1</LargeTreasures>            <Monster>Imp</Monster>        </TreasureSiteChit>        <TreasureSiteChit>            <Name>Vault</Name>            <Clearing>3</Clearing>            <SmallTreasures>0</SmallTreasures>            <LargeTreasures>5</LargeTreasures>            <Monster>T Troll</Monster>        </TreasureSiteChit>    </TreasureSiteChits></DenizenAppearanceData>  <AppearanceRow>    <MonsterRoll>1</MonsterRoll>    <AppearanceEntry>      <Location type="M">        <MapChit>Flutter</MapChit>        <MapChit>Smoke</MapChit>      </Location>            <Denizens>        <Monster number="2">H Flying Dragon</Monster>      </Denizens>    </AppearanceEntry>    <AppearanceEntry>      <Location type="C">        <MapChit>Smoke</MapChit>        <MapChit>Slither</MapChit>        <MapChit>Roar</MapChit>      </Location>            <Denizens>        <Monster number="1">H Dragon</Monster>        <Monster number="1">T Dragon</Monster>      </Denizens>    </AppearanceEntry>  </AppearanceRow>  <AppearanceRow>    <MonsterRoll>4</MonsterRoll>    <AppearanceEntry>      <Location type="M">        <MapChit>Bones</MapChit>        <MapChit>Roar</MapChit>        <MapChit>Stink</MapChit>      </Location>            <Denizens>        <Monster number="1">Giant</Monster>        <Monster number="1">Giant</Monster>      </Denizens>    </AppearanceEntry>  </AppearanceRow>  <AppearanceRow>    <MonsterRoll>5</MonsterRoll>    <AppearanceEntry>      <Location type="M">        <MapChit>Stink</MapChit>        <MapChit>Dank</MapChit>        <MapChit>Patter</MapChit>      </Location>            <Denizens>        <Monster number="1">H Spider</Monster>        <Monster number="1">H Spider</Monster>        <Monster number="1">H Spider</Monster>      </Denizens>    </AppearanceEntry>  </AppearanceRow>  <AppearanceRow>    <MonsterRoll>6</MonsterRoll>    <AppearanceEntry>      <Location>        <MapChit>Ruins</MapChit>        <MapChit>Bones</MapChit>        <MapChit>Flutter</MapChit>        <MapChit>Howl</MapChit>      </Location>            <Denizens>        <Monster number="1">Bat</Monster>        <Monster number="2">Bat</Monster>        <Monster number="3">Bat</Monster>      </Denizens>    </AppearanceEntry>  </AppearanceRow>  -- try removing the Location/Denizens tags...  <AppearanceRow>    <MonsterRoll>1</MonsterRoll>    <MonsterAppearanceEntry>      <MapChit>Flutter</MapChit>      <MapChit type="M">Smoke</MapChit>      <Monster number="2">H Flying Dragon</Monster>    </MonsterAppearanceEntry>    <MonsterAppearanceEntry>      <MapChit>Slither</MapChit>      <MapChit type="C">Smoke</MapChit>      <MapChit type="C">Roar</MapChit>      <Monster number="1">H Dragon</Monster>      <Monster number="1">T Dragon</Monster>    </MonsterAppearanceEntry>    <NativeAppearance>      <Dwelling>Inn</Dwelling>      <Dwelling>Large Campfire</Dwelling>      <NativeGroup>Company</NativeGroup>    </NativeAppearance>  </AppearanceRow>  <AppearanceRow>    <MonsterRoll>4</MonsterRoll>    <MonsterAppearanceEntry>      <MapChit type="M">Bones</MapChit>      <MapChit type="M">Roar</MapChit>      <MapChit type="M">Stink</MapChit>      <Monster number="1">Giant</Monster>      <Monster number="1">Giant</Monster>    </MonsterAppearanceEntry>    <NativeAppearance>      <Dwelling>Chapel</Dwelling>      <Dwelling>Large Campfile</Dwelling>      <Dwelling>Small Campfile</Dwelling>      <NativeGroup>Lancers</NativeGroup>    </NativeAppearance>  </AppearanceRow>  <AppearanceRow>    <MonsterRoll>5</MonsterRoll>    <MonsterAppearanceEntry>      <MapChit type="M">Stink</MapChit>      <MapChit type="M">Dank</MapChit>      <MapChit type="M">Patter</MapChit>      <Monster number="1">H Spider</Monster>      <Monster number="1">H Spider</Monster>      <Monster number="1">H Spider</Monster>    </MonsterAppearanceEntry>  </AppearanceRow>  <AppearanceRow>    <MonsterRoll>6</MonsterRoll>    <MonsterAppearanceEntry>      <MapChit>Flutter</MapChit>      <MapChit type="M">Ruins</MapChit>      <MapChit type="M">Bones</MapChit>      <MapChit type="M">Howl</MapChit>      <Monster number="1">Bat</Monster>      <Monster number="2">Bat</Monster>      <Monster number="3">Bat</Monster>    </MonsterAppearanceEntry>  </AppearanceRow>  <NativeAppearanceRow>    <MonsterRoll>1</MonsterRoll>    <NativeAppearance>      <Dwelling>Inn</Dwelling>      <Dwelling>Large Campfire</Dwelling>      <NativeGroup>Company</NativeGroup>    </NativeAppearance>  </NativeAppearanceRow>  <NativeAppearanceRow>    <MonsterRoll>2</MonsterRoll>    <NativeAppearance>      <Dwelling>House</Dwelling>      <Dwelling>Small Campfire</Dwelling>      <NativeGroup>Woodfolk</NativeGroup>    </NativeAppearance>  </NativeAppearanceRow>  <NativeAppearanceRow>    <MonsterRoll>3</MonsterRoll>    <NativeAppearance>      <Dwelling>Inn</Dwelling>      <Dwelling>Chapel</Dwelling>      <Dwelling>House</Dwelling>      <Dwelling>Guardhouse</Dwelling>      <NativeGroup>Patrol</NativeGroup>    </NativeAppearance>  </NativeAppearanceRow>  <NativeAppearanceRow>    <MonsterRoll>4</MonsterRoll>    <NativeAppearance>      <Dwelling>Chapel</Dwelling>      <Dwelling>Large Campfile</Dwelling>      <Dwelling>Small Campfile</Dwelling>      <NativeGroup>Lancers</NativeGroup>    </NativeAppearance>  </NativeAppearanceRow>  <NativeAppearanceRow>    <MonsterRoll>5</MonsterRoll>    <NativeAppearance>      <Dwelling>Large Campfile</Dwelling>      <Dwelling>Small Campfile</Dwelling>      <NativeGroup>Bashkars</NativeGroup>    </NativeAppearance>  </NativeAppearanceRow>  6 --> visitors, missions, campaigns  rename NativeAppearanceRow?  this all depends on where chits are placed during setup...  <OtherAppearanceRow>    <MonsterRoll>6</MonsterRoll>    <NativeAppearance>      <NativeGroup>Visitors</NativeGroup>      <NativeGroup>Missions</NativeGroup>      <NativeGroup>Campaigns</NativeGroup>    </NativeAppearance>  </OtherAppearanceRow>      Appearances at Treasure Locations: see TreasureSiteChits  <AppearanceEntry>    <MonsterRoll>1</MonsterRoll>    <Location type="M">      <MapChit>Flutter</MapChit>      <MapChit>Smoke</MapChit>    </Location>          <Denizens>      <Monster number="2">H Dragon</Monster>    </Denizens>  </AppearanceEntry>  <AppearanceEntry>    <MonsterRoll>4</MonsterRoll>    <Location type="M">      <MapChit>Bones</MapChit>      <MapChit>Roar</MapChit>      <MapChit>Stink</MapChit>    </Location>          <Denizens>      <Monster number="1">Giant</Monster>      <Monster number="1">Giant</Monster>    </Denizens>  </AppearanceEntry>  <AppearanceEntry>    <MonsterRoll>5</MonsterRoll>    <Location type="M">      <MapChit>Stink</MapChit>      <MapChit>Dank</MapChit>      <MapChit>Patter</MapChit>    </Location>          <Denizens>      <Monster number="1">H Spider</Monster>      <Monster number="1">H Spider</Monster>      <Monster number="1">H Spider</Monster>    </Denizens>  </AppearanceEntry>  <AppearanceEntry>    <MonsterRoll>6</MonsterRoll>    <Location>      <MapChit>Ruins M</MapChit>      <MapChit>Bones M</MapChit>      <MapChit>Flutter M</MapChit>      <MapChit>Howl M</MapChit>    </Location>          <Denizens>      <Monster number="1">Bat</Monster>      <Monster number="2">Bat</Monster>      <Monster number="3">Bat</Monster>    </Denizens>  </AppearanceEntry>  <NativeAppearanceRow>    <MonsterRoll>1</MonsterRoll>    <NativeAppearance>      <Dwelling>Inn</Dwelling>      <Dwelling>Large Campfire</Dwelling>      <NativeGroup>Company</NativeGroup>    </NativeAppearance>  </NativeAppearanceRow>  <NativeAppearanceRow>    <MonsterRoll>2</MonsterRoll>    <NativeAppearance>      <Dwelling>House</Dwelling>      <Dwelling>Small Campfire</Dwelling>      <NativeGroup>Woodfolk</NativeGroup>    </NativeAppearance>  </NativeAppearanceRow>  <NativeAppearanceRow>    <MonsterRoll>3</MonsterRoll>    <NativeAppearance>      <Dwelling>Inn</Dwelling>      <Dwelling>Chapel</Dwelling>      <Dwelling>House</Dwelling>      <Dwelling>Guardhouse</Dwelling>      <NativeGroup>Patrol</NativeGroup>    </NativeAppearance>  </NativeAppearanceRow>  <NativeAppearanceRow>    <MonsterRoll>4</MonsterRoll>    <NativeAppearance>      <Dwelling>Chapel</Dwelling>      <Dwelling>Large Campfile</Dwelling>      <Dwelling>Small Campfile</Dwelling>      <NativeGroup>Lancers</NativeGroup>    </NativeAppearance>  </NativeAppearanceRow>  <NativeAppearanceRow>    <MonsterRoll>5</MonsterRoll>    <NativeAppearance>      <Dwelling>Large Campfile</Dwelling>      <Dwelling>Small Campfile</Dwelling>      <NativeGroup>Bashkars</NativeGroup>    </NativeAppearance>  </NativeAppearanceRow>      
+Mountains:
+1 Flutter, Smoke 2 H Dragons
+4 Bones, Roar, Stink: Giant, Giant
+5 Stink, Dank, Patter: Spider, Spider, Spider
+6 Ruins, Bones, Flutter, Howl: Bat, 2 Bats, 3 Bats
+
+Woods: 
+2 Dank 2 Vipers
+3 Ruins 6 Wolves, 
+  Bones 2 Ogres
+
+Substititute Chits
+
+
+--> add to native group data? 
+  need garrison or appearance data
+  starting equipment
+
+Dwellings
+1 Inn, L Campfire Company
+2 House, S Campfire Woodfolk
+3 Inn, Chapel, House, Guardhouse Patrol
+4 Chapel, L Campfire, S Campfire Lancers
+5 L Campfire, S Campfire Bashkars
+
+
+Treasure Locations
+--> See MapChitData/TreasureSiteChits/TreasureSiteChit/
+
+name, monster
+  
+  
+    <SiteAndSoundChitLocations>
+        <SiteAndSoundChitLocation>
+            <TileType>C</TileType>
+            <Chits>
+                <SiteAndSoundChit>4</SiteAndSoundChit>
+                <SubstituteChit>LostCity</SubstituteChit>
+            </Chits>
+        </SiteAndSoundChitLocation>
+        <SiteAndSoundChitLocation>
+            <TileType>M</TileType>
+            <Chits>
+                <SiteAndSoundChit>4</SiteAndSoundChit>
+                <SubstituteChit>LostCastle</SubstituteChit>
+            </Chits>
+        </SiteAndSoundChitLocation>
+        <SiteAndSoundChitLocation>
+            <SubstituteChitType>LostCity</SubstituteChitType>
+            <Chits>
+                <SiteAndSoundChit>5</SiteAndSoundChit>
+            </Chits>
+        </SiteAndSoundChitLocation>
+        <SiteAndSoundChitLocation>
+            <SubstituteChitType>LostCastle</SubstituteChitType>
+            <Chits>
+                <SiteAndSoundChit>5</SiteAndSoundChit>
+            </Chits>
+        </SiteAndSoundChitLocation>
+    </SiteAndSoundChitLocations>
+  

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WeaponTypes 
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"                   
+        xsi:noNamespaceSchemaLocation="Weapons.xsd">
+    <WeaponType>
+        <Name>Medium Bow</Name>
+        <Price>8</Price>
+        <AttackStats>
+            <Type>Missile</Type>
+            <Length>16</Length>
+            <Unalerted>M</Unalerted>
+            <Alerted>M1**</Alerted>
+        </AttackStats>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <StartingLocation count="1">Woodfolk</StartingLocation>
+    </WeaponType>
+
+    <WeaponType>
+        <Name>Light Bow</Name>
+        <Price>6</Price>
+        <AttackStats>
+            <Type>Missile</Type>
+            <Length>14</Length>
+            <Unalerted>L</Unalerted>
+            <Alerted>L1**</Alerted>
+        </AttackStats>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <StartingLocation count="2">Woodfolk</StartingLocation>
+    </WeaponType>
+
+    <WeaponType>
+        <Name>Crossbow</Name>
+        <Price>10</Price>
+        <AttackStats>
+            <Type>Missile</Type>
+            <Length>12</Length>
+            <Unalerted>H</Unalerted>
+            <Alerted>H1*</Alerted>
+        </AttackStats>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <StartingLocation count="1">Order</StartingLocation>
+    </WeaponType>
+
+    <WeaponType>
+        <Name>Spear</Name>
+        <Price>6</Price>
+        <AttackStats>
+            <Type>Melee</Type>
+            <Length>10</Length>
+            <Unalerted>N6</Unalerted>
+            <Alerted>M*</Alerted>
+        </AttackStats>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <StartingLocation count="4">Lancers</StartingLocation>
+    </WeaponType>
+
+    <WeaponType>
+        <Name>Staff</Name>
+        <Price>1</Price>
+        <AttackStats>
+            <Type>Melee</Type>
+            <Length>9</Length>
+            <Unalerted>L</Unalerted>
+            <Alerted>L</Alerted>
+        </AttackStats>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <StartingLocation count="2">Soldiers</StartingLocation>
+    </WeaponType>
+
+    <WeaponType>
+        <Name>Great Sword</Name>
+        <Price>10</Price>
+        <AttackStats>
+            <Type>Melee</Type>
+            <Length>8</Length>
+            <Unalerted>H6*</Unalerted>
+            <Alerted>H*</Alerted>
+        </AttackStats>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <StartingLocation count="1">Order</StartingLocation>
+    </WeaponType>
+    
+    <WeaponType>
+        <Name>Bane Sword</Name>
+        <Price>20</Price>
+        <AttackStats>
+            <Type>Melee</Type>
+            <Length>8</Length>
+            <Unalerted>T8*</Unalerted>
+            <Alerted>T2*</Alerted>
+        </AttackStats>
+        <Fame>6</Fame>
+        <Notoriety>3</Notoriety>
+        <StartingLocation count="1">Crypt of Knight</StartingLocation>
+    </WeaponType>
+
+    <WeaponType>
+        <Name>Broadsword</Name>
+        <Price>8</Price>
+        <AttackStats>
+            <Type>Melee</Type>
+            <Length>7</Length>
+            <Unalerted>M5*</Unalerted>
+            <Alerted>M*</Alerted>
+        </AttackStats>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <StartingLocation count="1">Guard</StartingLocation>
+    </WeaponType>
+
+    <WeaponType>
+        <Name>Devil Sword</Name>
+        <Price>20</Price>
+        <AttackStats>
+            <Type>Melee</Type>
+            <Length>7</Length>
+            <Unalerted>H4*</Unalerted>
+            <Alerted>H3*</Alerted>
+        </AttackStats>
+        <Fame>0</Fame>
+        <Notoriety>15</Notoriety>
+        <StartingLocation count="1">Toadstool Circle</StartingLocation>
+    </WeaponType>
+
+    <WeaponType>
+        <Name>Truesteel Sword</Name>
+        <Price>25</Price>
+        <AttackStats>
+            <Type>Melee</Type>
+            <Length>7</Length>
+            <Unalerted>M**</Unalerted>
+            <Alerted>M**</Alerted>
+        </AttackStats>
+        <Fame>6</Fame>
+        <Notoriety>3</Notoriety>
+        <StartingLocation count="1">Enchanted Meadow</StartingLocation>
+    </WeaponType>
+
+    <WeaponType>
+        <Name>Morning Star</Name>
+        <Price>8</Price>
+        <AttackStats>
+            <Type>Melee</Type>
+            <Length>6</Length>
+            <Unalerted>H</Unalerted>
+            <Alerted>H3</Alerted>
+        </AttackStats>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <StartingLocation count="1">Order</StartingLocation>
+    </WeaponType>
+
+    <WeaponType>
+        <Name>Great Axe</Name>
+        <Price>8</Price>
+        <AttackStats>
+            <Type>Melee</Type>
+            <Length>5</Length>
+            <Unalerted>H*</Unalerted>
+            <Alerted>H4*</Alerted>
+        </AttackStats>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <StartingLocation count="2">Order</StartingLocation>
+    </WeaponType>
+
+    <WeaponType>
+        <Name>Thrusting Sword</Name>
+        <Price>6</Price>
+        <AttackStats>
+            <Type>Melee</Type>
+            <Length>4</Length>
+            <Unalerted>L4*</Unalerted>
+            <Alerted>L*</Alerted>
+        </AttackStats>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <StartingLocation count="2">Soldiers</StartingLocation>
+    </WeaponType>
+
+    <WeaponType>
+        <Name>Living Sword</Name>
+        <Price>25</Price>
+        <AttackStats>
+            <Type>Melee</Type>
+            <Length>4</Length>
+            <Unalerted>L3*</Unalerted>
+            <Alerted>L2*</Alerted>
+        </AttackStats>
+        <Fame>3</Fame>
+        <Notoriety>9</Notoriety>
+        <StartingLocation count="1">Remains of the Thief</StartingLocation>
+    </WeaponType>
+
+    <WeaponType>
+        <Name>Short Sword</Name>
+        <Price>4</Price>
+        <AttackStats>
+            <Type>Melee</Type>
+            <Length>3</Length>
+            <Unalerted>L*</Unalerted>
+            <Alerted>L*</Alerted>
+        </AttackStats>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <StartingLocation count="3">Soldiers</StartingLocation>
+    </WeaponType>
+
+    <WeaponType>
+        <Name>Axe</Name>
+        <Price>4</Price>
+        <AttackStats>
+            <Type>Melee</Type>
+            <Length>2</Length>
+            <Unalerted>M5*</Unalerted>
+            <Alerted>M*</Alerted>
+        </AttackStats>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <StartingLocation count="2">Guard</StartingLocation>
+    </WeaponType>
+
+    <WeaponType>
+        <Name>Mace</Name>
+        <Price>6</Price>
+        <AttackStats>
+            <Type>Melee</Type>
+            <Length>1</Length>
+            <Unalerted>M</Unalerted>
+            <Alerted>M3</Alerted>
+        </AttackStats>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <StartingLocation count="2">Guard</StartingLocation>
+    </WeaponType>
+
+    <WeaponType>
+        <Name>Dagger</Name>
+        <Price>0</Price>
+        <AttackStats>
+            <Type>Melee</Type>
+            <Length>0</Length>
+            <Unalerted>N*</Unalerted>
+            <Alerted>N*</Alerted>
+        </AttackStats>
+        <Fame>0</Fame>
+        <Notoriety>0</Notoriety>
+        <StartingLocation count="1">Character</StartingLocation>
+    </WeaponType>
+
+</WeaponTypes>

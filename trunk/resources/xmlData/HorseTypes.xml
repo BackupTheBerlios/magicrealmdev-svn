@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorseTypeDataList
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+    xsi:noNamespaceSchemaLocation="HorseTypes.xsd">
+
+  <HorseTypeData>
+    <Name>Pony</Name>
+    <Vulnerability>M</Vulnerability>
+    <Armored>0</Armored>
+    <MoveBonus>*2</MoveBonus>
+  </HorseTypeData>
+  <HorseTypeData>
+    <Name>Workhorse</Name>
+    <Vulnerability>H</Vulnerability>
+    <Armored>0</Armored>
+    <MoveBonus>+1</MoveBonus>
+  </HorseTypeData>
+  <HorseTypeData>
+    <Name>Warhorse</Name>
+    <Vulnerability>T</Vulnerability>
+    <Armored>1</Armored>
+    <MoveBonus>0</MoveBonus>
+  </HorseTypeData>
+</HorseTypeDataList>

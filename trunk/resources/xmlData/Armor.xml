@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArmorTypes  
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+      xsi:noNamespaceSchemaLocation="Armor.xsd"> 
+
+    <ArmorType>
+        <Name>Suit of Armor</Name>
+        <Weight>H</Weight>
+        <Protects>Thrust Swing Smash</Protects>
+        <PriceIntact>17</PriceIntact>
+        <PriceDamaged>12</PriceDamaged>
+        <PriceDestroyed>0</PriceDestroyed>
+    </ArmorType>
+
+    <ArmorType>
+        <Name>Breastplate</Name>
+        <Weight>M</Weight>
+        <Protects>Thrust Swing</Protects>
+        <PriceIntact>9</PriceIntact>
+        <PriceDamaged>6</PriceDamaged>
+        <PriceDestroyed>0</PriceDestroyed>
+    </ArmorType>
+
+    <ArmorType>
+        <Name>Helmet</Name>
+        <Weight>M</Weight>
+        <Protects>Smash</Protects>
+        <PriceIntact>5</PriceIntact>
+        <PriceDamaged>3</PriceDamaged>
+        <PriceDestroyed>0</PriceDestroyed>
+    </ArmorType>
+
+    <ArmorType>
+        <Name>Shield</Name>
+        <Weight>M</Weight>
+        <Protects>AnyOne</Protects>
+        <PriceIntact>7</PriceIntact>
+        <PriceDamaged>5</PriceDamaged>
+        <PriceDestroyed>0</PriceDestroyed>
+    </ArmorType>
+
+    <ArmorType>
+        <Name>T Armor</Name>
+        <Weight>T</Weight>
+        <Protects>Thrust Swing Smash</Protects>
+        <PriceIntact>25</PriceIntact>
+        <PriceDamaged>18</PriceDamaged>
+        <PriceDestroyed>5</PriceDestroyed>
+    </ArmorType>
+
+    <ArmorType>
+        <Name>Silver Breastplate</Name>
+        <Weight>M</Weight>
+        <Protects>Thrust Swing</Protects>
+        <PriceIntact>25</PriceIntact>
+        <PriceDamaged>21</PriceDamaged>
+        <PriceDestroyed>15</PriceDestroyed>
+    </ArmorType>
+
+    <ArmorType>
+        <Name>Gold Helmet</Name>
+        <Weight>M</Weight>
+        <Protects>Smash</Protects>
+        <PriceIntact>20</PriceIntact>
+        <PriceDamaged>27</PriceDamaged>
+        <PriceDestroyed>20</PriceDestroyed>
+    </ArmorType>
+
+    <ArmorType>
+        <Name>Jade Shield</Name>
+        <Weight>M</Weight>
+        <Protects>AnyOne</Protects>
+        <PriceIntact>20</PriceIntact>
+        <PriceDamaged>16</PriceDamaged>
+        <PriceDestroyed>10</PriceDestroyed>
+    </ArmorType>
+
+</ArmorTypes>

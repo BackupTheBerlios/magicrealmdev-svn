@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="MiscTypes.xsd"/>
+    <xs:simpleType name="CharacterSpecialAdvantage">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <xs:simpleType name="CharacterSpecialAdvantageEffect">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <xs:complexType name="CharacterSpecialAdvantageData">
+        <xs:sequence>
+            <xs:element name="Name" type="CharacterSpecialAdvantage"/>
+            <xs:element name="Effect" type="CharacterSpecialAdvantageEffect"/>
+            <xs:element name="Description" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="CharacterSpecialAdvantages">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="CharacterSpecialAdvantage" type="CharacterSpecialAdvantageData" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

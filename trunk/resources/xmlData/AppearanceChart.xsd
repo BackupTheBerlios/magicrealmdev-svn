@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="MapChits.xsd"/>
+    <xs:include schemaLocation="Tiles.xsd"/>
+    <xs:include schemaLocation="Monsters.xsd"/>
+    <xs:include schemaLocation="MonsterGroups.xsd"/>
+    <xs:complexType name="MonsterAppearanceGroup">
+        <xs:sequence>
+            <xs:element name="Monster" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="Monster">
+                            <xs:attribute name="count" type="xs:positiveInteger" use="required"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MonsterAppearance">
+        <xs:sequence>
+            <xs:element name="MapChit" type="SoundOrWarningChit" maxOccurs="unbounded"/>
+            <xs:element name="MonsterGroup" type="MonsterAppearanceGroup" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NativeAppearance">
+        <xs:sequence>
+            <xs:element name="Dwelling" type="Dwelling" maxOccurs="unbounded"/>
+            <xs:element name="NativeGroup" type="NativeGroup"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="OtherAppearance">
+        <xs:sequence>
+            <xs:element name="OtherGroup" type="NonEmptyString" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AppearanceChartRow">
+        <xs:sequence>
+            <xs:element name="MonsterAppearance" type="MonsterAppearance" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="NativeAppearance" type="NativeAppearance" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="OtherAppearance" type="OtherAppearance" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="monsterRoll" type="MonsterRoll" use="required"/>
+    </xs:complexType>
+    <xs:element name="AppearanceChartData">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="AppearanceChartRow" type="AppearanceChartRow" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<AppearanceChartData xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="AppearanceChart.xsd">
+  <!--
+    See TreasureSiteChits for appearances at Treasure Locations.
+  -->
+  <AppearanceChartRow monsterRoll="1">
+    <MonsterAppearance>
+      <MapChit>Flutter</MapChit>
+      <MapChit type="M">Smoke</MapChit>
+      <MonsterGroup>
+        <Monster count="2">H Flying Dragon</Monster>
+      </MonsterGroup>
+    </MonsterAppearance>
+    <MonsterAppearance>
+      <MapChit>Slither</MapChit>
+      <MapChit type="C">Smoke</MapChit>
+      <MapChit type="C">Roar</MapChit>
+      <MonsterGroup>
+        <Monster count="1">H Dragon</Monster>
+      </MonsterGroup>
+      <MonsterGroup>
+        <Monster count="1">T Dragon</Monster>
+      </MonsterGroup>
+    </MonsterAppearance>
+    <NativeAppearance>
+      <Dwelling>Inn</Dwelling>
+      <Dwelling>Large Campfire</Dwelling>
+      <NativeGroup>Company</NativeGroup>
+    </NativeAppearance>
+  </AppearanceChartRow>
+  <AppearanceChartRow monsterRoll="2">
+    <MonsterAppearance>
+      <MapChit type="W">Dank</MapChit>
+      <MonsterGroup>
+        <Monster count="2">Viper</Monster>
+      </MonsterGroup>
+    </MonsterAppearance>
+    <MonsterAppearance>
+      <MapChit>Slither</MapChit>
+      <MapChit type="C">Dank</MapChit>
+      <MonsterGroup>
+        <Monster count="2">H Serpent</Monster>
+      </MonsterGroup>
+      <MonsterGroup>
+        <Monster count="1">T Serpent</Monster>
+      </MonsterGroup>
+    </MonsterAppearance>
+    <NativeAppearance>
+      <Dwelling>House</Dwelling>
+      <Dwelling>Small Campfire</Dwelling>
+      <NativeGroup>Woodfolk</NativeGroup>
+    </NativeAppearance>
+  </AppearanceChartRow>
+  <AppearanceChartRow monsterRoll="3">
+    <MonsterAppearance>
+      <MapChit type="W">Ruins</MapChit>
+      <MonsterGroup>
+        <Monster count="3">Wolf1</Monster>
+        <Monster count="3">Wolf2</Monster>
+      </MonsterGroup>
+    </MonsterAppearance>
+    <MonsterAppearance>
+      <MapChit type="W">Bones</MapChit>
+      <MonsterGroup>
+        <Monster count="2">Ogre</Monster>
+      </MonsterGroup>
+    </MonsterAppearance>
+    <MonsterAppearance>
+      <MapChit type="C">Ruins</MapChit>
+      <MapChit type="C">Patter</MapChit>
+      <MapChit type="C">Howl</MapChit>
+      <MonsterGroup>
+        <Monster count="6">Goblin with Axe</Monster>
+      </MonsterGroup>
+      <MonsterGroup>
+        <Monster count="6">Goblin with Spear</Monster>
+      </MonsterGroup>
+      <MonsterGroup>
+        <Monster count="6">Goblin with Great Sword</Monster>
+      </MonsterGroup>
+    </MonsterAppearance>
+    <NativeAppearance>
+      <Dwelling>Inn</Dwelling>
+      <Dwelling>Chapel</Dwelling>
+      <Dwelling>House</Dwelling>
+      <Dwelling>Guardhouse</Dwelling>
+      <NativeGroup>Patrol</NativeGroup>
+    </NativeAppearance>
+  </AppearanceChartRow>
+  <AppearanceChartRow monsterRoll="4">
+    <MonsterAppearance>
+      <MapChit type="M">Bones</MapChit>
+      <MapChit type="M">Roar</MapChit>
+      <MapChit type="M">Stink</MapChit>
+      <MonsterGroup>
+        <Monster count="1">Giant</Monster>
+      </MonsterGroup>
+      <MonsterGroup>
+        <Monster count="1">Giant</Monster>
+      </MonsterGroup>
+    </MonsterAppearance>
+    <MonsterAppearance>
+      <MapChit type="C">Bones</MapChit>
+      <MapChit type="C">Roar</MapChit>
+      <MapChit type="C">Stink</MapChit>
+      <MonsterGroup>
+        <Monster count="2">H Troll</Monster>
+      </MonsterGroup>
+      <MonsterGroup>
+        <Monster count="1">T Troll</Monster>
+      </MonsterGroup>
+    </MonsterAppearance>
+    <NativeAppearance>
+      <Dwelling>Chapel</Dwelling>
+      <Dwelling>Large Campfile</Dwelling>
+      <Dwelling>Small Campfile</Dwelling>
+      <NativeGroup>Lancers</NativeGroup>
+    </NativeAppearance>
+  </AppearanceChartRow>
+  <AppearanceChartRow monsterRoll="5">
+    <MonsterAppearance>
+      <MapChit type="M">Stink</MapChit>
+      <MapChit type="M">Dank</MapChit>
+      <MapChit type="M">Patter</MapChit>
+      <MonsterGroup>
+        <Monster count="1">H Spider</Monster>
+      </MonsterGroup>
+      <MonsterGroup>
+        <Monster count="1">H Spider</Monster>
+      </MonsterGroup>
+      <MonsterGroup>
+        <Monster count="1">H Spider</Monster>
+      </MonsterGroup>
+    </MonsterAppearance>
+    <NativeAppearance>
+      <Dwelling>Large Campfile</Dwelling>
+      <Dwelling>Small Campfile</Dwelling>
+      <NativeGroup>Bashkars</NativeGroup>
+    </NativeAppearance>
+  </AppearanceChartRow>
+  <AppearanceChartRow monsterRoll="6">
+    <MonsterAppearance>
+      <MapChit>Flutter</MapChit>
+      <MapChit type="M">Ruins</MapChit>
+      <MapChit type="M">Bones</MapChit>
+      <MapChit type="M">Howl</MapChit>
+      <MonsterGroup>
+        <Monster count="1">Bat</Monster>
+      </MonsterGroup>
+      <MonsterGroup>
+        <Monster count="2">Bat</Monster>
+      </MonsterGroup>
+      <MonsterGroup>
+        <Monster count="3">Bat</Monster>
+      </MonsterGroup>
+    </MonsterAppearance>
+    <OtherAppearance>
+      <OtherGroup>Visitors</OtherGroup>
+      <OtherGroup>Missions</OtherGroup>
+      <OtherGroup>Campaigns</OtherGroup>
+    </OtherAppearance>
+  </AppearanceChartRow>
+</AppearanceChartData>

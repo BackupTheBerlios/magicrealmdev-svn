@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="MiscTypes.xsd"/>
+    <xs:simpleType name="Campaign">
+        <xs:restriction base="NonEmptyString"/>
+    </xs:simpleType>
+    <xs:complexType name="CampaignData">
+        <xs:sequence>
+            <xs:element name="Name" type="Campaign"/>
+            <xs:element name="FameCost" type="FameType"/>
+            <xs:element name="NotorietyCost" type="NotorietyType"/>
+            <xs:element name="Partner" type="DenizenGroup" maxOccurs="unbounded"/>
+            <xs:element name="Foe" type="DenizenGroup" maxOccurs="unbounded"/>
+            <xs:element name="TimeLimit" type="GameDays"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="CampaignDataList">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Campaign" type="CampaignData" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

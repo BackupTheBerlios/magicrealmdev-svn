@@ -1,0 +1,107 @@
+daylight_phase	 ::= {energize_spell} {rearrange_things} activity_order
+
+energize_spell	 ::= ENERGIZE<sp>spell[<sp>WITH<sp>color]
+
+rearrange_things ::= ( [DE]ACTIVATE|ABANDON|(GIVE<sp>TO<sp>individual) ) {<sp> belonging[,]}
+
+activity_order	 ::= move_order|fly_order|hide_order|rest_order|follow_order|alert_order|spell_order|trade_order|hire_order|search_order|peer_order|cache_order
+
+
+move_order	 ::= MOVE<sp>tile clearing
+
+fly_order	 ::= FLY<sp>tile
+
+hide_order	 ::= HIDE
+
+rest_order	 ::= REST [ [<sp>WOUNDED|FATIGUED]<sp>chit ]
+
+follow_order	 ::= FOLLOW<sp>individual
+
+alert_order	 ::= ALERT<sp>(berserk_chit|magic_chit|weapon)
+
+spell_order	 ::= [REMOTE<sp>] SPELL [<sp>(X|tile|major_magic_chit)]
+
+trade_order	 ::= TRADE [ [<sp>WITH<sp>native_leader|visitor [<sp>TO<sp>(BUY [<sp>item|spell [<sp>FOR{<sp> belonging[,]} ] | SELL {<sp>item[,]}) ] ]
+
+hire_order	 ::= HIRE [<sp>native_group|native_figure|monster_group [<sp>FOR<sp>gold_amount]
+
+search_order	 ::= SEARCH [<sp> find_stuff|read_runes|loot_pile]
+
+find_stuff	 ::= (TO<sp>(PEER|LOCATE)|WITH<sp>MAGIC<sp>SIGHT) [search_result]
+
+read_runes	 ::= TO<sp>READ [<sp>RUNES] <sp>FROM<sp>artifact|spell_book|spell_site
+
+loot_pile	 ::= TO<sp>LOOT<sp>(ABANDONED|treasure_site)
+
+peer_order	 ::= PEER<sp>tile clearing<sp>[search_result]
+
+cache_order	 ::= CACHE (<sp>MAKE|PUT|TAKE {belonging[,]})
+
+clearing	 ::= (#:1..6)
+
+tile		 ::= BL|CN|CS|HP|RU|CL|CR|DW|LE|MT|AV|BV|CV|DV|EV|LW|MW|NW|OW|PW
+
+chit		 ::= berserk_chit|combat_chit|magic_chit
+
+berserk_chit	 ::= BERSERK<sp>strength time effort
+
+combat_chit	 ::= chit_type<sp>strength time [effort]
+
+chit_type	 ::= DUCK|FIGHT|MOVE
+
+magic_chit	 ::= major_magic_chit|minor_magic_chit
+
+major_magic_chit ::= MAGIC<sp>major_ritual time effort
+
+minor_magic_chit ::= MAGIC<sp>minor_ritual time effort
+
+major_ritual	 ::= I|II|III|IV|V
+
+minor_ritual	 ::= VI|VII|VIII
+
+color		 ::= WHITE|GREY|GOLD|PURPLE|BLACK
+
+individual	 ::= character|native_leader|monster_charmed
+
+character	 ::= AMAZON|BERSERKER|BLACK<sp>KNIGHT|CAPTAIN|DRUID|DWARF|ELF|MAGICIAN|PILGRIM|
+		     SORCEROR|SWORDSMAN|WITCH|WITCH<sp>KING|WHITE<sp>KNIGHT|WIZARD|WOODS<sp>GIRL
+
+native_leader	 ::= BHQ|CHQ|GHQ|LHQ|OHQ|PHQ|RHQ|SHQ|WHQ
+
+native_group	 ::= BASHKARS|COMPANY|GUARD|LANCERS|ORDER|PATROL|ROGUES|SOLDIERS|WOODFOLK
+
+native_figure	 ::= ( O (HQ|#:1..3) | R (HQ|#:1..7) )
+
+monster_group	 ::= GIANTS|GOBLINS|OGRES
+
+monster_charmed	 ::= BAT|DRAGON|OCTOPUS|SPIDER
+
+visitor		 ::= CRONE|SCHOLAR|SHAMAN|WARLOCK
+
+spell_site	 ::= ALTAR|SHRINE|STATUE
+
+treasure_site	 ::= CAIRNS|HOARD|LAIR|POOL|VAULT|CRYPT[<sp>OF [<sp>THE]] <sp>KNIGHT|ENCHANTED<sp>MEADOW|TOADSTOOL<sp>CIRCLE|[character 'S<sp>]CACHE|spell_site
+
+belonging	 ::= gold_amount|item
+
+gold_amount	 ::= (# <sp> GOLD)
+
+item		 ::= horse|armor|weapon|treasure
+
+horse		 ::= strength time/strength time<SP>(PONY|WORK<sp>HORSE|WARHORSE)
+
+armor		 ::= HELMET|BREASTPLATE|SHIELD|ARMOR|GOLD<sp>HELMET|SILVER<sp>BREASTPLATE|JADE<sp>SHIELD|T<sp>ARMOR
+
+weapon		 ::= AXE|MACE|SHORT<sp>SWORD|THRUSTING<sp>SWORD|GREAT<sp>AXE|MORNING<sp>STAR|BROAD<sp>SWORD|GREAT<sp>SWORD|STAFF|SPEAR|CROSSBOW|MEDIUM<sp>BOW|LIGHT<sp>BOW|LIVING<sp>SWORD|TRUESTEEL<sp>SWORD|DEVIL<sp>SWORD|BANE<sp>SWORD
+
+search_result	 ::= [FOR<sp>] ([HIDDEN<sp>]ENEMIES [<sp>AND<sp>PATHS]|([CLUES<sp>AND<sp>] PATHS|PASSAGES)|[DISCOVER<sp>] CHITS|COUNTERS|TREASURE[<sp>CARDS]|[PERCEIVE<sp>]SPELLS)
+		     
+strength	 ::= -|L|M|H|T
+
+time		 ::= (#:0..9)
+
+effort		 ::= *|**
+
+spell		 -- left as an exercise for the reader
+
+treasure	 -- left as an exercise for the reader
