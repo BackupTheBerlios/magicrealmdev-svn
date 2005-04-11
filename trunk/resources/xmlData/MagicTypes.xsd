@@ -7,6 +7,10 @@
     <xs:simpleType name="ColorMagic">
         <xs:restriction base="NonEmptyToken"/>
     </xs:simpleType>
+    <xs:simpleType name="ColorMagicList">
+        <xs:list itemType="ColorMagic"/>
+    </xs:simpleType>
+    
     <xs:simpleType name="Spell">
         <xs:restriction base="NonEmptyString"/>
     </xs:simpleType>

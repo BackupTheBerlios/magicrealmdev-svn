@@ -266,6 +266,12 @@
 				</File>
 			</File>
 			<File
+				RelativePath=".\TileCoordinateData.xsd">
+				<File
+					RelativePath=".\TileCoordinateData.h">
+				</File>
+			</File>
+			<File
 				RelativePath=".\Tiles.xsd">
 				<File
 					RelativePath=".\Tiles.h">
@@ -363,6 +369,9 @@
 		</File>
 		<File
 			RelativePath=".\Spells.xml">
+		</File>
+		<File
+			RelativePath=".\TileCoordinateData.xml">
 		</File>
 		<File
 			RelativePath=".\Tiles.xml">

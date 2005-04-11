@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="Tiles.xsd"/>
+    <xs:simpleType name="TilePathArc">
+        <xs:restriction base="xs:float"/>
+    </xs:simpleType>
+    <xs:complexType name="OffroadCoordinates">
+        <xs:attribute name="x" type="xs:float" use="required"/>
+        <xs:attribute name="y" type="xs:float" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="TileClearingCoordinates">
+        <xs:attribute name="clearing" type="Clearing" use="required"/>
+        <xs:attribute name="x" type="xs:float" use="required"/>
+        <xs:attribute name="y" type="xs:float" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="TilePathArcElement">
+        <xs:attribute name="path" type="xs:integer" use="optional"/>
+        <xs:attribute name="from" type="PathNode" use="required"/>
+        <xs:attribute name="to" type="PathNode" use="required"/>
+        <xs:attribute name="arc1" type="TilePathArc" use="required"/>
+        <xs:attribute name="arc2" type="TilePathArc" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="TileCoordinateSide">
+        <xs:sequence>
+            <xs:element name="OffroadCoordinates" type="OffroadCoordinates"/>
+            <xs:element name="ClearingCoordinates" type="TileClearingCoordinates" maxOccurs="unbounded"/>
+            <xs:element name="PathArc" type="TilePathArcElement" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TileCoordinateData">
+        <xs:sequence>
+            <xs:element name="TileImage" type="xs:string"/>
+            <xs:element name="NormalSide" type="TileCoordinateSide"/>
+            <xs:element name="EnchantedSide" type="TileCoordinateSide"/>
+        </xs:sequence>
+        <xs:attribute name="tile" type="TileId" use="required"/>
+    </xs:complexType>
+    <xs:element name="TileCoordinateDataList">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="TileCoordinateData" type="TileCoordinateData" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

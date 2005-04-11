@@ -19,21 +19,21 @@
             </Paths>
         </NormalSide>
         <EnchantedSide>
-		<Clearings>
-			<Clearing number="1" type="Woods"></Clearing>
-			<Clearing number="2" type="Woods"></Clearing>
-			<Clearing number="4" type="Woods"></Clearing>
-			<Clearing number="5" type="Woods"></Clearing>
-		</Clearings>
-		<Paths>
-			<Path type="Road" node1="1" node2="NW"></Path>
-			<Path type="Road" node1="1" node2="4"></Path>
-			<Path type="Road" node1="2" node2="SW"></Path>
-			<Path type="Road" node1="2" node2="5"></Path>
-			<Path type="Road" node1="4" node2="NE"></Path>
-			<Path type="Road" node1="4" node2="SE"></Path>
-			<Path type="Road" node1="5" node2="N"></Path>
-		</Paths>
+            <Clearings>
+                <Clearing number="1" type="W" color_magic="Grey"/>
+                <Clearing number="2" type="W" color_magic="Grey"/>
+                <Clearing number="4" type="W" color_magic="Grey"/>
+                <Clearing number="5" type="W" color_magic="Grey"/>
+            </Clearings>
+            <Paths>
+                <Path type="Road" node1="1" node2="NW"/>
+                <Path type="Road" node1="1" node2="4"/>
+                <Path type="Road" node1="2" node2="SW"/>
+                <Path type="Road" node1="2" node2="5"/>
+                <Path type="Road" node1="4" node2="NE"/>
+                <Path type="Road" node1="4" node2="SE"/>
+                <Path type="Road" node1="5" node2="N"/>
+            </Paths>
         </EnchantedSide>
     </Tile>
     <Tile name="Bad Valley" id="BV" type="V">
@@ -55,21 +55,21 @@
             </Paths>
         </NormalSide>
         <EnchantedSide>
-		<Clearings>
-			<Clearing number="1" type="Woods"></Clearing>
-			<Clearing number="2" type="Woods"></Clearing>
-			<Clearing number="4" type="Woods"></Clearing>
-			<Clearing number="5" type="Woods"></Clearing>
-		</Clearings>
-		<Paths>
-			<Path type="Road" node1="1" node2="4"></Path>
-			<Path type="Road" node1="1" node2="SE"></Path>
-			<Path type="Road" node1="2" node2="SW"></Path>
-			<Path type="Road" node1="2" node2="5"></Path>
-			<Path type="Road" node1="4" node2="NW"></Path>
-			<Path type="Road" node1="4" node2="N"></Path>
-			<Path type="Road" node1="5" node2="NE"></Path>
-		</Paths>
+            <Clearings>
+                <Clearing number="1" type="W" color_magic="Grey"/>
+                <Clearing number="2" type="W" color_magic="Grey"/>
+                <Clearing number="4" type="W" color_magic="Grey"/>
+                <Clearing number="5" type="W" color_magic="Grey"/>
+            </Clearings>
+            <Paths>
+                <Path type="Road" node1="1" node2="4"/>
+                <Path type="Road" node1="1" node2="SE"/>
+                <Path type="Road" node1="2" node2="SW"/>
+                <Path type="Road" node1="2" node2="5"/>
+                <Path type="Road" node1="4" node2="NW"/>
+                <Path type="Road" node1="4" node2="N"/>
+                <Path type="Road" node1="5" node2="NE"/>
+            </Paths>
         </EnchantedSide>
     </Tile>
     <Tile name="Border Land" id="BL" type="C">
@@ -98,28 +98,28 @@
             </Paths>
         </NormalSide>
         <EnchantedSide>
-		<Clearings>
-			<Clearing number="1" type="Woods"></Clearing>
-			<Clearing number="2" type="Woods"></Clearing>
-			<Clearing number="3" type="Woods"></Clearing>
-			<Clearing number="4" type="Cave"></Clearing>
-			<Clearing number="5" type="Cave"></Clearing>
-			<Clearing number="6" type="Cave"></Clearing>
-		</Clearings>
-		<Paths>
-			<Path type="Road" node1="1" node2="SW"></Path>
-			<Path type="Road" node1="1" node2="N"></Path>
-			<Path type="Road" node1="1" node2="6"></Path>
-			<Path type="Road" node1="2" node2="NE"></Path>
-			<Path type="Road" node1="2" node2="S"></Path>
-			<Path type="Road" node1="2" node2="3"></Path>
-			<Path type="Road" node1="3" node2="5"></Path>
-			<Path type="Road" node1="3" node2="6"></Path>
-			<Path type="Tunnel" node1="4" node2="SE"></Path>
-			<Path type="Secret" node1="4" node2="5"></Path>
-			<Path type="Tunnel" node1="4" node2="6"></Path>
-			<Path type="Tunnel" node1="5" node2="NW"></Path>
-		</Paths>
+            <Clearings>
+                <Clearing number="1" type="W" color_magic="Grey"/>
+                <Clearing number="2" type="W" color_magic="Gold"/>
+                <Clearing number="3" type="W" color_magic="Gold"/>
+                <Clearing number="4" type="C" color_magic="Purple"/>
+                <Clearing number="5" type="C" color_magic="Purple"/>
+                <Clearing number="6" type="C" color_magic="Grey, Purple"/>
+            </Clearings>
+            <Paths>
+                <Path type="Road" node1="1" node2="SW"/>
+                <Path type="Road" node1="1" node2="N"/>
+                <Path type="Road" node1="1" node2="6"/>
+                <Path type="Road" node1="2" node2="NE"/>
+                <Path type="Road" node1="2" node2="S"/>
+                <Path type="Road" node1="2" node2="3"/>
+                <Path type="Road" node1="3" node2="5"/>
+                <Path type="Road" node1="3" node2="6"/>
+                <Path type="Tunnel" node1="4" node2="SE"/>
+                <Path type="Secret" node1="4" node2="5"/>
+                <Path type="Tunnel" node1="4" node2="6"/>
+                <Path type="Tunnel" node1="5" node2="NW"/>
+            </Paths>
         </EnchantedSide>
     </Tile>
     <Tile name="Cavern" id="CA" type="C">
@@ -146,26 +146,26 @@
             </Paths>
         </NormalSide>
         <EnchantedSide>
-		<Clearings>
-			<Clearing number="1" type="Cave"></Clearing>
-			<Clearing number="2" type="Cave"></Clearing>
-			<Clearing number="3" type="Cave"></Clearing>
-			<Clearing number="4" type="Cave"></Clearing>
-			<Clearing number="5" type="Cave"></Clearing>
-			<Clearing number="6" type="Cave"></Clearing>
-		</Clearings>
-		<Paths>
-			<Path type="Road" node1="1" node2="NE"></Path>
-			<Path type="Secret" node1="1" node2="2"></Path>
-			<Path type="Tunnel" node1="1" node2="4"></Path>
-			<Path type="Road" node1="2" node2="N"></Path>
-			<Path type="Tunnel" node1="2" node2="6"></Path>
-			<Path type="Tunnel" node1="3" node2="5"></Path>
-			<Path type="Tunnel" node1="3" node2="6"></Path>
-			<Path type="Secret" node1="4" node2="5"></Path>
-			<Path type="Tunnel" node1="4" node2="6"></Path>
-			<Path type="Road" node1="5" node2="NW"></Path>
-		</Paths>
+            <Clearings>
+                <Clearing number="1" type="C"/>
+                <Clearing number="2" type="C"/>
+                <Clearing number="3" type="C"/>
+                <Clearing number="4" type="C"/>
+                <Clearing number="5" type="C"/>
+                <Clearing number="6" type="C"/>
+            </Clearings>
+            <Paths>
+                <Path type="Road" node1="1" node2="NE"/>
+                <Path type="Secret" node1="1" node2="2"/>
+                <Path type="Tunnel" node1="1" node2="4"/>
+                <Path type="Road" node1="2" node2="N"/>
+                <Path type="Tunnel" node1="2" node2="6"/>
+                <Path type="Tunnel" node1="3" node2="5"/>
+                <Path type="Tunnel" node1="3" node2="6"/>
+                <Path type="Secret" node1="4" node2="5"/>
+                <Path type="Tunnel" node1="4" node2="6"/>
+                <Path type="Road" node1="5" node2="NW"/>
+            </Paths>
         </EnchantedSide>
     </Tile>
     <Tile name="Caves" id="CS" type="C">
@@ -190,24 +190,24 @@
             </Paths>
         </NormalSide>
         <EnchantedSide>
-		<Clearings>
-			<Clearing number="1" type="Cave"></Clearing>
-			<Clearing number="2" type="Cave"></Clearing>
-			<Clearing number="3" type="Cave"></Clearing>
-			<Clearing number="4" type="Cave"></Clearing>
-			<Clearing number="5" type="Cave"></Clearing>
-			<Clearing number="6" type="Cave"></Clearing>
-		</Clearings>
-		<Paths>
-			<Path type="Road" node1="1" node2="SE"></Path>
-			<Path type="Tunnel" node1="1" node2="4"></Path>
-			<Path type="Secret" node1="1" node2="6"></Path>
-			<Path type="Road" node1="2" node2="SW"></Path>
-			<Path type="Tunnel" node1="2" node2="3"></Path>
-			<Path type="Tunnel" node1="3" node2="4"></Path>
-			<Path type="Road" node1="5" node2="NW"></Path>
-			<Path type="Tunnel" node1="5" node2="6"></Path>
-		</Paths>
+            <Clearings>
+                <Clearing number="1" type="C"/>
+                <Clearing number="2" type="C"/>
+                <Clearing number="3" type="C"/>
+                <Clearing number="4" type="C"/>
+                <Clearing number="5" type="C"/>
+                <Clearing number="6" type="C"/>
+            </Clearings>
+            <Paths>
+                <Path type="Road" node1="1" node2="SE"/>
+                <Path type="Tunnel" node1="1" node2="4"/>
+                <Path type="Secret" node1="1" node2="6"/>
+                <Path type="Road" node1="2" node2="SW"/>
+                <Path type="Tunnel" node1="2" node2="3"/>
+                <Path type="Tunnel" node1="3" node2="4"/>
+                <Path type="Road" node1="5" node2="NW"/>
+                <Path type="Tunnel" node1="5" node2="6"/>
+            </Paths>
         </EnchantedSide>
     </Tile>
     <Tile name="Crag" id="CR" type="M">
@@ -232,24 +232,24 @@
             </Paths>
         </NormalSide>
         <EnchantedSide>
-		<Clearings>
-			<Clearing number="1" type="Mountain"></Clearing>
-			<Clearing number="2" type="Mountain"></Clearing>
-			<Clearing number="3" type="Mountain"></Clearing>
-			<Clearing number="4" type="Mountain"></Clearing>
-			<Clearing number="5" type="Mountain"></Clearing>
-			<Clearing number="6" type="Mountain"></Clearing>
-		</Clearings>
-		<Paths>
-			<Path type="Road" node1="1" node2="4"></Path>
-			<Path type="Road" node1="2" node2="N"></Path>
-			<Path type="Hidden" node1="2" node2="3"></Path>
-			<Path type="Road" node1="2" node2="5"></Path>
-			<Path type="Road" node1="3" node2="5"></Path>
-			<Path type="Road" node1="3" node2="6"></Path>
-			<Path type="Secret" node1="4" node2="5"></Path>
-			<Path type="Road" node1="4" node2="6"></Path>
-		</Paths>
+            <Clearings>
+                <Clearing number="1" type="M" color_magic="Grey, Gold, Purple"/>
+                <Clearing number="2" type="M" color_magic="Grey, Gold, Purple"/>
+                <Clearing number="3" type="M" color_magic="Grey, Gold, Purple"/>
+                <Clearing number="4" type="M" color_magic="Grey, Gold, Purple"/>
+                <Clearing number="5" type="M" color_magic="Grey, Gold, Purple"/>
+                <Clearing number="6" type="M" color_magic="Grey, Gold, Purple"/>
+            </Clearings>
+            <Paths>
+                <Path type="Road" node1="1" node2="4"/>
+                <Path type="Road" node1="2" node2="N"/>
+                <Path type="Hidden" node1="2" node2="3"/>
+                <Path type="Road" node1="2" node2="5"/>
+                <Path type="Road" node1="3" node2="5"/>
+                <Path type="Road" node1="3" node2="6"/>
+                <Path type="Secret" node1="4" node2="5"/>
+                <Path type="Road" node1="4" node2="6"/>
+            </Paths>
         </EnchantedSide>
     </Tile>
     <Tile name="Cliff" id="CL" type="M">
@@ -276,26 +276,26 @@
             </Paths>
         </NormalSide>
         <EnchantedSide>
-		<Clearings>
-			<Clearing number="1" type="Mountain"></Clearing>
-			<Clearing number="2" type="Woods"></Clearing>
-			<Clearing number="3" type="Woods"></Clearing>
-			<Clearing number="4" type="Mountain"></Clearing>
-			<Clearing number="5" type="Woods"></Clearing>
-			<Clearing number="6" type="Mountain"></Clearing>
-		</Clearings>
-		<Paths>
-			<Path type="Road" node1="1" node2="NW"></Path>
-			<Path type="Road" node1="1" node2="6"></Path>
-			<Path type="Road" node1="2" node2="SW"></Path>
-			<Path type="Road" node1="2" node2="3"></Path>
-			<Path type="Hidden" node1="2" node2="5"></Path>
-			<Path type="Road" node1="3" node2="5"></Path>
-			<Path type="Secret" node1="3" node2="6"></Path>
-			<Path type="Road" node1="4" node2="NE"></Path>
-			<Path type="Road" node1="4" node2="6"></Path>
-			<Path type="Road" node1="5" node2="SE"></Path>
-		</Paths>
+            <Clearings>
+                <Clearing number="1" type="M" color_magic="Purple"/>
+                <Clearing number="2" type="W" color_magic="Purple"/>
+                <Clearing number="3" type="W" color_magic="Purple"/>
+                <Clearing number="4" type="M" color_magic="Purple"/>
+                <Clearing number="5" type="W" color_magic="Purple"/>
+                <Clearing number="6" type="M" color_magic="Purple"/>
+            </Clearings>
+            <Paths>
+                <Path type="Road" node1="1" node2="NW"/>
+                <Path type="Road" node1="1" node2="6"/>
+                <Path type="Road" node1="2" node2="SW"/>
+                <Path type="Road" node1="2" node2="3"/>
+                <Path type="Hidden" node1="2" node2="5"/>
+                <Path type="Road" node1="3" node2="5"/>
+                <Path type="Secret" node1="3" node2="6"/>
+                <Path type="Road" node1="4" node2="NE"/>
+                <Path type="Road" node1="4" node2="6"/>
+                <Path type="Road" node1="5" node2="SE"/>
+            </Paths>
         </EnchantedSide>
     </Tile>
     <Tile name="Curst Valley" id="CV" type="V">
@@ -317,21 +317,21 @@
             </Paths>
         </NormalSide>
         <EnchantedSide>
-		<Clearings>
-			<Clearing number="1" type="Woods"></Clearing>
-			<Clearing number="2" type="Woods"></Clearing>
-			<Clearing number="4" type="Woods"></Clearing>
-			<Clearing number="5" type="Woods"></Clearing>
-		</Clearings>
-		<Paths>
-			<Path type="Road" node1="1" node2="N"></Path>
-			<Path type="Road" node1="1" node2="4"></Path>
-			<Path type="Road" node1="2" node2="NW"></Path>
-			<Path type="Road" node1="2" node2="5"></Path>
-			<Path type="Road" node1="4" node2="SW"></Path>
-			<Path type="Road" node1="4" node2="SE"></Path>
-			<Path type="Road" node1="5" node2="NE"></Path>
-		</Paths>
+            <Clearings>
+                <Clearing number="1" type="W" color_magic="Grey"/>
+                <Clearing number="2" type="W" color_magic="Grey"/>
+                <Clearing number="4" type="W" color_magic="Grey"/>
+                <Clearing number="5" type="W" color_magic="Grey"/>
+            </Clearings>
+            <Paths>
+                <Path type="Road" node1="1" node2="N"/>
+                <Path type="Road" node1="1" node2="4"/>
+                <Path type="Road" node1="2" node2="NW"/>
+                <Path type="Road" node1="2" node2="5"/>
+                <Path type="Road" node1="4" node2="SW"/>
+                <Path type="Road" node1="4" node2="SE"/>
+                <Path type="Road" node1="5" node2="NE"/>
+            </Paths>
         </EnchantedSide>
     </Tile>
     <Tile name="Dark Valley" id="DV" type="V">
@@ -353,21 +353,21 @@
             </Paths>
         </NormalSide>
         <EnchantedSide>
-		<Clearings>
-			<Clearing number="1" type="Woods"></Clearing>
-			<Clearing number="2" type="Woods"></Clearing>
-			<Clearing number="4" type="Woods"></Clearing>
-			<Clearing number="5" type="Woods"></Clearing>
-		</Clearings>
-		<Paths>
-			<Path type="Road" node1="1" node2="NE"></Path>
-			<Path type="Road" node1="1" node2="4"></Path>
-			<Path type="Road" node1="2" node2="N"></Path>
-			<Path type="Road" node1="2" node2="5"></Path>
-			<Path type="Road" node1="4" node2="SW"></Path>
-			<Path type="Road" node1="4" node2="NW"></Path>
-			<Path type="Road" node1="5" node2="SE"></Path>
-		</Paths>
+            <Clearings>
+                <Clearing number="1" type="W" color_magic="Grey"/>
+                <Clearing number="2" type="W" color_magic="Grey"/>
+                <Clearing number="4" type="W" color_magic="Grey"/>
+                <Clearing number="5" type="W" color_magic="Grey"/>
+            </Clearings>
+            <Paths>
+                <Path type="Road" node1="1" node2="NE"/>
+                <Path type="Road" node1="1" node2="4"/>
+                <Path type="Road" node1="2" node2="N"/>
+                <Path type="Road" node1="2" node2="5"/>
+                <Path type="Road" node1="4" node2="SW"/>
+                <Path type="Road" node1="4" node2="NW"/>
+                <Path type="Road" node1="5" node2="SE"/>
+            </Paths>
         </EnchantedSide>
     </Tile>
     <Tile name="Deep Woods" id="DW" type="M">
@@ -396,26 +396,26 @@
             </Paths>
         </NormalSide>
         <EnchantedSide>
-		<Clearings>
-			<Clearing number="1" type="Woods"></Clearing>
-			<Clearing number="2" type="Woods"></Clearing>
-			<Clearing number="3" type="Woods"></Clearing>
-			<Clearing number="4" type="Woods"></Clearing>
-			<Clearing number="5" type="Woods"></Clearing>
-			<Clearing number="6" type="Woods"></Clearing>
-		</Clearings>
-		<Paths>
-			<Path type="Road" node1="1" node2="3"></Path>
-			<Path type="Road" node1="1" node2="4"></Path>
-			<Path type="Road" node1="2" node2="5"></Path>
-			<Path type="Road" node1="2" node2="6"></Path>
-			<Path type="Hidden" node1="3" node2="4"></Path>
-			<Path type="Road" node1="3" node2="5"></Path>
-			<Path type="Hidden" node1="3" node2="6"></Path>
-			<Path type="Road" node1="4" node2="SW"></Path>
-			<Path type="Road" node1="4" node2="NW"></Path>
-			<Path type="Hidden" node1="4" node2="6"></Path>
-		</Paths>
+            <Clearings>
+                <Clearing number="1" type="W" color_magic="Gold"/>
+                <Clearing number="2" type="W" color_magic="Gold"/>
+                <Clearing number="3" type="W" color_magic="Gold"/>
+                <Clearing number="4" type="W" color_magic="Gold"/>
+                <Clearing number="5" type="W" color_magic="Gold"/>
+                <Clearing number="6" type="W" color_magic="Gold"/>
+            </Clearings>
+            <Paths>
+                <Path type="Road" node1="1" node2="3"/>
+                <Path type="Road" node1="1" node2="4"/>
+                <Path type="Road" node1="2" node2="5"/>
+                <Path type="Road" node1="2" node2="6"/>
+                <Path type="Hidden" node1="3" node2="4"/>
+                <Path type="Road" node1="3" node2="5"/>
+                <Path type="Hidden" node1="3" node2="6"/>
+                <Path type="Road" node1="4" node2="SW"/>
+                <Path type="Road" node1="4" node2="NW"/>
+                <Path type="Hidden" node1="4" node2="6"/>
+            </Paths>
         </EnchantedSide>
     </Tile>
     <Tile name="Evil Valley" id="EV" type="V">
@@ -437,21 +437,21 @@
             </Paths>
         </NormalSide>
         <EnchantedSide>
-		<Clearings>
-			<Clearing number="1" type="Woods"></Clearing>
-			<Clearing number="2" type="Woods"></Clearing>
-			<Clearing number="4" type="Woods"></Clearing>
-			<Clearing number="5" type="Woods"></Clearing>
-		</Clearings>
-		<Paths>
-			<Path type="Road" node1="1" node2="SW"></Path>
-			<Path type="Road" node1="1" node2="4"></Path>
-			<Path type="Road" node1="2" node2="NW"></Path>
-			<Path type="Road" node1="2" node2="5"></Path>
-			<Path type="Road" node1="4" node2="N"></Path>
-			<Path type="Road" node1="4" node2="NE"></Path>
-			<Path type="Road" node1="5" node2="SE"></Path>
-		</Paths>
+            <Clearings>
+                <Clearing number="1" type="W" color_magic="Grey"/>
+                <Clearing number="2" type="W" color_magic="Grey"/>
+                <Clearing number="4" type="W" color_magic="Grey"/>
+                <Clearing number="5" type="W" color_magic="Grey"/>
+            </Clearings>
+            <Paths>
+                <Path type="Road" node1="1" node2="SW"/>
+                <Path type="Road" node1="1" node2="4"/>
+                <Path type="Road" node1="2" node2="NW"/>
+                <Path type="Road" node1="2" node2="5"/>
+                <Path type="Road" node1="4" node2="N"/>
+                <Path type="Road" node1="4" node2="NE"/>
+                <Path type="Road" node1="5" node2="SE"/>
+            </Paths>
         </EnchantedSide>
     </Tile>
     <Tile name="High Pass" id="HP" type="C">
@@ -476,24 +476,24 @@
             </Paths>
         </NormalSide>
         <EnchantedSide>
-		<Clearings>
-			<Clearing number="1" type="Mountain"></Clearing>
-			<Clearing number="2" type="Mountain"></Clearing>
-			<Clearing number="3" type="Cave"></Clearing>
-			<Clearing number="4" type="Mountain"></Clearing>
-			<Clearing number="5" type="Mountain"></Clearing>
-			<Clearing number="6" type="Cave"></Clearing>
-		</Clearings>
-		<Paths>
-			<Path type="Road" node1="1" node2="4"></Path>
-			<Path type="Road" node1="1" node2="5"></Path>
-			<Path type="Road" node1="2" node2="N"></Path>
-			<Path type="Road" node1="2" node2="4"></Path>
-			<Path type="Road" node1="3" node2="NE"></Path>
-			<Path type="Tunnel" node1="3" node2="6"></Path>
-			<Path type="Road" node1="5" node2="S"></Path>
-			<Path type="Road" node1="6" node2="NW"></Path>
-		</Paths>
+            <Clearings>
+                <Clearing number="1" type="M" color_magic="Purple"/>
+                <Clearing number="2" type="M" color_magic="Purple"/>
+                <Clearing number="3" type="C" color_magic="Purple"/>
+                <Clearing number="4" type="M" color_magic="Purple"/>
+                <Clearing number="5" type="M" color_magic="Purple"/>
+                <Clearing number="6" type="C" color_magic="Purple"/>
+            </Clearings>
+            <Paths>
+                <Path type="Road" node1="1" node2="4"/>
+                <Path type="Road" node1="1" node2="5"/>
+                <Path type="Road" node1="2" node2="N"/>
+                <Path type="Road" node1="2" node2="4"/>
+                <Path type="Road" node1="3" node2="NE"/>
+                <Path type="Tunnel" node1="3" node2="6"/>
+                <Path type="Road" node1="5" node2="S"/>
+                <Path type="Road" node1="6" node2="NW"/>
+            </Paths>
         </EnchantedSide>
     </Tile>
     <Tile name="Ledges" id="LE" type="M">
@@ -520,25 +520,25 @@
             </Paths>
         </NormalSide>
         <EnchantedSide>
-		<Clearings>
-			<Clearing number="1" type="Woods"></Clearing>
-			<Clearing number="2" type="Mountain"></Clearing>
-			<Clearing number="3" type="Woods"></Clearing>
-			<Clearing number="4" type="Woods"></Clearing>
-			<Clearing number="5" type="Mountain"></Clearing>
-			<Clearing number="6" type="Woods"></Clearing>
-		</Clearings>
-		<Paths>
-			<Path type="Hidden" node1="1" node2="3"></Path>
-			<Path type="Road" node1="1" node2="4"></Path>
-			<Path type="Road" node1="2" node2="NE"></Path>
-			<Path type="Road" node1="2" node2="5"></Path>
-			<Path type="Road" node1="3" node2="SE"></Path>
-			<Path type="Road" node1="3" node2="6"></Path>
-			<Path type="Road" node1="4" node2="N"></Path>
-			<Path type="Hidden" node1="4" node2="6"></Path>
-			<Path type="Road" node1="5" node2="NW"></Path>
-		</Paths>
+            <Clearings>
+                <Clearing number="1" type="W" color_magic="Purple"/>
+                <Clearing number="2" type="M" color_magic="Purple"/>
+                <Clearing number="3" type="W" color_magic="Purple"/>
+                <Clearing number="4" type="W" color_magic="Purple"/>
+                <Clearing number="5" type="M" color_magic="Purple"/>
+                <Clearing number="6" type="W" color_magic="Purple"/>
+            </Clearings>
+            <Paths>
+                <Path type="Hidden" node1="1" node2="3"/>
+                <Path type="Road" node1="1" node2="4"/>
+                <Path type="Road" node1="2" node2="NE"/>
+                <Path type="Road" node1="2" node2="5"/>
+                <Path type="Road" node1="3" node2="SE"/>
+                <Path type="Road" node1="3" node2="6"/>
+                <Path type="Road" node1="4" node2="N"/>
+                <Path type="Hidden" node1="4" node2="6"/>
+                <Path type="Road" node1="5" node2="NW"/>
+            </Paths>
         </EnchantedSide>
     </Tile>
     <Tile name="Linden Woods" id="LW" type="W">
@@ -558,19 +558,19 @@
             </Paths>
         </NormalSide>
         <EnchantedSide>
-		<Clearings>
-			<Clearing number="2" type="Woods"></Clearing>
-			<Clearing number="4" type="Woods"></Clearing>
-			<Clearing number="5" type="Woods"></Clearing>
-		</Clearings>
-		<Paths>
-			<Path type="Road" node1="2" node2="SW"></Path>
-			<Path type="Road" node1="2" node2="SE"></Path>
-			<Path type="Road" node1="4" node2="NW"></Path>
-			<Path type="Road" node1="4" node2="5"></Path>
-			<Path type="Road" node1="5" node2="N"></Path>
-			<Path type="Road" node1="5" node2="NE"></Path>
-		</Paths>
+            <Clearings>
+                <Clearing number="2" type="W" color_magic="Gold"/>
+                <Clearing number="4" type="W" color_magic="Gold"/>
+                <Clearing number="5" type="W" color_magic="Gold"/>
+            </Clearings>
+            <Paths>
+                <Path type="Road" node1="2" node2="SW"/>
+                <Path type="Road" node1="2" node2="SE"/>
+                <Path type="Road" node1="4" node2="NW"/>
+                <Path type="Road" node1="4" node2="5"/>
+                <Path type="Road" node1="5" node2="N"/>
+                <Path type="Road" node1="5" node2="NE"/>
+            </Paths>
         </EnchantedSide>
     </Tile>
     <Tile name="Maple Woods" id="MW" type="W">
@@ -590,20 +590,19 @@
             </Paths>
         </NormalSide>
         <EnchantedSide>
-	<Tile name="Maple Woods" id="MW" enchanted="true" type="W">
-		<Clearings>
-			<Clearing number="2" type="Woods"></Clearing>
-			<Clearing number="4" type="Woods"></Clearing>
-			<Clearing number="5" type="Woods"></Clearing>
-		</Clearings>
-		<Paths>
-			<Path type="Road" node1="2" node2="N"></Path>
-			<Path type="Road" node1="2" node2="NE"></Path>
-			<Path type="Road" node1="4" node2="5"></Path>
-			<Path type="Road" node1="4" node2="SE"></Path>
-			<Path type="Road" node1="5" node2="SW"></Path>
-			<Path type="Road" node1="5" node2="NW"></Path>
-		</Paths>
+            <Clearings>
+                <Clearing number="2" type="W" color_magic="Gold"/>
+                <Clearing number="4" type="W" color_magic="Gold"/>
+                <Clearing number="5" type="W" color_magic="Gold"/>
+            </Clearings>
+            <Paths>
+                <Path type="Road" node1="2" node2="N"/>
+                <Path type="Road" node1="2" node2="NE"/>
+                <Path type="Road" node1="4" node2="5"/>
+                <Path type="Road" node1="4" node2="SE"/>
+                <Path type="Road" node1="5" node2="SW"/>
+                <Path type="Road" node1="5" node2="NW"/>
+            </Paths>
         </EnchantedSide>
     </Tile>
     <Tile name="Mountain" id="MO" type="M">
@@ -629,26 +628,26 @@
             </Paths>
         </NormalSide>
         <EnchantedSide>
-		<Clearings>
-			<Clearing number="1" type="Mountain"></Clearing>
-			<Clearing number="2" type="Woods"></Clearing>
-			<Clearing number="3" type="Mountain"></Clearing>
-			<Clearing number="4" type="Woods"></Clearing>
-			<Clearing number="5" type="Mountain"></Clearing>
-			<Clearing number="6" type="Mountain"></Clearing>
-		</Clearings>
-		<Paths>
-			<Path type="Road" node1="1" node2="3"></Path>
-			<Path type="Secret" node1="1" node2="4"></Path>
-			<Path type="Road" node1="2" node2="SW"></Path>
-			<Path type="Road" node1="2" node2="4"></Path>
-			<Path type="Road" node1="2" node2="5"></Path>
-			<Path type="Hidden" node1="3" node2="6"></Path>
-			<Path type="Road" node1="4" node2="N"></Path>
-			<Path type="Road" node1="4" node2="6"></Path>
-			<Path type="Road" node1="5" node2="SE"></Path>
-			<Path type="Hidden" node1="5" node2="6"></Path>
-		</Paths>
+            <Clearings>
+                <Clearing number="1" type="M" color_magic="Purple"/>
+                <Clearing number="2" type="W" color_magic="Purple"/>
+                <Clearing number="3" type="M" color_magic="Purple"/>
+                <Clearing number="4" type="W" color_magic="Purple"/>
+                <Clearing number="5" type="M" color_magic="Purple"/>
+                <Clearing number="6" type="M" color_magic="Purple"/>
+            </Clearings>
+            <Paths>
+                <Path type="Road" node1="1" node2="3"/>
+                <Path type="Secret" node1="1" node2="4"/>
+                <Path type="Road" node1="2" node2="SW"/>
+                <Path type="Road" node1="2" node2="4"/>
+                <Path type="Road" node1="2" node2="5"/>
+                <Path type="Hidden" node1="3" node2="6"/>
+                <Path type="Road" node1="4" node2="N"/>
+                <Path type="Road" node1="4" node2="6"/>
+                <Path type="Road" node1="5" node2="SE"/>
+                <Path type="Hidden" node1="5" node2="6"/>
+            </Paths>
         </EnchantedSide>
     </Tile>
     <Tile name="Nut Woods" id="NW" type="W">
@@ -668,19 +667,19 @@
             </Paths>
         </NormalSide>
         <EnchantedSide>
-		<Clearings>
-			<Clearing number="2" type="Woods"></Clearing>
-			<Clearing number="4" type="Woods"></Clearing>
-			<Clearing number="5" type="Woods"></Clearing>
-		</Clearings>
-		<Paths>
-			<Path type="Road" node1="2" node2="NW"></Path>
-			<Path type="Road" node1="2" node2="N"></Path>
-			<Path type="Road" node1="4" node2="5"></Path>
-			<Path type="Road" node1="4" node2="NE"></Path>
-			<Path type="Road" node1="5" node2="SW"></Path>
-			<Path type="Road" node1="5" node2="SE"></Path>
-		</Paths>
+            <Clearings>
+                <Clearing number="2" type="W" color_magic="Gold"/>
+                <Clearing number="4" type="W" color_magic="Gold"/>
+                <Clearing number="5" type="W" color_magic="Gold"/>
+            </Clearings>
+            <Paths>
+                <Path type="Road" node1="2" node2="NW"/>
+                <Path type="Road" node1="2" node2="N"/>
+                <Path type="Road" node1="4" node2="5"/>
+                <Path type="Road" node1="4" node2="NE"/>
+                <Path type="Road" node1="5" node2="SW"/>
+                <Path type="Road" node1="5" node2="SE"/>
+            </Paths>
         </EnchantedSide>
     </Tile>
     <Tile name="Oak Woods" id="OW" type="W">
@@ -700,19 +699,19 @@
             </Paths>
         </NormalSide>
         <EnchantedSide>
-		<Clearings>
-			<Clearing number="2" type="Woods"></Clearing>
-			<Clearing number="4" type="Woods"></Clearing>
-			<Clearing number="5" type="Woods"></Clearing>
-		</Clearings>
-		<Paths>
-			<Path type="Road" node1="2" node2="NE"></Path>
-			<Path type="Road" node1="2" node2="SE"></Path>
-			<Path type="Road" node1="4" node2="5"></Path>
-			<Path type="Road" node1="4" node2="SW"></Path>
-			<Path type="Road" node1="5" node2="NW"></Path>
-			<Path type="Road" node1="5" node2="N"></Path>
-		</Paths>
+            <Clearings>
+                <Clearing number="2" type="W" color_magic="Gold"/>
+                <Clearing number="4" type="W" color_magic="Gold"/>
+                <Clearing number="5" type="W" color_magic="Gold"/>
+            </Clearings>
+            <Paths>
+                <Path type="Road" node1="2" node2="NE"/>
+                <Path type="Road" node1="2" node2="SE"/>
+                <Path type="Road" node1="4" node2="5"/>
+                <Path type="Road" node1="4" node2="SW"/>
+                <Path type="Road" node1="5" node2="NW"/>
+                <Path type="Road" node1="5" node2="N"/>
+            </Paths>
         </EnchantedSide>
     </Tile>
     <Tile name="Pine Woods" id="PW" type="W">
@@ -732,19 +731,19 @@
             </Paths>
         </NormalSide>
         <EnchantedSide>
-		<Clearings>
-			<Clearing number="2" type="Woods"></Clearing>
-			<Clearing number="4" type="Woods"></Clearing>
-			<Clearing number="5" type="Woods"></Clearing>
-		</Clearings>
-		<Paths>
-			<Path type="Road" node1="2" node2="SW"></Path>
-			<Path type="Road" node1="2" node2="NW"></Path>
-			<Path type="Road" node1="4" node2="5"></Path>
-			<Path type="Road" node1="4" node2="N"></Path>
-			<Path type="Road" node1="5" node2="NE"></Path>
-			<Path type="Road" node1="5" node2="SE"></Path>
-		</Paths>
+            <Clearings>
+                <Clearing number="2" type="W" color_magic="Gold"/>
+                <Clearing number="4" type="W" color_magic="Gold"/>
+                <Clearing number="5" type="W" color_magic="Gold"/>
+            </Clearings>
+            <Paths>
+                <Path type="Road" node1="2" node2="SW"/>
+                <Path type="Road" node1="2" node2="NW"/>
+                <Path type="Road" node1="4" node2="5"/>
+                <Path type="Road" node1="4" node2="N"/>
+                <Path type="Road" node1="5" node2="NE"/>
+                <Path type="Road" node1="5" node2="SE"/>
+            </Paths>
         </EnchantedSide>
     </Tile>
     <Tile name="Ruins" id="RU" type="C">
@@ -771,26 +770,26 @@
             </Paths>
         </NormalSide>
         <EnchantedSide>
-		<Clearings>
-			<Clearing number="1" type="Woods"></Clearing>
-			<Clearing number="2" type="Woods"></Clearing>
-			<Clearing number="3" type="Woods"></Clearing>
-			<Clearing number="4" type="Woods"></Clearing>
-			<Clearing number="5" type="Woods"></Clearing>
-			<Clearing number="6" type="Cave"></Clearing>
-		</Clearings>
-		<Paths>
-			<Path type="Road" node1="1" node2="NW"></Path>
-			<Path type="Hidden" node1="1" node2="2"></Path>
-			<Path type="Hidden" node1="1" node2="4"></Path>
-			<Path type="Road" node1="1" node2="5"></Path>
-			<Path type="Road" node1="2" node2="N"></Path>
-			<Path type="Hidden" node1="2" node2="6"></Path>
-			<Path type="Road" node1="3" node2="SE"></Path>
-			<Path type="Road" node1="3" node2="5"></Path>
-			<Path type="Road" node1="4" node2="6"></Path>
-			<Path type="Road" node1="5" node2="SW"></Path>
-		</Paths>
+            <Clearings>
+                <Clearing number="1" type="W" color_magic="Grey"/>
+                <Clearing number="2" type="W" color_magic="Grey"/>
+                <Clearing number="3" type="W" color_magic="Grey"/>
+                <Clearing number="4" type="W" color_magic="Grey"/>
+                <Clearing number="5" type="W" color_magic="Grey"/>
+                <Clearing number="6" type="C" color_magic="Grey"/>
+            </Clearings>
+            <Paths>
+                <Path type="Road" node1="1" node2="NW"/>
+                <Path type="Hidden" node1="1" node2="2"/>
+                <Path type="Hidden" node1="1" node2="4"/>
+                <Path type="Road" node1="1" node2="5"/>
+                <Path type="Road" node1="2" node2="N"/>
+                <Path type="Hidden" node1="2" node2="6"/>
+                <Path type="Road" node1="3" node2="SE"/>
+                <Path type="Road" node1="3" node2="5"/>
+                <Path type="Road" node1="4" node2="6"/>
+                <Path type="Road" node1="5" node2="SW"/>
+            </Paths>
         </EnchantedSide>
     </Tile>
 </TileDataList>

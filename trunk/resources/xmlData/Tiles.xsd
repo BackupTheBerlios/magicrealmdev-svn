@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:include schemaLocation="MiscTypes.xsd"/>
+    <xs:include schemaLocation="MagicTypes.xsd"/>
     <xs:simpleType name="TileId">
         <xs:restriction base="NonEmptyToken"/>
     </xs:simpleType>
@@ -43,7 +44,7 @@
             <xs:enumeration value="NW"/>
         </xs:restriction>
     </xs:simpleType>
-<!--    
+    <!--    
     <xs:element name="PathNode" type="NonEmptyToken" abstract="true"/>
     <xs:element name="PathClearing" substitutionGroup="PathNode">
         <xs:simpleType>
@@ -60,6 +61,7 @@
             <xs:extension base="xs:string">
                 <xs:attribute name="number" type="Clearing" use="required"/>
                 <xs:attribute name="type" type="ClearingType" use="required"/>
+                <xs:attribute name="color_magic" type="ColorMagicList" use="optional"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
@@ -87,7 +89,7 @@
     <xs:complexType name="TileData">
         <xs:sequence>
             <xs:element name="NormalSide" type="TileSide"/>
-            <xs:element name="EnchantedSide" type="TileSide" minOccurs="0"/>
+            <xs:element name="EnchantedSide" type="TileSide"/>
         </xs:sequence>
         <xs:attribute name="name" type="TileName" use="required"/>
         <xs:attribute name="id" type="TileId" use="required"/>
