@@ -14,10 +14,15 @@
     <h3>Subversion</h3>
     <ul>
       <li>browse: http://svn.berlios.de/viewcvs/magicrealmdev/</li>
-      <li>anon access: svn checkout svn://svn.berlios.de/magicrealmdev</li>
+      <li>anon access: svn checkout svn://svn.berlios.de/magicrealmdev/trunk</li>
       <li>dev access:</br>
         export SVN_SSH="ssh -l login-name"</br>
-        svn checkout svn+ssh://svn.berlios.de/svnroot/repos/magicrealmdev    </li>
+        svn checkout svn+ssh://svn.berlios.de/svnroot/repos/magicrealmdev/trunk</br>
+        or, I either use cygwin's ssh, or putty/plink. To get the latter to work, I had to generate keys
+        and register the pub key with svn.berlios.de before it would work.</br>
+        set SVN_SSH=plink -ssh -2 -l login-name</br>
+        there are no quotes in the set SVN_SSH command. 
+      </li>
 
       <li>resources:</li>
         <ul>
